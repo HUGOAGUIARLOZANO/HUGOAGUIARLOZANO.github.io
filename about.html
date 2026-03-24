@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Hugo Aguiar — Ecuadorian attorney and consultant. LL.M. Harvard Law School. Formerly Minister of Energy of Ecuador, Vice Minister of Oil and Gas, General Manager of EP Petroecuador, and Senior Consultant at the World Bank Group.">
+  <meta name="author" content="Hugo Aguiar">
+
+  <title>About — Hugo Aguiar</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* Experience timeline */
+    .experience-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border-left: 2px solid var(--border);
+      margin-left: 0.5rem;
+      padding-left: 1.5rem;
+    }
+
+    .exp-item {
+      position: relative;
+      padding-bottom: 1.75rem;
+    }
+
+    .exp-item:last-child { padding-bottom: 0; }
+
+    .exp-item::before {
+      content: '';
+      position: absolute;
+      left: -1.65rem;
+      top: 0.4rem;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--navy-mid);
+      border: 2px solid var(--bg);
+      outline: 1px solid var(--navy-mid);
+    }
+
+    .exp-item.current::before {
+      background: var(--gold);
+      outline-color: var(--gold);
+    }
+
+    .exp-role {
+      font-family: var(--font-serif);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.15rem;
+    }
+
+    .exp-org {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--navy-mid);
+    }
+
+    .exp-dates {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      margin-top: 0.1rem;
+    }
+
+    /* Education */
+    .edu-item {
+      padding: 1rem 1.25rem;
+      background: var(--bg-warm);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 var(--r) var(--r) 0;
+      margin-bottom: 0.75rem;
+    }
+
+    .edu-item:last-child { margin-bottom: 0; }
+
+    .edu-degree {
+      font-family: var(--font-serif);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.15rem;
+    }
+
+    .edu-school {
+      font-size: 0.82rem;
+      color: var(--text-mid);
+    }
+
+    .edu-note {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      font-style: italic;
+      margin-top: 0.15rem;
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ======================================================
+       HEADER
+       ====================================================== -->
+  <header class="site-header" role="banner">
+
+    <div class="header-topbar">
+      <div class="container">
+        <div class="topbar-left">
+          <span class="topbar-domain">hugoaguiar.com</span>
+          <span>Independent Analysis</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="header-main">
+      <div class="container">
+        <div class="site-branding">
+          <a href="index.html" class="site-name">Hugo Aguiar</a>
+          <span class="site-tagline">Attorney · LL.M. Harvard Law School · AI &amp; Energy Governance Consultant</span>
+        </div>
+
+        <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+
+        <nav class="main-nav" role="navigation" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="articles.html">Articles</a>
+          <a href="about.html" class="active" aria-current="page">About</a>
+        </nav>
+      </div>
+    </div>
+
+  </header>
+
+  <!-- ======================================================
+       MAIN CONTENT
+       ====================================================== -->
+  <main id="main-content">
+
+    <!-- Page Header -->
+    <div class="page-header">
+      <div class="container">
+        <h1>About</h1>
+      </div>
+    </div>
+
+    <!-- About Content -->
+    <section class="about-section" aria-label="About Hugo Aguiar">
+      <div class="container">
+        <div class="about-grid">
+
+          <!-- Sidebar -->
+          <aside class="about-sidebar">
+
+            <div class="about-photo-placeholder" aria-label="Photo of Hugo Aguiar">
+              <span class="about-photo-initials" aria-hidden="true">HA</span>
+            </div>
+
+            <div class="about-contact-card">
+              <h4>Contact</h4>
+
+              <div class="contact-item">
+                <svg class="contact-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                <span>hello@hugoaguiar.com</span>
+              </div>
+
+              <div class="contact-item">
+                <svg class="contact-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                <span>New York City area</span>
+              </div>
+
+              <div class="contact-item">
+                <svg class="contact-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                  <rect x="2" y="9" width="4" height="12"></rect>
+                  <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+                <span>linkedin.com/in/hugoaguiar</span>
+              </div>
+
+            </div>
+          </aside>
+
+          <!-- Main Content -->
+          <div class="about-main" itemscope itemtype="https://schema.org/Person">
+
+            <h1 class="about-name" itemprop="name">Hugo Aguiar</h1>
+
+            <p class="about-title-line">
+              <strong>Attorney | LL.M. Harvard Law School | AI &amp; Energy Governance Consultant</strong>
+            </p>
+
+            <div class="about-bio">
+              <p>
+                Hugo Aguiar is an Ecuadorian attorney and consultant specializing in energy governance, natural resource policy, public law, and AI regulation. He holds an LL.M. from Harvard Law School, where he was awarded the Dean's Scholar Prize (2017), and an MBA.
+              </p>
+              <p>
+                He has held senior positions at the intersection of energy governance and public policy, including as Presidential Advisor to the President of Ecuador (2013–2015 and 2021–2022), Senior Consultant at the World Bank Group (2017–2022), Vice Minister of Oil and Gas (2022), Minister of Energy of Ecuador (2022), and General Manager of EP Petroecuador (2022–2023). He is currently a Consultant at Zentrum Atlas in the New York City area.
+              </p>
+              <p>
+                His research focuses on sovereign energy contract architecture, rent capture in oil-exporting countries, and the regulatory implications of artificial intelligence across affected industries.
+              </p>
+            </div>
+
+            <!-- Research Focus -->
+            <h2 class="about-section-title">Research Focus</h2>
+
+            <div class="research-interests">
+              <div class="interest-item">
+                <span class="interest-dot" aria-hidden="true"></span>
+                <span>Sovereign energy contract architecture</span>
+              </div>
+              <div class="interest-item">
+                <span class="interest-dot" aria-hidden="true"></span>
+                <span>Rent capture in oil-exporting countries</span>
+              </div>
+              <div class="interest-item">
+                <span class="interest-dot" aria-hidden="true"></span>
+                <span>AI regulation &amp; affected industries</span>
+              </div>
+              <div class="interest-item">
+                <span class="interest-dot" aria-hidden="true"></span>
+                <span>Natural resource governance</span>
+              </div>
+              <div class="interest-item">
+                <span class="interest-dot" aria-hidden="true"></span>
+                <span>Public law &amp; hydrocarbon policy</span>
+              </div>
+              <div class="interest-item">
+                <span class="interest-dot" aria-hidden="true"></span>
+                <span>State-owned enterprise reform</span>
+              </div>
+              <div class="interest-item">
+                <span class="interest-dot" aria-hidden="true"></span>
+                <span>Energy transition governance</span>
+              </div>
+              <div class="interest-item">
+                <span class="interest-dot" aria-hidden="true"></span>
+                <span>Fiscal frameworks for extractive industries</span>
+              </div>
+            </div>
+
+            <!-- Experience -->
+            <h2 class="about-section-title">Selected Experience</h2>
+
+            <div class="experience-list">
+
+              <div class="exp-item current">
+                <div class="exp-role">Consultant</div>
+                <div class="exp-org">Zentrum Atlas</div>
+                <div class="exp-dates">2023 – Present &nbsp;·&nbsp; New York City area</div>
+              </div>
+
+              <div class="exp-item">
+                <div class="exp-role">General Manager</div>
+                <div class="exp-org">EP Petroecuador</div>
+                <div class="exp-dates">2022–2023</div>
+              </div>
+
+              <div class="exp-item">
+                <div class="exp-role">Minister of Energy</div>
+                <div class="exp-org">Government of Ecuador</div>
+                <div class="exp-dates">2022</div>
+              </div>
+
+              <div class="exp-item">
+                <div class="exp-role">Vice Minister of Oil and Gas</div>
+                <div class="exp-org">Government of Ecuador</div>
+                <div class="exp-dates">2022</div>
+              </div>
+
+              <div class="exp-item">
+                <div class="exp-role">Senior Consultant</div>
+                <div class="exp-org">World Bank Group</div>
+                <div class="exp-dates">2017–2022</div>
+              </div>
+
+              <div class="exp-item">
+                <div class="exp-role">Presidential Advisor</div>
+                <div class="exp-org">Presidency of Ecuador</div>
+                <div class="exp-dates">2013–2015 &nbsp;&amp;&nbsp; 2021–2022</div>
+              </div>
+
+            </div>
+
+            <!-- Education -->
+            <h2 class="about-section-title">Education</h2>
+
+            <div>
+              <div class="edu-item">
+                <div class="edu-degree">LL.M., Law</div>
+                <div class="edu-school">Harvard Law School</div>
+                <div class="edu-note">Dean's Scholar Prize, 2017</div>
+              </div>
+              <div class="edu-item">
+                <div class="edu-degree">MBA, Business Administration</div>
+                <div class="edu-school">Graduate School of Business</div>
+              </div>
+            </div>
+
+            <!-- Selected Analysis -->
+            <h2 class="about-section-title">Selected Analysis</h2>
+
+            <div class="publications-list">
+
+              <div class="pub-item">
+                <div class="pub-title">Governing the Energy Transition: Institutional Challenges in Latin America</div>
+                <div class="pub-meta"><em>Energy Policy Research</em> &mdash; March 2026</div>
+              </div>
+
+              <div class="pub-item">
+                <div class="pub-title">State Oil Companies at the Crossroads: Strategic Choices in the Energy Transition</div>
+                <div class="pub-meta"><em>Natural Resource Governance Review</em> &mdash; February 2026</div>
+              </div>
+
+              <div class="pub-item">
+                <div class="pub-title">Fiscal Transparency in Extractive Industries: Progress and Persistent Gaps</div>
+                <div class="pub-meta"><em>Journal of Resource Governance</em> &mdash; January 2026</div>
+              </div>
+
+              <div class="pub-item">
+                <div class="pub-title">Climate Commitments and Resource Nationalism: Navigating the Tensions</div>
+                <div class="pub-meta"><em>Latin American Policy Quarterly</em> &mdash; October 2025</div>
+              </div>
+
+            </div>
+
+          </div><!-- /about-main -->
+        </div><!-- /about-grid -->
+      </div><!-- /container -->
+    </section>
+
+  </main>
+
+  <!-- ======================================================
+       FOOTER
+       ====================================================== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+
+        <div>
+          <div class="footer-brand-name">Hugo Aguiar</div>
+          <div class="footer-brand-tagline">Attorney · LL.M. Harvard Law School · AI &amp; Energy Governance Consultant</div>
+          <p class="footer-brand-desc">
+            Ecuadorian attorney and consultant specializing in energy governance, natural resource policy, public law, and AI regulation. Formerly Minister of Energy, Vice Minister of Oil and Gas, and Senior Consultant at the World Bank Group.
+          </p>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Navigation</div>
+          <nav class="footer-links" aria-label="Footer navigation">
+            <a href="index.html">Home</a>
+            <a href="articles.html">Articles</a>
+            <a href="about.html">About</a>
+          </nav>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Topics</div>
+          <nav class="footer-links" aria-label="Topic links">
+            <a href="articles.html">Energy Governance</a>
+            <a href="articles.html">Natural Resources</a>
+            <a href="articles.html">Governance</a>
+            <a href="articles.html">Energy Policy</a>
+            <a href="articles.html">Climate &amp; Energy</a>
+          </nav>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Hugo Aguiar. All rights reserved.</span>
+        <span><a href="about.html">About</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
