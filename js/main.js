@@ -69,6 +69,19 @@ const articles = [
     excerpt: 'Latin American governments face a dual mandate — maximizing hydrocarbon revenues to fund social expenditures while restructuring their energy sectors around renewables. This article examines the institutional frameworks and governance models that will determine whether the region can navigate this transition without sacrificing fiscal stability or democratic accountability.',
   },
   {
+    id: 7,
+    slug: 'oil-hedge-ecuador',
+    featured: false,
+    category: 'policy',
+    catClass: 'cat-policy',
+    date: '2026-03-24',
+    dateDisplay: 'March 24, 2026',
+    readingTime: 5,
+    url: 'article-oil-hedge.html',
+    title:   "Ecuador's \"Oil Insurance\": What It Solves and What It Doesn't",
+    excerpt: "Ecuador's Monetary Policy Board has cleared the institutional path for Petroecuador to contract oil price insurance, with WTI at USD 87.27 following the U.S. strike on Iran. But hedging a reference price is only part of the problem: Ecuador sells heavy crude at structural discounts to WTI, the BCE assumes no risk, and without the institutional infrastructure of the Mexican model, a poorly designed hedge is not insurance — it's a rent transfer.",
+  },
+  {
     id: 2,
     slug: 'state-oil-companies-crossroads',
     featured: false,
@@ -135,6 +148,10 @@ const articles = [
    RENDER FUNCTIONS
    ============================================================ */
 
+function articleUrl(a) {
+  return a.url || ('article.html?id=' + a.id);
+}
+
 function getCategoryLabel(catKey) {
   const map = {
     energy:     'cat_energy',
@@ -162,7 +179,7 @@ function renderFeaturedArticle() {
       <div class="featured-content">
         <span class="cat-badge ${a.catClass}">${getCategoryLabel(a.category)}</span>
         <h2 class="featured-title" itemprop="headline">
-          <a href="article.html?id=${a.id}">${a.title}</a>
+          <a href="${articleUrl(a)}">${a.title}</a>
         </h2>
         <p class="featured-excerpt" itemprop="description">${a.excerpt}</p>
         <div class="article-meta">
@@ -172,7 +189,7 @@ function renderFeaturedArticle() {
           <span class="meta-sep">·</span>
           <span class="meta-read">${a.readingTime} ${T.min_read}</span>
         </div>
-        <a href="article.html?id=${a.id}" class="btn-read">${T.read_article}</a>
+        <a href="${articleUrl(a)}" class="btn-read">${T.read_article}</a>
       </div>
     </article>`;
 }
@@ -189,7 +206,7 @@ function renderRecentArticles() {
         <span class="cat-badge ${a.catClass}">${getCategoryLabel(a.category)}</span>
       </div>
       <h3 class="card-title" itemprop="headline">
-        <a href="article.html?id=${a.id}">${a.title}</a>
+        <a href="${articleUrl(a)}">${a.title}</a>
       </h3>
       <p class="card-excerpt" itemprop="description">${a.excerpt}</p>
       <div class="card-meta">
@@ -197,7 +214,7 @@ function renderRecentArticles() {
         <span class="card-meta-sep">·</span>
         <span>${a.readingTime} ${T.min_read}</span>
       </div>
-      <a href="article.html?id=${a.id}" class="card-read-more">${T.read_article}</a>
+      <a href="${articleUrl(a)}" class="card-read-more">${T.read_article}</a>
     </article>`).join('');
 }
 
@@ -221,7 +238,7 @@ function renderArticlesList(filter) {
       <div class="list-item-body">
         <div><span class="cat-badge ${a.catClass}">${getCategoryLabel(a.category)}</span></div>
         <h2 class="list-item-title" itemprop="headline">
-          <a href="article.html?id=${a.id}">${a.title}</a>
+          <a href="${articleUrl(a)}">${a.title}</a>
         </h2>
         <p class="list-item-excerpt" itemprop="description">${a.excerpt}</p>
         <div class="list-item-meta">
@@ -233,7 +250,7 @@ function renderArticlesList(filter) {
         </div>
       </div>
       <div class="list-item-action">
-        <a href="article.html?id=${a.id}" class="card-read-more">${T.read_article}</a>
+        <a href="${articleUrl(a)}" class="card-read-more">${T.read_article}</a>
       </div>
     </article>`).join('');
 }

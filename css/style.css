@@ -949,6 +949,101 @@ p:last-child { margin-bottom: 0; }
 
 
 /* ============================================================
+   ARTICLE PAGE
+   ============================================================ */
+
+.article-page-header {
+  background: var(--navy);
+  color: #fff;
+  padding: 3rem 0 2.5rem;
+  border-bottom: 4px solid var(--gold);
+}
+
+.article-page-header-inner {
+  max-width: 760px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.article-page-title {
+  font-family: var(--font-serif);
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.article-page-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.55);
+}
+
+.article-page-meta .meta-author { color: rgba(255,255,255,0.85); font-weight: 600; }
+.article-page-meta .meta-sep   { color: rgba(255,255,255,0.25); }
+
+.article-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 1.5rem;
+  transition: color var(--trans);
+}
+.article-back:hover { color: rgba(255,255,255,0.85); }
+
+/* Article body */
+.article-body-section {
+  padding: 3.5rem 0 5rem;
+}
+
+.article-body-inner {
+  max-width: 720px;
+}
+
+.article-body-inner p {
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+}
+
+.article-lead {
+  font-size: 1.15rem !important;
+  line-height: 1.8 !important;
+  color: var(--text) !important;
+  font-weight: 400;
+}
+
+.article-section-heading {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--navy-mid);
+  margin-top: 2.75rem;
+  margin-bottom: 1rem;
+  padding-left: 0.75rem;
+  border-left: 3px solid var(--gold);
+}
+
+@media (max-width: 768px) {
+  .article-page-title  { font-size: 1.75rem; }
+  .article-body-inner p { font-size: 1rem; }
+  .article-lead         { font-size: 1.05rem !important; }
+}
+
+
+/* ============================================================
    RESPONSIVE
    ============================================================ */
 
