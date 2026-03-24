@@ -46,6 +46,7 @@ const T = {
   cat_governance: 'Governance',
   cat_policy:     'Energy Policy',
   cat_climate:    'Climate & Energy',
+  cat_trade:      'Trade Policy',
 
   by_author: 'Hugo Aguiar',
 };
@@ -80,6 +81,19 @@ const articles = [
     url: 'article-oil-hedge.html',
     title:   "Ecuador's \"Oil Insurance\": What It Solves and What It Doesn't",
     excerpt: "Ecuador's Monetary Policy Board has cleared the institutional path for Petroecuador to contract oil price insurance, with WTI at USD 87.27 following the U.S. strike on Iran. But hedging a reference price is only part of the problem: Ecuador sells heavy crude at structural discounts to WTI, the BCE assumes no risk, and without the institutional infrastructure of the Mexican model, a poorly designed hedge is not insurance — it's a rent transfer.",
+  },
+  {
+    id: 8,
+    slug: 'bilateral-trade-deficit',
+    featured: false,
+    category: 'trade',
+    catClass: 'cat-trade',
+    date: '2026-03-25',
+    dateDisplay: 'March 25, 2026',
+    readingTime: 2,
+    url: 'article-trade-deficit.html',
+    title:   'A Bilateral Trade Deficit Is Not Necessarily a Problem',
+    excerpt: 'Having a trade deficit with a particular partner does not automatically imply an economic loss. Bilateral balances often reflect production structure, supply chain organization, and comparative advantage rather than structural weakness — and interpreting trade relations through this narrow lens risks oversimplifying a far more complex economic reality.',
   },
   {
     id: 2,
@@ -158,7 +172,8 @@ function getCategoryLabel(catKey) {
     resources:  'cat_resources',
     governance: 'cat_governance',
     policy:     'cat_policy',
-    climate:    'cat_climate'
+    climate:    'cat_climate',
+    trade:      'cat_trade'
   };
   return T[map[catKey]] || catKey;
 }
