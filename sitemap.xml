@@ -33,4 +33,11 @@
     <priority>0.7</priority>
   </url>
 
+  <url>
+    <loc>https://hugoaguiarlozano.github.io/article-energy-transition.html</loc>
+    <lastmod>2026-03-15</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.7</priority>
+  </url>
+
 </urlset>

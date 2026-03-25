@@ -66,8 +66,9 @@ const articles = [
     date: '2026-03-15',
     dateDisplay: 'March 15, 2026',
     readingTime: 12,
+    url: 'article-energy-transition.html',
     title:   'Governing the Energy Transition: Institutional Challenges in Latin America',
-    excerpt: 'Latin American governments face a dual mandate — maximizing hydrocarbon revenues to fund social expenditures while restructuring their energy sectors around renewables. This article examines the institutional frameworks and governance models that will determine whether the region can navigate this transition without sacrificing fiscal stability or democratic accountability.',
+    excerpt: 'Latin American governments face a structural tension that no rhetorical commitment to the energy transition can resolve: they depend on hydrocarbon revenues to fund public services while facing pressure to restructure their energy sectors around renewables. This is not a political choice between two options — it is a governance problem that will be resolved, well or poorly, through institutional design.',
   },
   {
     id: 7,
