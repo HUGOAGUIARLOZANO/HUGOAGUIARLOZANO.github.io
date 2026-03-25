@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Iran's closure of the Strait of Hormuz drove Brent to $126/barrel. Hugo Aguiar analyzes what the crisis means for Latin American oil exporters, Ecuador's fiscal position, and the governance of sovereign energy revenues.">
+  <meta name="author" content="Hugo Aguiar">
+  <meta name="google-site-verification" content="w9AkcHdSuzBK-Ylo1oLI4u4jG3CRWiZoHXem0gducuA" />
+
+  <title>The Strait of Hormuz Crisis and What It Means for Latin American Energy Policy — Hugo Aguiar</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* Section headings */
+    .article-body-inner h2 {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-top: 3rem;
+      margin-bottom: 0.85rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-light);
+      line-height: 1.3;
+    }
+
+    /* Key metrics strip */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .metric-card {
+      background: var(--navy);
+      color: #fff;
+      padding: 1.25rem 1rem;
+      border-radius: 3px;
+      text-align: center;
+    }
+
+    .metric-value {
+      font-family: var(--font-serif);
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      line-height: 1.15;
+      margin-bottom: 0.4rem;
+    }
+
+    .metric-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 0.25rem;
+    }
+
+    .metric-sub {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.4;
+    }
+
+    /* Chart containers */
+    .chart-block {
+      background: var(--bg-warm);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 1.5rem 1.5rem 1rem;
+      margin: 2rem 0;
+    }
+
+    .chart-wrap {
+      position: relative;
+    }
+
+    .chart-source {
+      font-size: 0.72rem;
+      color: var(--text-light);
+      margin-top: 0.75rem;
+      text-align: right;
+    }
+
+    @media (max-width: 768px) {
+      .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+      .metric-value { font-size: 1.25rem; }
+    }
+
+    @media (max-width: 480px) {
+      .metrics-grid { grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+      .metric-card { padding: 1rem 0.75rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ======================================================
+       HEADER
+       ====================================================== -->
+  <header class="site-header" role="banner">
+
+    <div class="header-topbar">
+      <div class="container">
+        <div class="topbar-left">
+          <span class="topbar-domain">hugoaguiar.com</span>
+          <span>Independent Analysis</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="header-main">
+      <div class="container">
+        <div class="site-branding">
+          <a href="index.html" class="site-name">Hugo Aguiar</a>
+          <span class="site-tagline">Attorney · LL.M. Harvard Law School · AI &amp; Energy Governance Consultant</span>
+        </div>
+
+        <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+
+        <nav class="main-nav" role="navigation" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="articles.html" class="active" aria-current="page">Articles</a>
+          <a href="about.html">About</a>
+        </nav>
+      </div>
+    </div>
+
+  </header>
+
+  <!-- ======================================================
+       ARTICLE HEADER
+       ====================================================== -->
+  <div class="article-page-header">
+    <div class="container">
+      <div class="article-page-header-inner">
+
+        <a href="articles.html" class="article-back">← Articles &amp; Analysis</a>
+
+        <span class="cat-badge cat-energy">Energy Governance</span>
+
+        <h1 class="article-page-title">
+          The Strait of Hormuz Crisis and What It Means for Latin American Energy Policy
+        </h1>
+
+        <div class="article-page-meta">
+          <span class="meta-author">Hugo Aguiar</span>
+          <span class="meta-sep">·</span>
+          <span>March 25, 2026</span>
+          <span class="meta-sep">·</span>
+          <span>10 min read</span>
+          <span class="meta-sep">·</span>
+          <span>Energy Governance</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================
+       ARTICLE BODY
+       ====================================================== -->
+  <main id="main-content">
+    <section class="article-body-section">
+      <div class="container">
+
+        <!-- Key metrics -->
+        <div class="metrics-grid" role="region" aria-label="Key figures">
+
+          <div class="metric-card">
+            <div class="metric-value">$126<span style="font-size:1rem;">/bbl</span></div>
+            <div class="metric-label">Brent Peak Price</div>
+            <div class="metric-sub">+75% vs January 2026</div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-value">~70%</div>
+            <div class="metric-label">Traffic Reduced</div>
+            <div class="metric-sub">150+ ships stranded</div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-value">20%</div>
+            <div class="metric-label">Global Supply Affected</div>
+            <div class="metric-sub">~20M bbl/day removed</div>
+          </div>
+
+          <div class="metric-card">
+            <div class="metric-value">$40<span style="font-size:1rem;">/bbl</span></div>
+            <div class="metric-label">Geopolitical Premium</div>
+            <div class="metric-sub">Above market fundamentals</div>
+          </div>
+
+        </div>
+
+        <!-- Article text -->
+        <div class="article-body-inner">
+
+          <h2>The Largest Supply Disruption in a Generation</h2>
+
+          <p class="article-lead">
+            Brent crude surpassed $100 per barrel on March 8, 2026 for the first time in four years, rising to $126 per barrel at its peak — a surge faster than during any other conflict in recent history. The cause: Iran's closure of the Strait of Hormuz, reducing tanker traffic by approximately 70% and effectively removing about 20% of the world's daily oil supply from the market.
+          </p>
+
+          <p>
+            The IEA has characterized this as the &#8220;greatest global energy and food security challenge in history.&#8221; That is not hyperbole. It is a structural assessment of what happens when the world's most critical energy chokepoint becomes commercially unusable.
+          </p>
+
+          <p>
+            This article analyzes what the crisis means structurally — for global energy markets, for oil-dependent fiscal systems, and specifically for Latin American sovereigns navigating the intersection of hydrocarbon revenues and energy transition commitments.
+          </p>
+
+          <!-- Chart 1: Brent price evolution -->
+          <div class="chart-block">
+            <div class="chart-wrap" style="height:300px;">
+              <canvas id="chartBrent" aria-label="Brent crude price chart" role="img"></canvas>
+            </div>
+            <p class="chart-source">Chart: Hugo Aguiar. Data: ICE Brent front-month futures, March 2026.</p>
+          </div>
+
+          <h2>The Numbers That Matter</h2>
+
+          <p>
+            The Strait's two unidirectional sea lanes facilitate the transit of around 20 million barrels of oil per day, representing roughly 20% of global seaborne oil trade, primarily from Saudi Arabia, the UAE, Iraq, and Qatar. In 2024, an estimated 84% of crude oil shipments through the strait were destined for Asian markets, with China receiving a third of its oil via the strait.
+          </p>
+
+          <!-- Chart 2: Flows by destination -->
+          <div class="chart-block">
+            <div class="chart-wrap" style="height:280px;">
+              <canvas id="chartFlows" aria-label="Oil flows through Hormuz by destination" role="img"></canvas>
+            </div>
+            <p class="chart-source">Chart: Hugo Aguiar. Data: IEA, EIA, 2024 estimates.</p>
+          </div>
+
+          <p>
+            A closure removing close to 20% of global oil supplies from the market is expected to raise the average WTI price to $98 per barrel and lower global real GDP growth by an annualized 2.9 percentage points in Q2 2026 (Dallas Fed, 2026).
+          </p>
+
+          <!-- Chart 3: GDP impact -->
+          <div class="chart-block">
+            <div class="chart-wrap" style="height:260px;">
+              <canvas id="chartGDP" aria-label="Projected GDP impact by closure duration" role="img"></canvas>
+            </div>
+            <p class="chart-source">Source: Dallas Fed, 2026.</p>
+          </div>
+
+          <p>
+            The closure has added roughly $40 per barrel as a geopolitical risk premium above what market fundamentals would normally dictate. Strategic petroleum reserve releases can dampen that premium temporarily — but even the world's largest emergency stockpile cannot flood the market with crude immediately, as oil requires about 13 days to reach U.S. markets after a presidential release order.
+          </p>
+
+          <h2>Beyond Oil: The LNG Dimension</h2>
+
+          <p>
+            The longer-term implications of the Strait's closure may be more extreme for the liquefied natural gas market than for crude. Roughly 20% of global LNG flows through the Strait — the majority exported from Qatar — and LNG production is more concentrated and more difficult to move than crude oil.
+          </p>
+
+          <p>
+            Following the closure, QatarEnergy declared force majeure on all exports. Europe gets 12&#8211;14% of its LNG from Qatar through the strait, against historically low European gas storage levels of just 30% capacity following a harsh 2025&#8211;2026 winter. Dutch TTF gas benchmarks nearly doubled to over &#8364;60/MWh by mid-March, prompting the ECB to postpone planned interest rate reductions and raise its 2026 inflation forecast.
+          </p>
+
+          <h2>What This Means for Ecuador and Latin America</h2>
+
+          <p>
+            For Latin American oil exporters, the Hormuz crisis creates a paradox that is rarely analyzed with precision.
+          </p>
+
+          <p>
+            <strong>The windfall side:</strong> Ecuador exports Napo and Oriente crudes — heavy, high-sulfur grades that trade at structural discounts to WTI. A price spike of $40/barrel in the benchmark does not translate dollar-for-dollar into Ecuadorian fiscal revenue. The quality differential — historically between $8 and $15/barrel below WTI — narrows somewhat in supply shock environments as buyers scramble for any available crude, but it does not disappear. Ecuador is not a Hormuz-exposed producer. Its crude flows through the Pacific to Asian buyers via routes entirely separate from the Persian Gulf. In that sense, it is a price beneficiary without being a supply risk.
+          </p>
+
+          <p>
+            <strong>The fiscal arithmetic is meaningful:</strong> at current production levels of approximately 450,000 barrels per day, a sustained $20 increase in the effective realized price — accounting for the quality differential and contractual pricing mechanisms — represents additional annual fiscal revenue on the order of $3.3 billion. In a dollarized economy with no monetary policy tools, that magnitude of windfall is transformative for the fiscal position.
+          </p>
+
+          <p>
+            <strong>The structural warning:</strong> The crisis also illustrates, with exceptional clarity, the vulnerability documented in the context of Ecuador's own contractual architecture: the gap between benchmark prices and actual fiscal receipts is not automatic — it is determined by contract design, pricing window mechanics, and logistical structure. A country that captures $126/barrel in benchmark terms but receives $95/barrel in net fiscal revenue due to opaque differential structures, poorly designed pricing windows, and logistical surcharges has not escaped the rent capture problem. It has merely moved it to a higher price level.
+          </p>
+
+          <p>
+            <strong>The transition complication:</strong> The Hormuz crisis has temporarily reversed the political economy of energy transition in the region. When oil prices are at $126/barrel, the fiscal pressure to accelerate hydrocarbon revenue extraction intensifies. Investments in renewables compete against the immediate returns of expanded crude production. This is not an argument against the transition — it is an argument for designing transition governance mechanisms that are robust to exactly this kind of price volatility.
+          </p>
+
+          <h2>The Bypass Routes and Their Limits</h2>
+
+          <p>
+            Saudi Arabia has increasingly diverted oil to the Red Sea port of Yanbu via the East&#8211;West Crude Oil Pipeline, while the UAE has diverted oil via the Abu Dhabi Crude Oil Pipeline to the port of Fujairah on the Arabian Sea. These bypass routes exist, but they have limits.
+          </p>
+
+          <p>
+            Even with rerouting through these pipelines, a serious Hormuz disruption could remove 8 to 10 million barrels per day from world supply. Most shipping companies have redirected to the longer route bypassing through the southern tip of Africa — adding approximately 15&#8211;20 days to transit times and substantially increasing freight costs.
+          </p>
+
+          <h2>The Policy Lesson</h2>
+
+          <p>
+            The Hormuz crisis of 2026 will eventually resolve. The strait will reopen. Prices will decline from their peak. The geopolitical risk premium will fade.
+          </p>
+
+          <p>
+            What will not fade is the structural lesson: energy security in a globalized market is not merely a function of domestic production capacity. It is a function of the institutional quality of the contracts, logistical arrangements, and fiscal mechanisms through which sovereign resources are converted into public revenue.
+          </p>
+
+          <p>
+            For Ecuador specifically, the crisis creates a window — the combination of elevated prices and heightened institutional attention to energy governance — to advance the contractual reforms that reduce the rent capture gap. The fiscal windfall from the current price spike is real. Whether it reaches the treasury in full, or is partially captured by intermediaries through pricing window mechanics and logistical surcharges, depends on decisions being made right now in the design of supply contracts. That is where the Hormuz crisis connects directly to Ecuador's domestic governance agenda.
+          </p>
+
+        </div><!-- /article-body-inner -->
+      </div><!-- /container -->
+    </section>
+
+    <!-- More articles -->
+    <section class="cta-section" aria-label="More analysis">
+      <div class="container">
+        <div class="cta-inner">
+          <h2 style="font-size:1.35rem;">More Analysis</h2>
+          <p>Research and commentary on energy governance, natural resources, and public law.</p>
+          <a href="articles.html" class="cta-submit" style="display:inline-block; text-decoration:none; margin-top:0.25rem;">View All Articles</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======================================================
+       FOOTER
+       ====================================================== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+
+        <div>
+          <div class="footer-brand-name">Hugo Aguiar</div>
+          <div class="footer-brand-tagline">Attorney · LL.M. Harvard Law School · AI &amp; Energy Governance Consultant</div>
+          <p class="footer-brand-desc">
+            Ecuadorian attorney and consultant specializing in energy governance, natural resource policy, public law, and AI regulation. Formerly Minister of Energy, Vice Minister of Oil and Gas, and Senior Consultant at the World Bank Group.
+          </p>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Navigation</div>
+          <nav class="footer-links" aria-label="Footer navigation">
+            <a href="index.html">Home</a>
+            <a href="articles.html">Articles</a>
+            <a href="about.html">About</a>
+          </nav>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Topics</div>
+          <nav class="footer-links" aria-label="Topic links">
+            <a href="articles.html">Energy Governance</a>
+            <a href="articles.html">Natural Resources</a>
+            <a href="articles.html">Governance</a>
+            <a href="articles.html">Energy Policy</a>
+            <a href="articles.html">Climate &amp; Energy</a>
+            <a href="articles.html">Trade Policy</a>
+          </nav>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Hugo Aguiar. All rights reserved.</span>
+        <span><a href="about.html">About</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+
+  <!-- ======================================================
+       CHARTS
+       ====================================================== -->
+  <script>
+    (function () {
+      'use strict';
+
+      // Global Chart.js defaults
+      Chart.defaults.font.family = "'Inter', -apple-system, sans-serif";
+      Chart.defaults.font.size   = 12;
+      Chart.defaults.color       = '#555';
+
+      const NAVY      = '#0d2137';
+      const NAVY_MID  = '#1a3a5e';
+      const NAVY_LT   = '#2a5080';
+      const GOLD      = '#c8a020';
+      const GRAY      = '#6b7280';
+      const RED       = '#dc2626';
+      const RED_LIGHT = 'rgba(220,38,38,0.18)';
+
+      // ----------------------------------------------------------
+      // Chart 1 — Brent Crude Price Evolution
+      // ----------------------------------------------------------
+      new Chart(document.getElementById('chartBrent'), {
+        type: 'line',
+        data: {
+          labels: ['Jan', 'Feb 1', 'Feb 15', 'Mar 1', 'Mar 4', 'Mar 8', 'Mar 12', 'Mar 15', 'Mar 20', 'Mar 25'],
+          datasets: [
+            {
+              label: 'Brent (USD/bbl)',
+              data: [72, 74, 76, 80, 88, 100, 118, 126, 110, 103],
+              borderColor: NAVY_MID,
+              backgroundColor: 'rgba(26,58,94,0.08)',
+              fill: true,
+              tension: 0.35,
+              pointRadius: 4,
+              pointHoverRadius: 6,
+              pointBackgroundColor: NAVY_MID,
+              borderWidth: 2,
+            },
+            {
+              label: '$100 threshold',
+              data: [100, 100, 100, 100, 100, 100, 100, 100, 100, 100],
+              borderColor: RED,
+              borderDash: [6, 4],
+              borderWidth: 1.5,
+              pointRadius: 0,
+              pointHoverRadius: 0,
+              fill: false,
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            title: {
+              display: true,
+              text: 'Brent Crude Price — Hormuz Crisis 2026 (USD/barrel)',
+              font: { family: "'Playfair Display', serif", size: 14, weight: 'normal' },
+              color: NAVY,
+              padding: { top: 0, bottom: 16 }
+            },
+            legend: {
+              position: 'bottom',
+              labels: { boxWidth: 14, padding: 16, usePointStyle: true }
+            },
+            tooltip: {
+              callbacks: {
+                label: ctx => ' $' + ctx.parsed.y + '/bbl'
+              }
+            }
+          },
+          scales: {
+            y: {
+              min: 60,
+              max: 140,
+              grid: { color: 'rgba(0,0,0,0.05)' },
+              ticks: {
+                callback: v => '$' + v
+              }
+            },
+            x: {
+              grid: { display: false }
+            }
+          }
+        }
+      });
+
+      // ----------------------------------------------------------
+      // Chart 2 — Daily Flows Through Hormuz by Destination
+      // ----------------------------------------------------------
+      new Chart(document.getElementById('chartFlows'), {
+        type: 'bar',
+        data: {
+          labels: ['China', 'India', 'Japan / Korea', 'Europe', 'Others'],
+          datasets: [{
+            label: 'M bbl/day',
+            data: [6.6, 2.8, 3.4, 2.0, 5.2],
+            backgroundColor: [NAVY, NAVY_MID, NAVY_LT, GOLD, GRAY],
+            borderRadius: 2,
+            borderSkipped: false,
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            title: {
+              display: true,
+              text: 'Daily Oil Flows Through Hormuz by Destination (M bbl/day, 2024)',
+              font: { family: "'Playfair Display', serif", size: 14, weight: 'normal' },
+              color: NAVY,
+              padding: { top: 0, bottom: 16 }
+            },
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: ctx => ' ' + ctx.parsed.y + 'M bbl/day'
+              }
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              grid: { color: 'rgba(0,0,0,0.05)' },
+              ticks: {
+                callback: v => v + 'M'
+              }
+            },
+            x: {
+              grid: { display: false }
+            }
+          }
+        }
+      });
+
+      // ----------------------------------------------------------
+      // Chart 3 — Projected GDP Impact by Closure Duration
+      // ----------------------------------------------------------
+      new Chart(document.getElementById('chartGDP'), {
+        type: 'bar',
+        data: {
+          labels: ['1 Quarter', '2 Quarters', '3 Quarters'],
+          datasets: [{
+            label: 'GDP Impact (percentage points)',
+            data: [-0.2, -0.3, -1.3],
+            backgroundColor: [
+              'rgba(220,38,38,0.5)',
+              'rgba(220,38,38,0.7)',
+              'rgba(220,38,38,0.9)'
+            ],
+            borderColor: RED,
+            borderWidth: 1,
+            borderRadius: 2,
+            borderSkipped: false,
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            title: {
+              display: true,
+              text: 'Projected Global GDP Impact by Duration of Closure (percentage points)',
+              font: { family: "'Playfair Display', serif", size: 14, weight: 'normal' },
+              color: NAVY,
+              padding: { top: 0, bottom: 16 }
+            },
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: ctx => ' ' + ctx.parsed.y + ' pp'
+              }
+            }
+          },
+          scales: {
+            y: {
+              max: 0.2,
+              min: -1.6,
+              grid: { color: 'rgba(0,0,0,0.05)' },
+              ticks: {
+                callback: v => v + '%'
+              }
+            },
+            x: {
+              grid: { display: false }
+            }
+          }
+        }
+      });
+
+    })();
+  </script>
+
+</body>
+</html>
