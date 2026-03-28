@@ -47,6 +47,7 @@ const T = {
   cat_policy:     'Energy Policy',
   cat_climate:    'Climate & Energy',
   cat_trade:      'Trade Policy',
+  cat_ai:         'AI & Regulation',
 
   by_author: 'Hugo Aguiar',
 };
@@ -69,6 +70,19 @@ const articles = [
     url: 'article-energy-transition.html',
     title:   'Governing the Energy Transition: Institutional Challenges in Latin America',
     excerpt: 'Latin American governments face a structural tension that no rhetorical commitment to the energy transition can resolve: they depend on hydrocarbon revenues to fund public services while facing pressure to restructure their energy sectors around renewables. This is not a political choice between two options — it is a governance problem that will be resolved, well or poorly, through institutional design.',
+  },
+  {
+    id: 10,
+    slug: 'ai-regulation-three-models',
+    featured: false,
+    category: 'ai',
+    catClass: 'cat-ai',
+    date: '2026-03-28',
+    dateDisplay: 'March 28, 2026',
+    readingTime: 10,
+    url: 'article-ai-regulation.html',
+    title:   'Artificial Intelligence and the Law: Three Regulatory Models in Collision',
+    excerpt: 'The world is simultaneously building the most powerful technology in human history and trying to write rules for it. Three regulatory philosophies — the EU\'s rights-first extraterritorial model, the US\'s innovation-first fragmented approach, and Latin America\'s largely unwritten frameworks — are now in active collision. For lawyers, governments, and institutions operating across jurisdictions, the compliance environment this creates is manageable only if you understand all three.',
   },
   {
     id: 7,
@@ -187,7 +201,8 @@ function getCategoryLabel(catKey) {
     governance: 'cat_governance',
     policy:     'cat_policy',
     climate:    'cat_climate',
-    trade:      'cat_trade'
+    trade:      'cat_trade',
+    ai:         'cat_ai'
   };
   return T[map[catKey]] || catKey;
 }
