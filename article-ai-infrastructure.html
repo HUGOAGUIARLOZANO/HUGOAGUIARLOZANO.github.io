@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The debate over whether AI should be regulated as a public utility misframes the question. AI is a stack. Hugo Aguiar argues that the legal trigger is not intelligence — it is energy and physical infrastructure.">
+  <meta name="author" content="Hugo Aguiar">
+  <meta name="google-site-verification" content="w9AkcHdSuzBK-Ylo1oLI4u4jG3CRWiZoHXem0gducuA" />
+
+  <meta property="og:title" content="AI Is Not a Utility. But Its Infrastructure Should Be Regulated Like One. — Hugo Aguiar Lozano">
+  <meta property="og:description" content="AI is a stack. The legal question is not whether AI is intelligent. It is whether AI is infrastructural. And the answer depends entirely on which layer of the stack you are looking at.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://hugoaguiarlozano.github.io/article-ai-infrastructure.html">
+
+  <title>AI Is Not a Utility. But Its Infrastructure Should Be Regulated Like One. — Hugo Aguiar</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    .article-body-inner h2 {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-top: 3rem;
+      margin-bottom: 0.85rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-light);
+      line-height: 1.3;
+    }
+
+    .chart-block {
+      background: var(--bg-warm);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 1.5rem 1.5rem 1rem;
+      margin: 2rem 0;
+    }
+
+    .chart-source {
+      font-size: 0.72rem;
+      color: var(--text-light);
+      margin-top: 0.75rem;
+      text-align: right;
+    }
+
+    /* ── Visualization 1: Stack Diagram ── */
+    .stack-diagram {
+      display: flex;
+      gap: 1rem;
+      align-items: stretch;
+    }
+
+    .stack-bracket {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-light);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.25rem 0;
+      border-left: 2px solid var(--border);
+      padding-left: 0.4rem;
+    }
+
+    .stack-layers {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .stack-layer {
+      padding: 0.85rem 1rem;
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      flex-wrap: wrap;
+    }
+
+    .layer-gray  { background: #f1f5f9; }
+    .layer-amber { background: #fef3c7; }
+    .layer-blue  { background: #dbeafe; }
+
+    .layer-num {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      opacity: 0.45;
+      min-width: 3.5rem;
+    }
+
+    .layer-title {
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--navy);
+      flex: 1;
+      min-width: 10rem;
+    }
+
+    .layer-sub {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      flex: 1;
+      min-width: 8rem;
+    }
+
+    .layer-tag {
+      font-size: 0.71rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 2px;
+      background: rgba(0,0,0,0.07);
+      color: var(--text-mid);
+      white-space: nowrap;
+    }
+
+    /* ── Visualization 2: Regulatory Comparison ── */
+    .reg-compare-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      margin: 0.5rem 0;
+    }
+
+    @media (max-width: 640px) {
+      .reg-compare-grid { grid-template-columns: 1fr; }
+    }
+
+    .reg-card {
+      border-radius: 3px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .reg-card-header {
+      padding: 0.65rem 0.85rem;
+      color: #fff;
+      font-family: var(--font-serif);
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .reg-card-body { padding: 0.75rem 0.85rem; }
+
+    .reg-row {
+      display: flex;
+      gap: 0.5rem;
+      padding: 0.35rem 0;
+      border-bottom: 1px solid var(--border-light);
+      font-size: 0.74rem;
+      line-height: 1.4;
+    }
+
+    .reg-row:last-child { border-bottom: none; }
+    .reg-row-label { color: var(--text-light); min-width: 5.5rem; flex-shrink: 0; }
+    .reg-row-value { color: var(--text-mid); }
+
+    /* ── Visualization 3: Energy Flowchart ── */
+    .flow-svg-wrap {
+      overflow-x: auto;
+      padding: 0.5rem 0;
+    }
+
+    .flow-svg-wrap svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    .flow-note {
+      font-size: 0.73rem;
+      color: var(--text-light);
+      font-style: italic;
+      text-align: center;
+      margin-top: 0.6rem;
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ======================================================
+       HEADER
+       ====================================================== -->
+  <header class="site-header" role="banner">
+
+    <div class="header-topbar">
+      <div class="container">
+        <div class="topbar-left">
+          <span class="topbar-domain">hugoaguiar.com</span>
+          <span>Independent Analysis</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="header-main">
+      <div class="container">
+        <div class="site-branding">
+          <a href="index.html" class="site-name">Hugo Aguiar</a>
+          <span class="site-tagline">Attorney · LL.M. Harvard Law School · AI &amp; Energy Governance Consultant</span>
+        </div>
+
+        <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+
+        <nav class="main-nav" role="navigation" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="articles.html" class="active" aria-current="page">Articles</a>
+          <a href="about.html">About</a>
+        </nav>
+      </div>
+    </div>
+
+  </header>
+
+  <!-- ======================================================
+       ARTICLE HEADER
+       ====================================================== -->
+  <div class="article-page-header">
+    <div class="container">
+      <div class="article-page-header-inner">
+
+        <a href="articles.html" class="article-back">← Articles &amp; Analysis</a>
+
+        <span class="cat-badge cat-ai">AI &amp; Regulation</span>
+
+        <h1 class="article-page-title">
+          AI Is Not a Utility. But Its Infrastructure Should Be Regulated Like One.
+        </h1>
+
+        <div class="article-page-meta">
+          <span class="meta-author">Hugo Aguiar</span>
+          <span class="meta-sep">·</span>
+          <span>March 31, 2026</span>
+          <span class="meta-sep">·</span>
+          <span>12 min read</span>
+          <span class="meta-sep">·</span>
+          <span>AI &amp; Regulation</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================
+       ARTICLE BODY
+       ====================================================== -->
+  <main id="main-content">
+    <section class="article-body-section">
+      <div class="container">
+        <div class="article-body-inner">
+
+          <h2>The Wrong Question</h2>
+
+          <p class="article-lead">
+            The debate over whether artificial intelligence should be regulated as a public utility has produced more heat than light. Advocates argue that AI systems have become as essential as electricity or telecommunications, and therefore warrant the same regulatory treatment — guaranteed access, rate oversight, universal service obligations. Critics respond that utility regulation would freeze innovation, entrench incumbents, and impose industrial-era frameworks on a technology that is still evolving faster than any regulatory agency can track.
+          </p>
+
+          <p>
+            Both sides are answering the wrong question.
+          </p>
+
+          <p>
+            The problem is not whether AI is a utility. The problem is that the debate treats AI as a single, homogeneous thing — as if "regulating AI" were a coherent category in the same way that "regulating electricity" or "regulating telecommunications" is coherent. It is not. AI is a stack. And different layers of that stack have fundamentally different relationships to public law, infrastructure policy, and the regulatory traditions that govern essential services.
+          </p>
+
+          <p>
+            The legal question is not whether AI is intelligent. It is whether AI is infrastructural. And the answer to that question depends entirely on which layer of the stack you are looking at.
+          </p>
+
+          <h2>The Stack Problem</h2>
+
+          <p>
+            AI systems as deployed today rest on at least three distinct layers, each with different economic characteristics, different competitive dynamics, and different implications for public law.
+          </p>
+
+          <p>
+            The first layer is physical infrastructure: the data centers, the power connections, the cooling systems, the land. This layer is capital-intensive, geographically fixed, subject to network effects, and critically dependent on public resources. Data centers require permits, grid connections, water rights, and in many jurisdictions, explicit government support in the form of tax incentives, subsidized land, or preferential energy pricing. This layer already intersects with public law in ways that are familiar from utility regulation: it involves natural monopoly tendencies, externalities that are not priced by private markets, and dependencies on shared infrastructure that make purely private governance inadequate.
+          </p>
+
+          <p>
+            The second layer is computational capacity: the cloud infrastructure, the GPU clusters, the specialized chips that make large-scale AI training and inference possible. This layer is dominated by a small number of firms — primarily the hyperscalers — whose market position creates significant barriers to entry for any organization, government, or research institution that lacks the capital to compete. The concentration of compute is not incidental to the AI landscape; it is constitutive of it. Control over compute is rapidly becoming a source of economic and geopolitical power that has no precise precedent in the history of technology regulation.
+          </p>
+
+          <p>
+            The third layer is the models themselves: the large language models, the multimodal systems, the foundation models that are trained once at massive cost and then deployed across thousands of applications. This layer is the one most commonly discussed when people talk about "regulating AI" — and it is the layer where utility-style regulation makes the least sense. Models are software. They compete. They evolve. They are not natural monopolies in the same structural sense that a power grid is a natural monopoly.
+          </p>
+
+          <p>
+            The error in most AI regulation debates is to treat these three layers as a single object and then ask whether that object is or is not a utility. The more precise question is: which layers exhibit the structural characteristics that historically have justified public law intervention?
+          </p>
+
+          <!-- Visualization 1: AI Stack Diagram -->
+          <div class="chart-block">
+            <p style="font-family: var(--font-serif); font-size: 0.9rem; color: var(--navy); margin: 0 0 1rem; font-weight: 700;">The AI Stack: Three Layers, Three Regulatory Logics</p>
+            <div class="stack-diagram">
+              <div class="stack-bracket">
+                <span>Low</span>
+                <span>Regulatory Intensity</span>
+                <span>High</span>
+              </div>
+              <div class="stack-layers">
+                <div class="stack-layer layer-gray">
+                  <div class="layer-num">Layer 3</div>
+                  <div class="layer-title">Models &amp; Applications</div>
+                  <div class="layer-sub">LLMs, foundation models, end-user apps</div>
+                  <div class="layer-tag">Competitive / No utility logic</div>
+                </div>
+                <div class="stack-layer layer-amber">
+                  <div class="layer-num">Layer 2</div>
+                  <div class="layer-title">Compute Infrastructure</div>
+                  <div class="layer-sub">GPU clusters, cloud, hyperscalers</div>
+                  <div class="layer-tag">Concentrated / Partial oversight</div>
+                </div>
+                <div class="stack-layer layer-blue">
+                  <div class="layer-num">Layer 1</div>
+                  <div class="layer-title">Physical Infrastructure</div>
+                  <div class="layer-sub">Data centers, power, land, cooling</div>
+                  <div class="layer-tag">Infrastructural / Utility logic applies</div>
+                </div>
+              </div>
+            </div>
+            <p class="chart-source">Diagram: Hugo Aguiar. Regulatory intensity increases from Layer 3 (models) to Layer 1 (physical infrastructure).</p>
+          </div>
+
+          <h2>The Energy Argument</h2>
+
+          <p>
+            There is a second dimension to this analysis that is almost entirely absent from the legal literature on AI regulation, despite being analytically crucial: energy.
+          </p>
+
+          <p>
+            Large-scale AI training and inference consume electricity at a scale that is beginning to have measurable effects on power grids, energy markets, and the physical infrastructure of the electricity system. The International Energy Agency has estimated that data center electricity consumption could double by 2026 relative to 2022 levels, driven primarily by AI workloads. In the United States, several grid operators have already flagged AI-driven demand growth as a material constraint on grid planning. In Europe, the energy intensity of AI has become a factor in industrial policy debates about where data centers should be permitted to locate.
+          </p>
+
+          <p>
+            This creates a regulatory trigger that has nothing to do with whether AI is intelligent, beneficial, or risky in the ways that most AI ethics frameworks discuss. The trigger is physical: AI systems consume public resources — electricity generated from shared grids, water used for cooling, land permitted by public authorities — and they do so at a scale that produces externalities that private markets do not internalize.
+          </p>
+
+          <p>
+            The legal argument is familiar from environmental law and utility regulation: when private actors consume shared resources at scale and impose costs on third parties that are not reflected in market prices, public law intervention is warranted. AI is not becoming a utility. Its energy footprint already is.
+          </p>
+
+          <!-- Visualization 3: Energy Flowchart -->
+          <div class="chart-block">
+            <p style="font-family: var(--font-serif); font-size: 0.9rem; color: var(--navy); margin: 0 0 1rem; font-weight: 700;">From AI Workloads to Regulatory Trigger</p>
+            <div class="flow-svg-wrap">
+              <svg viewBox="0 0 820 110" xmlns="http://www.w3.org/2000/svg" aria-label="Flowchart: AI training leads to shared electricity grid use, which creates unpriced externalities, which warrants regulatory intervention" role="img" style="min-width:560px;">
+                <!-- Box 1 -->
+                <rect x="10" y="25" width="170" height="60" rx="3" fill="#0d2137"/>
+                <text x="95" y="51" text-anchor="middle" font-family="'Inter',sans-serif" font-size="11" font-weight="600" fill="#ffffff">AI Training</text>
+                <text x="95" y="67" text-anchor="middle" font-family="'Inter',sans-serif" font-size="10" fill="rgba(255,255,255,0.65)">&amp; Inference</text>
+                <!-- Arrow 1→2 -->
+                <line x1="180" y1="55" x2="208" y2="55" stroke="#c8a020" stroke-width="2" marker-end="url(#arrow)"/>
+                <!-- Box 2 -->
+                <rect x="210" y="25" width="180" height="60" rx="3" fill="#1a3a5e"/>
+                <text x="300" y="49" text-anchor="middle" font-family="'Inter',sans-serif" font-size="11" font-weight="600" fill="#ffffff">Electricity Grid</text>
+                <text x="300" y="65" text-anchor="middle" font-family="'Inter',sans-serif" font-size="10" fill="rgba(255,255,255,0.65)">(shared public resource)</text>
+                <!-- Arrow 2→3 -->
+                <line x1="390" y1="55" x2="418" y2="55" stroke="#c8a020" stroke-width="2" marker-end="url(#arrow)"/>
+                <!-- Box 3 -->
+                <rect x="420" y="25" width="175" height="60" rx="3" fill="#2a5080"/>
+                <text x="507" y="49" text-anchor="middle" font-family="'Inter',sans-serif" font-size="11" font-weight="600" fill="#ffffff">Unpriced</text>
+                <text x="507" y="65" text-anchor="middle" font-family="'Inter',sans-serif" font-size="10" fill="rgba(255,255,255,0.65)">Externalities</text>
+                <!-- Arrow 3→4 -->
+                <line x1="595" y1="55" x2="623" y2="55" stroke="#c8a020" stroke-width="2" marker-end="url(#arrow)"/>
+                <!-- Box 4 -->
+                <rect x="625" y="18" width="183" height="74" rx="3" fill="#c8a020"/>
+                <text x="716" y="49" text-anchor="middle" font-family="'Inter',sans-serif" font-size="11" font-weight="700" fill="#0d2137">Regulatory Trigger</text>
+                <text x="716" y="65" text-anchor="middle" font-family="'Inter',sans-serif" font-size="9.5" fill="rgba(13,33,55,0.75)">(public law intervention</text>
+                <text x="716" y="79" text-anchor="middle" font-family="'Inter',sans-serif" font-size="9.5" fill="rgba(13,33,55,0.75)">warranted)</text>
+                <!-- Arrow marker -->
+                <defs>
+                  <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                    <path d="M0,0 L0,6 L8,3 z" fill="#c8a020"/>
+                  </marker>
+                </defs>
+              </svg>
+            </div>
+            <p class="flow-note">IEA: data center electricity consumption could double by 2026. The regulatory trigger follows from physical resource consumption, not from model capabilities.</p>
+            <p class="chart-source">Diagram: Hugo Aguiar. Source: IEA, Electricity 2024.</p>
+          </div>
+
+          <h2>A New Regulatory Category: Infrastructure-Constrained AI</h2>
+
+          <p>
+            What the existing regulatory frameworks lack is a category that captures the specific legal problem created by the intersection of AI and physical infrastructure. I propose the concept of <em>infrastructure-constrained AI</em> — AI systems whose deployment is materially dependent on physical infrastructure that is itself subject to public law constraints.
+          </p>
+
+          <p>
+            This category has several analytically useful properties.
+          </p>
+
+          <p>
+            First, it is technology-neutral. It does not require regulators to define what AI is, to distinguish between AI and non-AI software, or to track the evolution of model capabilities. It focuses instead on the physical dependencies of deployment — which are measurable, verifiable, and already within the scope of existing regulatory frameworks for energy, land use, and environmental permitting.
+          </p>
+
+          <p>
+            Second, it is layer-specific. Infrastructure-constrained AI regulation applies to data centers and compute infrastructure, not to models or applications. This preserves the space for competitive innovation at the model layer while subjecting the physical layer to the regulatory treatment that its economic characteristics warrant.
+          </p>
+
+          <p>
+            Third, it generates concrete regulatory obligations: mandatory disclosure of energy consumption per unit of compute, grid impact assessments for large data center developments, coordination between AI infrastructure operators and electricity system operators for demand forecasting, and integration of AI energy demand into long-term grid planning processes.
+          </p>
+
+          <p>
+            Fourth, and most importantly for the Latin American context, it connects AI governance to existing public law traditions around natural resource management, energy sector regulation, and public procurement. For countries that have developed sophisticated frameworks for governing oil, gas, and electricity infrastructure, infrastructure-constrained AI regulation is not a departure from existing legal tradition — it is an extension of it.
+          </p>
+
+          <!-- Visualization 2: Regulatory Model Comparison -->
+          <div class="chart-block">
+            <p style="font-family: var(--font-serif); font-size: 0.9rem; color: var(--navy); margin: 0 0 1rem; font-weight: 700;">Three Regulatory Models Compared</p>
+            <div class="reg-compare-grid">
+
+              <div class="reg-card">
+                <div class="reg-card-header" style="background: #1d4ed8;">EU Model</div>
+                <div class="reg-card-body">
+                  <div class="reg-row">
+                    <span class="reg-row-label">Approach</span>
+                    <span class="reg-row-value">Rights-first, risk-based tiers</span>
+                  </div>
+                  <div class="reg-row">
+                    <span class="reg-row-label">Instrument</span>
+                    <span class="reg-row-value">EU AI Act (fully applicable Aug 2026)</span>
+                  </div>
+                  <div class="reg-row">
+                    <span class="reg-row-label">Penalty</span>
+                    <span class="reg-row-value">Up to 7% global annual revenue</span>
+                  </div>
+                  <div class="reg-row">
+                    <span class="reg-row-label">Scope</span>
+                    <span class="reg-row-value">Extraterritorial — covers any system affecting EU users</span>
+                  </div>
+                  <div class="reg-row">
+                    <span class="reg-row-label">Focus layer</span>
+                    <span class="reg-row-value">Models &amp; applications (Layer 3)</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="reg-card">
+                <div class="reg-card-header" style="background: #b45309;">US Model</div>
+                <div class="reg-card-body">
+                  <div class="reg-row">
+                    <span class="reg-row-label">Approach</span>
+                    <span class="reg-row-value">Innovation-first, fragmented by state</span>
+                  </div>
+                  <div class="reg-row">
+                    <span class="reg-row-label">Instrument</span>
+                    <span class="reg-row-value">State laws (CA, TX) + FTC enforcement</span>
+                  </div>
+                  <div class="reg-row">
+                    <span class="reg-row-label">Penalty</span>
+                    <span class="reg-row-value">Varies by statute and jurisdiction</span>
+                  </div>
+                  <div class="reg-row">
+                    <span class="reg-row-label">Scope</span>
+                    <span class="reg-row-value">Territorial — jurisdictionally fragmented</span>
+                  </div>
+                  <div class="reg-row">
+                    <span class="reg-row-label">Focus layer</span>
+                    <span class="reg-row-value">Applications + content (Layer 3)</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="reg-card">
+                <div class="reg-card-header" style="background: #0e7490;">Proposed Framework</div>
+                <div class="reg-card-body">
+                  <div class="reg-row">
+                    <span class="reg-row-label">Approach</span>
+                    <span class="reg-row-value">Infrastructure-first, layer-specific</span>
+                  </div>
+                  <div class="reg-row">
+                    <span class="reg-row-label">Instrument</span>
+                    <span class="reg-row-value">Energy + land + environmental law</span>
+                  </div>
+                  <div class="reg-row">
+                    <span class="reg-row-label">Obligation</span>
+                    <span class="reg-row-value">Permit + energy disclosure + grid coordination</span>
+                  </div>
+                  <div class="reg-row">
+                    <span class="reg-row-label">Scope</span>
+                    <span class="reg-row-value">Physical deployment — where infrastructure is built</span>
+                  </div>
+                  <div class="reg-row">
+                    <span class="reg-row-label">Focus layer</span>
+                    <span class="reg-row-value">Physical infrastructure (Layer 1)</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <p class="chart-source">Table: Hugo Aguiar. Proposed framework complements rather than replaces existing models.</p>
+          </div>
+
+          <h2>The Latin American Dimension</h2>
+
+          <p>
+            For Latin American jurisdictions, the infrastructure-constrained AI framework has specific relevance that goes beyond the general regulatory debate.
+          </p>
+
+          <p>
+            The region is in the early stages of a significant buildout of data center infrastructure, driven by growing domestic demand, hyperscaler expansion strategies, and government incentive programs designed to attract foreign direct investment. Chile, Brazil, Colombia, and Mexico are all actively competing to host regional data center hubs. In several countries, this competition has produced tax incentives, subsidized energy pricing, and fast-tracked permitting processes that transfer significant public value to private infrastructure operators without commensurate public benefit requirements.
+          </p>
+
+          <p>
+            This pattern is structurally familiar to anyone who has studied the history of natural resource extraction in the region. The same dynamic that produced lopsided oil concession contracts in the 20th century — foreign capital, sovereign resources, weak regulatory capacity, information asymmetry — is reproducing itself in the 21st century data economy. The resource is no longer crude oil. It is electricity, bandwidth, and the data sovereignty that flows from controlling the physical infrastructure through which digital services are delivered.
+          </p>
+
+          <p>
+            The regulatory lesson from the hydrocarbon sector is direct: the contracts that govern access to sovereign resources determine, more than any other single factor, how much public value is captured versus transferred to private intermediaries. The terms under which governments grant permits, allocate grid capacity, and price electricity for AI infrastructure will determine whether the region captures the economic value of the AI buildout or merely hosts it.
+          </p>
+
+          <p>
+            Regulating AI without regulating its energy consumption is a category error. And for Latin American governments currently negotiating data center investment agreements, it is an expensive one.
+          </p>
+
+          <h2>What Regulation Should and Should Not Do</h2>
+
+          <p>
+            The infrastructure-constrained AI framework implies a specific regulatory agenda that is more limited — and more tractable — than either the "regulate AI as a utility" or "don't regulate AI at all" positions.
+          </p>
+
+          <p>
+            It <em>should</em> require mandatory energy disclosure for large-scale AI compute operations. It should integrate AI demand forecasting into electricity system planning. It should apply standard environmental permitting requirements to data center development, including water use and land use impact analysis. It should require AI infrastructure operators benefiting from public subsidies to meet public benefit conditions analogous to those applied to other subsidized infrastructure.
+          </p>
+
+          <p>
+            It <em>should not</em> attempt to regulate model capabilities, training methodologies, or application design through utility-style frameworks. The innovation dynamics at the model layer are sufficiently different that importing utility regulation into that space would create more distortion than it resolves.
+          </p>
+
+          <p>
+            The distinction is precise: regulate where the private activity intersects with shared public resources and produces externalities that markets cannot price. Do not regulate where the private activity is software competing on the merits of its outputs.
+          </p>
+
+          <h2>Conclusion</h2>
+
+          <p>
+            The legal category that AI regulation needs is not utility. It is infrastructure. And the regulatory trigger that justifies intervention is not intelligence — it is energy.
+          </p>
+
+          <p>
+            For lawyers and policy professionals working at the intersection of technology, public law, and energy governance, this reframing opens a more tractable regulatory agenda than the abstract debate about whether AI deserves special legal status. The physical infrastructure of AI is already subject to the same public law traditions that govern electricity, water, land use, and environmental permitting. What is missing is not new law — it is the analytical clarity to apply existing law to the right layer of the stack.
+          </p>
+
+          <p>
+            Compute is where software becomes physical. That is where public law begins.
+          </p>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- More articles -->
+    <section class="cta-section" aria-label="More analysis">
+      <div class="container">
+        <div class="cta-inner">
+          <h2 style="font-size:1.35rem;">More Analysis</h2>
+          <p>Research and commentary on energy governance, natural resources, and public law.</p>
+          <a href="articles.html" class="cta-submit" style="display:inline-block; text-decoration:none; margin-top:0.25rem;">View All Articles</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======================================================
+       FOOTER
+       ====================================================== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+
+        <div>
+          <div class="footer-brand-name">Hugo Aguiar</div>
+          <div class="footer-brand-tagline">Attorney · LL.M. Harvard Law School · AI &amp; Energy Governance Consultant</div>
+          <p class="footer-brand-desc">
+            Ecuadorian attorney and consultant specializing in energy governance, natural resource policy, public law, and AI regulation. Formerly Minister of Energy, Vice Minister of Oil and Gas, and Senior Consultant at the World Bank Group.
+          </p>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Navigation</div>
+          <nav class="footer-links" aria-label="Footer navigation">
+            <a href="index.html">Home</a>
+            <a href="articles.html">Articles</a>
+            <a href="about.html">About</a>
+          </nav>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Topics</div>
+          <nav class="footer-links" aria-label="Topic links">
+            <a href="articles.html">Energy Governance</a>
+            <a href="articles.html">Natural Resources</a>
+            <a href="articles.html">Governance</a>
+            <a href="articles.html">Energy Policy</a>
+            <a href="articles.html">Climate &amp; Energy</a>
+            <a href="articles.html">Trade Policy</a>
+            <a href="articles.html">AI &amp; Regulation</a>
+          </nav>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Hugo Aguiar. All rights reserved.</span>
+        <span><a href="about.html">About</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+
+</body>
+</html>
