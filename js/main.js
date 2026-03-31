@@ -48,6 +48,7 @@ const T = {
   cat_climate:    'Climate & Energy',
   cat_trade:      'Trade Policy',
   cat_ai:         'AI & Regulation',
+  cat_sovereign:  'Sovereign Risk Management',
 
   by_author: 'Hugo Aguiar',
 };
@@ -70,6 +71,19 @@ const articles = [
     url: 'article-energy-transition.html',
     title:   'Governing the Energy Transition: Institutional Challenges in Latin America',
     excerpt: 'Latin American governments face a structural tension that no rhetorical commitment to the energy transition can resolve: they depend on hydrocarbon revenues to fund public services while facing pressure to restructure their energy sectors around renewables. This is not a political choice between two options — it is a governance problem that will be resolved, well or poorly, through institutional design.',
+  },
+  {
+    id: 12,
+    slug: 'ecuador-sovereign-hedge',
+    featured: false,
+    category: 'sovereign',
+    catClass: 'cat-sovereign',
+    date: '2026-04-01',
+    dateDisplay: 'April 2026',
+    readingTime: 14,
+    url: 'ecuador-sovereign-hedge.html',
+    title:   "Why Mexico's Oil Hedge Cannot Be Transplanted to Ecuador — and What a Dollarized Architecture Actually Requires",
+    excerpt: "Ecuador's new BCE commodity hedging framework is a necessary but insufficient step. Without redesigned institutional architecture that accounts for dollarization, sovereign debt constraints, and fiscal exposure mapping, the framework risks becoming an empty legal shell.",
   },
   {
     id: 11,
@@ -215,7 +229,8 @@ function getCategoryLabel(catKey) {
     policy:     'cat_policy',
     climate:    'cat_climate',
     trade:      'cat_trade',
-    ai:         'cat_ai'
+    ai:         'cat_ai',
+    sovereign:  'cat_sovereign'
   };
   return T[map[catKey]] || catKey;
 }

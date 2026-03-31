@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ecuador's Sovereign Oil Hedge | Hugo Aguiar Lozano</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  :root {
+    --ink: #1a1208;
+    --paper: #f7f3ec;
+    --cream: #ede8df;
+    --rule: #c8b99a;
+    --accent: #b5330a;
+    --accent-light: #e8c4b4;
+    --gold: #c49a2a;
+    --muted: #6b5e4e;
+    --data-blue: #2a4a7f;
+    --data-teal: #1a6b5a;
+    --data-amber: #c49a2a;
+    --col-width: 720px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── MASTHEAD ── */
+  .masthead {
+    border-bottom: 3px double var(--rule);
+    padding: 2rem 2rem 1.2rem;
+    text-align: center;
+    background: var(--paper);
+  }
+  .masthead .pub-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .masthead .pub-name span { color: var(--accent); }
+  .masthead hr { border: none; border-top: 1px solid var(--rule); margin: 0.7rem auto; width: 180px; }
+
+  /* ── HEADER ── */
+  .article-header {
+    max-width: var(--col-width);
+    margin: 3.5rem auto 0;
+    padding: 0 1.5rem;
+  }
+  .kicker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4.5vw, 3.1rem);
+    font-weight: 900;
+    line-height: 1.12;
+    color: var(--ink);
+    margin-bottom: 1.2rem;
+  }
+  h1 em { font-style: italic; color: var(--accent); }
+  .deck {
+    font-size: 1.18rem;
+    line-height: 1.6;
+    color: var(--muted);
+    font-weight: 300;
+    font-style: italic;
+    border-left: 3px solid var(--accent);
+    padding-left: 1.1rem;
+    margin-bottom: 2rem;
+  }
+  .byline {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.6rem 0;
+    margin-bottom: 3rem;
+  }
+
+  /* ── BODY ── */
+  .article-body {
+    max-width: var(--col-width);
+    margin: 0 auto;
+    padding: 0 1.5rem 5rem;
+  }
+
+  /* drop cap */
+  .dropcap::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 5.2rem;
+    font-weight: 900;
+    float: left;
+    line-height: 0.82;
+    margin: 0.08em 0.1em 0 0;
+    color: var(--accent);
+  }
+
+  p { margin-bottom: 1.4rem; }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 3rem 0 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid var(--rule);
+  }
+  h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    font-style: italic;
+    color: var(--ink);
+    margin: 2rem 0 0.7rem;
+  }
+
+  /* pull quote */
+  .pull-quote {
+    border-top: 3px solid var(--accent);
+    border-bottom: 1px solid var(--rule);
+    margin: 2.5rem -1.5rem;
+    padding: 1.4rem 2rem;
+    background: var(--cream);
+  }
+  .pull-quote p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    font-style: italic;
+    line-height: 1.45;
+    color: var(--ink);
+    margin: 0;
+  }
+  .pull-quote p::before { content: '\201C'; color: var(--accent); font-size: 1.8rem; line-height: 0; vertical-align: -0.3em; margin-right: 0.1em; }
+  .pull-quote p::after  { content: '\201D'; color: var(--accent); font-size: 1.8rem; line-height: 0; vertical-align: -0.3em; margin-left: 0.1em; }
+
+  /* insight box */
+  .insight-box {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 1.5rem 1.8rem;
+    margin: 2.5rem 0;
+    border-left: 5px solid var(--gold);
+  }
+  .insight-box .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.6rem;
+  }
+  .insight-box p { color: var(--paper); margin-bottom: 0; font-size: 0.95rem; line-height: 1.65; }
+
+  /* figure / chart wrapper */
+  .figure {
+    margin: 2.5rem 0;
+    background: var(--cream);
+    border: 1px solid var(--rule);
+    padding: 1.5rem;
+  }
+  .figure-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.8rem;
+  }
+  .figure-caption {
+    font-size: 0.82rem;
+    color: var(--muted);
+    font-style: italic;
+    margin-top: 0.8rem;
+    line-height: 1.5;
+  }
+
+  /* comparative table */
+  .comp-table { width: 100%; border-collapse: collapse; font-size: 0.87rem; }
+  .comp-table th {
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.7rem 0.9rem;
+    text-align: left;
+  }
+  .comp-table td { padding: 0.7rem 0.9rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  .comp-table tr:nth-child(even) td { background: rgba(200,185,154,0.18); }
+  .comp-table .country { font-family: 'Playfair Display', serif; font-weight: 700; font-style: italic; }
+  .comp-table .highlight { color: var(--accent); font-weight: 600; }
+  .comp-table .na { color: var(--rule); font-style: italic; }
+
+  /* SVG diagram wrapper */
+  #arch-diagram { width: 100%; overflow-x: auto; }
+
+  /* simulator */
+  .simulator {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 1.8rem;
+    margin: 2.5rem 0;
+    border: 2px solid var(--gold);
+  }
+  .simulator h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+  }
+  .sim-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.4rem; }
+  @media (max-width: 560px) { .sim-grid { grid-template-columns: 1fr; } }
+  .sim-field label {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.35rem;
+  }
+  .sim-field input[type=range] { width: 100%; accent-color: var(--gold); cursor: pointer; }
+  .sim-field .val {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    color: var(--paper);
+  }
+  .sim-results {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 0.8rem;
+    margin-top: 0.5rem;
+  }
+  @media (max-width: 560px) { .sim-results { grid-template-columns: 1fr 1fr; } }
+  .sim-card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(196,154,42,0.3);
+    padding: 0.9rem 1rem;
+  }
+  .sim-card .sc-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.75;
+    margin-bottom: 0.3rem;
+  }
+  .sim-card .sc-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--paper);
+  }
+  .sim-card.positive .sc-value { color: #7ecfa0; }
+  .sim-card.negative .sc-value { color: #f28b70; }
+  .sim-note { font-size: 0.78rem; color: rgba(247,243,236,0.55); margin-top: 1rem; font-style: italic; line-height: 1.5; }
+
+  /* footnotes */
+  .footnotes {
+    margin-top: 3.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule);
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  .footnotes p { margin-bottom: 0.4rem; }
+
+  /* chart canvas */
+  .chart-container { position: relative; height: 280px; }
+
+  /* open questions */
+  .open-qs {
+    background: var(--cream);
+    border: 1px solid var(--rule);
+    border-top: 4px solid var(--gold);
+    padding: 1.5rem 1.8rem;
+    margin: 3rem 0;
+  }
+  .open-qs .oq-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+  }
+  .open-qs ul { list-style: none; padding: 0; }
+  .open-qs ul li {
+    padding: 0.45rem 0 0.45rem 1.4rem;
+    position: relative;
+    border-bottom: 1px dotted var(--rule);
+    font-style: italic;
+    color: var(--ink);
+  }
+  .open-qs ul li::before { content: '→'; position: absolute; left: 0; color: var(--accent); }
+  .open-qs ul li:last-child { border-bottom: none; }
+</style>
+</head>
+<body>
+
+<!-- MASTHEAD -->
+<div class="masthead">
+  <div class="pub-name">Hugo Aguiar Lozano &nbsp;·&nbsp; <span>Energy Governance & Policy</span></div>
+  <hr>
+  <div class="pub-name">Analysis &nbsp;·&nbsp; Oil Markets &nbsp;·&nbsp; Latin America &nbsp;·&nbsp; April 2026</div>
+</div>
+
+<!-- HEADER -->
+<header class="article-header">
+  <div class="kicker">Sovereign Risk Management</div>
+  <h1>Why Mexico's Oil Hedge <em>Cannot</em> Be Transplanted to Ecuador — and What a Dollarized Architecture Actually Requires</h1>
+  <p class="deck">Ecuador's new BCE commodity hedging framework is a necessary but insufficient step. Without a redesigned institutional architecture that accounts for dollarization, sovereign debt constraints, and fiscal exposure mapping, the framework risks becoming an empty legal shell.</p>
+  <div class="byline">By Hugo Aguiar Lozano &nbsp;·&nbsp; LL.M. Harvard Law School &nbsp;·&nbsp; Former Minister of Energy, Ecuador &nbsp;·&nbsp; Senior Consultant, World Bank Group</div>
+</header>
+
+<!-- BODY -->
+<main class="article-body">
+
+<p class="dropcap">In March 2026, Ecuador's monetary regulator quietly issued Resolution JPRFM-2026-009-M, authorizing the Central Bank (BCE) to act as fiscal and financial agent for commodity hedging on behalf of state-owned enterprises. The move was technically sound and long overdue. It was also, by itself, deeply incomplete. The resolution creates plumbing without a building. Ecuador now has the legal conduit to execute sovereign oil price hedges — but it lacks the institutional architecture to do so prudently, and the prevailing policy conversation is drawing the wrong blueprint from the wrong precedent.</p>
+
+<p>The dominant reference point in regional discussions is Mexico's annual put-option program, which has been running continuously since 2001 and has become the canonical case study in sovereign oil hedging. Mexico's program is elegant, well-documented, and demonstrably effective. It is also built on a set of structural preconditions that Ecuador simply does not share — and mistaking a template for a transplant is precisely the kind of policy error that converts a promising instrument into a political liability.</p>
+
+<div class="pull-quote">
+  <p>Mexico's hedging program is elegant, well-documented, and demonstrably effective. It is also built on structural preconditions that Ecuador simply does not share.</p>
+</div>
+
+<p>This article makes four arguments. First, Mexico's program works because it is embedded in a specific fiscal and monetary architecture — a stabilization fund, a central bank with autonomous agency capacity, and a flexible exchange rate that decouples budget arithmetic from commodity volatility. Ecuador has none of these three. Second, the dollarization constraint is not merely a complication to work around; it is actually a partial advantage that reshapes the optimal instrument design. Third, the BCE's DVP-and-collateral framework is structurally biased toward instruments that Ecuador should avoid, and structurally hostile to the instrument Ecuador should prefer. Fourth, a viable Ecuadorian architecture exists — but it requires a four-element redesign, not a copy-paste.</p>
+
+<h2>I. The Mexico Template: What It Actually Requires</h2>
+
+<p>Mexico's federal oil hedge program operates through a precise institutional chain. The Fondo de Estabilización de los Ingresos Presupuestarios (FEIP) provides the budgetary authorization and financing for option premiums; the Ministry of Finance (SHCP) defines the hedge ratio and strike price based on the budget's oil price assumption; the central bank (Banxico) executes trades as financial agent using pre-approved strategies; and the contraloría and Auditoría Superior de la Federación (ASF) review ex post. The program is operationally fragmented — typically 40–50 individual contracts with 7 distinct counterparties — to minimize market impact and front-running risk.</p>
+
+<p>The documented cost data are instructive. For the 2015 hedge, Mexico paid a premium of $773 million to cover 228 million barrels, and collected $6.284 billion when prices collapsed. For 2016: $1.089 billion premium, $212 million barrels covered, $49/bbl strike. For 2017: $1.028 billion premium, 250 million barrels, $42/bbl effective floor. Average cost since inception: approximately 0.1% of GDP annually. Payouts in exercise years (2009, 2015, 2016): 0.5%, 0.6%, and 0.3% of GDP, respectively.</p>
+
+<!-- CHART: Cost per barrel -->
+<div class="figure">
+  <div class="figure-title">Figure 1 — Premium Paid per Barrel (USD/bbl), Documented Sovereign Programs</div>
+  <div class="chart-container">
+    <canvas id="premiumChart"></canvas>
+  </div>
+  <p class="figure-caption">Sources: SHCP Comunicado 113-2016; ASF Auditorías Cuenta Pública 2014, 2015; World Bank Uruguay case study (2016). Mexico 2015: $773M / 228Mb = $3.39/bbl. Mexico 2016: $1,089.8M / 212Mb = $5.14/bbl. Mexico 2017: $1,028M / 250Mb = $4.11/bbl. Uruguay 2016–17: $15.7M / 6Mb = $2.62/bbl.</p>
+</div>
+
+<p>Three preconditions make this architecture work. First, FEIP provides a dedicated, pre-funded reservoir for premium payments that does not compete with current expenditure. Premium costs are treated as patrimonial applications of the fund — not budget line items subject to annual appropriation battles. Second, Banxico's operational independence and established infrastructure in international derivatives markets means Mexico can execute at scale without disclosing strategy in advance. Third, and most critically: Mexico has a floating exchange rate. When oil prices fall, the peso depreciates, which automatically cushions part of the fiscal shock (peso-denominated expenditure becomes relatively cheaper in dollar terms). The hedge, then, is not carrying the full burden of fiscal stabilization — it is working alongside exchange rate adjustment.</p>
+
+<div class="insight-box">
+  <div class="label">Structural Precondition Analysis</div>
+  <p>Mexico's program rests on three pillars Ecuador lacks: (1) a pre-funded stabilization fund (FEIP) that finances premiums without competing against current expenditure; (2) an operationally independent central bank with established derivatives infrastructure and counterparty relationships; and (3) a floating exchange rate that provides automatic partial absorption of oil price shocks before the hedge is even needed. Ecuador's dollarized economy eliminates the third pillar entirely — which paradoxically simplifies instrument design while making the first two more critical.</p>
+</div>
+
+<h2>II. Dollarization: Constraint and Unexpected Advantage</h2>
+
+<p>The absence of an exchange rate buffer is typically framed as the reason hedging is harder for Ecuador. This framing is half-right. The full picture is more interesting. Without monetary policy, Ecuador cannot let the exchange rate absorb oil shocks, cannot devalue its way through a fiscal gap, and cannot rely on inflation to erode real expenditure obligations. Every dollar of oil revenue shortfall is a dollar of hard fiscal pressure, unmediated. The case for hedging is therefore, perversely, stronger in a dollarized economy than in a flexible-rate one: the instrument needs to carry more weight.</p>
+
+<p>But dollarization eliminates a source of risk that Mexico must manage and that Uruguay — as a peso-denominated economy — also confronts: currency basis risk. Mexico's fiscal exposure is ultimately denominated in pesos; its oil revenues arrive in dollars; its hedge is priced in dollars. The relationship between these three is not fixed, and audits have noted that changes in the tax regime (which determines what fraction of dollar oil revenues become peso fiscal inflows) can invalidate claims of "full budget coverage." Uruguay's call option was priced in dollars against Dated Brent, but Uruguay's fiscal impact of oil prices is channeled through energy import costs that affect inflation and the trade balance — a relationship mediated by the peso exchange rate.</p>
+
+<p>Ecuador has none of this complexity. Oil revenues arrive in dollars. The budget is in dollars. The hedge would be priced in dollars against a dollar-denominated benchmark. Basis risk collapses to a single dimension: the spread between the "Ecuador mix" price and whatever benchmark (WTI or Brent) is used in the option contract. This is manageable, measurable, and historically stable enough to model. Dollarization, in other words, strips out one layer of structural complexity and makes the hedge arithmetic cleaner.</p>
+
+<div class="pull-quote">
+  <p>Dollarization strips out currency basis risk entirely. Ecuador's hedge arithmetic is, in one important dimension, cleaner than Mexico's — the problem is everything else.</p>
+</div>
+
+<h2>III. The BCE Framework's Structural Bias Problem</h2>
+
+<p>Resolution JPRFM-2026-009-M establishes three core operational constraints: (1) the state-owned enterprise must pre-fund all collateral requirements before BCE instructs any transaction; (2) BCE operates on a delivery-versus-payment basis, meaning it will not instruct until funds are verified; and (3) BCE cannot issue guarantees — it can only act as conduit. The tariff structure adds a fixed component (equivalent to 16 unified basic salaries) plus a variable component of 0.005% of total operation cost.</p>
+
+<p>This framework is entirely rational from BCE's risk perspective. It is also structurally hostile to the best instrument for Ecuador's situation. Options with upfront premiums are the instruments BCE's framework handles most cleanly: the premium is a known, finite cost that can be pre-funded before execution, generates no margin calls, and creates no contingent liabilities beyond the premium already paid. Forwards, swaps, and collars with sold call legs all create exactly the contingent liabilities and margin call dynamics that BCE's framework either prohibits or makes operationally cumbersome.</p>
+
+<p>Yet the resolution is written generically for "commodity hedging," which could encompass any of these instruments. Without an explicit policy decision at the MEF level restricting eligible instruments to bought options (puts for Petroecuador's export exposure), the BCE framework creates a legal opening for Ecuador's state enterprises to enter symmetric or leveraged structures — precisely the structures that have caused political crises in other emerging market commodity hedgers.</p>
+
+<h2>IV. A Comparative Architecture Map</h2>
+
+<!-- COMPARATIVE TABLE -->
+<div class="figure">
+  <div class="figure-title">Figure 2 — Sovereign Oil Hedging: Comparative Technical Parameters</div>
+  <table class="comp-table">
+    <thead>
+      <tr>
+        <th>Parameter</th>
+        <th>Mexico (since 2001)</th>
+        <th>Uruguay (2016–17)</th>
+        <th>Ecuador (2026 framework)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Sovereign program in force?</td>
+        <td class="highlight">Yes — annual, continuous</td>
+        <td class="highlight">Yes — one-off (2016)</td>
+        <td>Enabling framework only</td>
+      </tr>
+      <tr>
+        <td>Primary instrument</td>
+        <td>Asian put options</td>
+        <td>Asian call option</td>
+        <td class="na">Not specified</td>
+      </tr>
+      <tr>
+        <td>Underlying benchmark</td>
+        <td>Maya crude (dominant) + partial Brent</td>
+        <td>Dated Brent</td>
+        <td class="na">TBD ("Ecuador mix" exposure)</td>
+      </tr>
+      <tr>
+        <td>Net exposure hedged</td>
+        <td>Export revenue (exporter)</td>
+        <td>Import cost (importer)</td>
+        <td>Export revenue (exporter)</td>
+      </tr>
+      <tr>
+        <td>Typical tenor</td>
+        <td>12-month fiscal year</td>
+        <td>12 months (Jun '16–Jun '17)</td>
+        <td class="na">TBD</td>
+      </tr>
+      <tr>
+        <td>Volume documented</td>
+        <td>212–250 Mb/year</td>
+        <td>6 Mb</td>
+        <td class="na">TBD</td>
+      </tr>
+      <tr>
+        <td>Premium per barrel</td>
+        <td>$3.39–$5.14/bbl</td>
+        <td>$2.62/bbl</td>
+        <td class="na">TBD</td>
+      </tr>
+      <tr>
+        <td>Execution agent</td>
+        <td>Banxico (central bank as financial agent)</td>
+        <td>World Bank (intermediary)</td>
+        <td>BCE (financial agent per 2026 resolution)</td>
+      </tr>
+      <tr>
+        <td>Counterparty structure</td>
+        <td>7 banks, 40–50 contracts</td>
+        <td>World Bank → pool of banks</td>
+        <td class="na">TBD — critical design gap</td>
+      </tr>
+      <tr>
+        <td>Pre-funding / margin</td>
+        <td>FEIP funds premium upfront; margin via Banxico</td>
+        <td>Premium prepaid; no margin calls (bought option)</td>
+        <td class="highlight">Required: DVP + collateral pre-funded by SOE</td>
+      </tr>
+      <tr>
+        <td>Fiscal trigger / adjuster</td>
+        <td>Budget oil price assumption</td>
+        <td>Import budget assumption</td>
+        <td class="highlight">EFF adjuster: ~$23.85M per $1/bbl deviation</td>
+      </tr>
+      <tr>
+        <td>Exchange rate exposure</td>
+        <td>Peso/USD basis risk present</td>
+        <td>Peso/USD basis risk present</td>
+        <td class="highlight">None — fully dollarized</td>
+      </tr>
+      <tr>
+        <td>Political risk of instrument</td>
+        <td>Low (put = asymmetric, no upside loss)</td>
+        <td>Low (call = asymmetric, no downside loss)</td>
+        <td class="na">High if collar/forward used (upside surrender)</td>
+      </tr>
+      <tr>
+        <td>IFI intermediation available?</td>
+        <td>Not used (direct market)</td>
+        <td>World Bank (critical for capacity)</td>
+        <td class="highlight">Yes — World Bank / IDB precedent exists</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="figure-caption">Sources: SHCP, ASF, World Bank Uruguay case study, BCE Resolution JPRFM-2026-009-M, IMF Ecuador EFF (Country Report 25/341).</p>
+</div>
+
+<h2>V. Ecuador's Fiscal Exposure: The Numbers That Justify Action</h2>
+
+<p>The IMF's Fourth Review of Ecuador's Extended Fund Facility (December 2025) contains a detail that policymakers should be citing more prominently: the program's oil price adjuster is calibrated at approximately $23.85 million per $1/barrel deviation in the "Ecuador mix" price from the program's baseline assumption, subject to a cap. This is the quantified fiscal sensitivity of Ecuador's program target to oil prices.</p>
+
+<p>In 2025, the Ecuador mix averaged approximately $58.9/barrel, down from $68.5 in 2024 — a decline of nearly $10/barrel that, by the adjuster's arithmetic, implies roughly $238 million in fiscal headroom erosion. Ecuador's oil exports fell from $9.572 billion (2024) to $7.411 billion (2025). The public sector's non-financial balance improved to -1.2% of GDP in 2025, on a trajectory toward balance in 2026. That trajectory is directly exposed to oil price paths that Ecuador cannot control. The case for purchasing insurance against downside scenarios is not theoretical — it is arithmetic.</p>
+
+<div class="insight-box">
+  <div class="label">Fiscal Sensitivity Benchmark</div>
+  <p>The IMF EFF program adjuster implies ~$23.85M fiscal impact per $1/bbl movement in the Ecuador mix. A $10/bbl downside scenario (roughly the 2024→2025 decline) represents ~$238M in fiscal exposure. A well-designed put program covering 50–60% of annual export volumes at a cost of $2.50–$5.00/bbl would cost $75M–$250M in premiums — potentially offset by the fiscal stabilization value of avoided emergency adjustments and IMF program deviation.</p>
+</div>
+
+<h2>VI. The Payoff Simulator: Asian Put Option for Ecuador</h2>
+
+<p>An Asian (average-price) put option is the appropriate instrument for Ecuador's situation. Unlike a European put, which pays off based on the spot price at expiration, an Asian put pays based on the average price over the contract period — typically monthly averages over the fiscal year. This aligns the payoff with budget arithmetic, where what matters is the average realized price across the year, not the terminal price. It also reduces the option's cost relative to a European put with the same strike, since averaging reduces volatility.</p>
+
+<!-- INTERACTIVE SIMULATOR -->
+<div class="simulator">
+  <h4>Asian Put Option Payoff Simulator — Ecuador Scenario</h4>
+  <div class="sim-grid">
+    <div class="sim-field">
+      <label>Strike Price (USD/bbl) <span class="val" id="strikeVal">$62</span></label>
+      <input type="range" id="strikeSlider" min="40" max="80" value="62" step="1">
+    </div>
+    <div class="sim-field">
+      <label>Average Realized Price (USD/bbl) <span class="val" id="realizedVal">$55</span></label>
+      <input type="range" id="realizedSlider" min="30" max="90" value="55" step="1">
+    </div>
+    <div class="sim-field">
+      <label>Volume Hedged (million bbl) <span class="val" id="volumeVal">50 Mb</span></label>
+      <input type="range" id="volumeSlider" min="10" max="150" value="50" step="5">
+    </div>
+    <div class="sim-field">
+      <label>Premium Cost (USD/bbl) <span class="val" id="premiumVal">$3.50</span></label>
+      <input type="range" id="premiumSlider" min="1" max="8" value="3.50" step="0.25">
+    </div>
+  </div>
+  <div class="sim-results">
+    <div class="sim-card" id="card-gross">
+      <div class="sc-label">Gross Payout</div>
+      <div class="sc-value" id="grossPayout">—</div>
+    </div>
+    <div class="sim-card" id="card-premium">
+      <div class="sc-label">Total Premium Cost</div>
+      <div class="sc-value" id="totalPremium">—</div>
+    </div>
+    <div class="sim-card" id="card-net">
+      <div class="sc-label">Net Gain / (Loss)</div>
+      <div class="sc-value" id="netGain">—</div>
+    </div>
+    <div class="sim-card">
+      <div class="sc-label">Cost as % of Notional</div>
+      <div class="sc-value" id="costPct">—</div>
+    </div>
+    <div class="sim-card">
+      <div class="sc-label">Protected Floor Value</div>
+      <div class="sc-value" id="floorValue">—</div>
+    </div>
+    <div class="sim-card">
+      <div class="sc-label">Scenario</div>
+      <div class="sc-value" id="scenario">—</div>
+    </div>
+  </div>
+  <p class="sim-note">Asian put payoff = max(Strike − Average Price, 0) × Volume. Net Gain = Payout − Total Premium. This is a simplified illustration assuming perfect basis alignment; actual results depend on Ecuador mix / benchmark spread and settlement terms. Figures in USD millions unless noted.</p>
+</div>
+
+<h2>VII. The Required Architecture: Four Design Elements</h2>
+
+<p>A viable Ecuadorian hedging architecture is not a scaled-down version of Mexico's program. It is a purpose-built instrument for a dollarized, debt-constrained, IFI-supervised economy with limited institutional derivatives capacity. It requires four elements that the current BCE framework does not provide.</p>
+
+<h3>1. Fiscal Exposure Mapping as the Starting Point</h3>
+
+<p>The question that must precede instrument design is not "how many barrels does Petroecuador export?" but "what portion of the fiscal balance is actually sensitive to oil price movements, and over what time horizon?" Mexico's auditors found — after years of operation — that changes in the tax regime had invalidated claims of "full budget coverage." Ecuador should not repeat this lesson expensively. The EFF program adjuster provides a ready-made starting point: ~$23.85M per $1/bbl. An explicit fiscal sensitivity model, built jointly by MEF and the fiscal unit of BCE, should define the hedge ratio and eligible volume before any instrument is procured.</p>
+
+<!-- SVG ARCHITECTURE DIAGRAM -->
+<div class="figure">
+  <div class="figure-title">Figure 3 — Proposed Institutional Architecture for Ecuador's Sovereign Commodity Hedge</div>
+  <div id="arch-diagram">
+    <svg viewBox="0 0 760 420" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:760px;font-family:'Source Serif 4',Georgia,serif;">
+      <defs>
+        <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#b5330a"/>
+        </marker>
+        <marker id="arr2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#6b5e4e"/>
+        </marker>
+      </defs>
+
+      <!-- MEF / INTER-INSTITUTIONAL COMMITTEE -->
+      <rect x="10" y="30" width="200" height="72" rx="3" fill="#1a1208" stroke="#c49a2a" stroke-width="2"/>
+      <text x="110" y="56" text-anchor="middle" fill="#c49a2a" font-size="9" font-family="'JetBrains Mono',monospace" letter-spacing="1">GOVERNANCE LAYER</text>
+      <text x="110" y="74" text-anchor="middle" fill="#f7f3ec" font-size="11" font-weight="bold">MEF + Hedging Committee</text>
+      <text x="110" y="90" text-anchor="middle" fill="#ede8df" font-size="9">(MEF · BCE · Petroecuador · Contraloría)</text>
+
+      <!-- BCE -->
+      <rect x="280" y="30" width="200" height="72" rx="3" fill="#1a1208" stroke="#b5330a" stroke-width="2"/>
+      <text x="380" y="56" text-anchor="middle" fill="#b5330a" font-size="9" font-family="'JetBrains Mono',monospace" letter-spacing="1">EXECUTION AGENT</text>
+      <text x="380" y="74" text-anchor="middle" fill="#f7f3ec" font-size="11" font-weight="bold">BCE (per JPRFM-2026-009-M)</text>
+      <text x="380" y="90" text-anchor="middle" fill="#ede8df" font-size="9">DVP · collateral admin · reporting</text>
+
+      <!-- IFI Intermediary -->
+      <rect x="550" y="30" width="200" height="72" rx="3" fill="#2a4a7f" stroke="#7ecfa0" stroke-width="1.5"/>
+      <text x="650" y="56" text-anchor="middle" fill="#7ecfa0" font-size="9" font-family="'JetBrains Mono',monospace" letter-spacing="1">OPTIONAL INTERMEDIARY</text>
+      <text x="650" y="74" text-anchor="middle" fill="#f7f3ec" font-size="11" font-weight="bold">World Bank / IDB</text>
+      <text x="650" y="90" text-anchor="middle" fill="#ede8df" font-size="9">counterparty · pool competition · TA</text>
+
+      <!-- Arrows top row -->
+      <line x1="210" y1="66" x2="278" y2="66" stroke="#b5330a" stroke-width="1.5" marker-end="url(#arr)"/>
+      <text x="244" y="59" text-anchor="middle" fill="#6b5e4e" font-size="8" font-family="'JetBrains Mono',monospace">mandate</text>
+      <line x1="480" y1="66" x2="548" y2="66" stroke="#6b5e4e" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr2)"/>
+      <text x="514" y="59" text-anchor="middle" fill="#6b5e4e" font-size="8" font-family="'JetBrains Mono',monospace">optional</text>
+
+      <!-- Fiscal Sensitivity Model -->
+      <rect x="10" y="180" width="200" height="68" rx="3" fill="#ede8df" stroke="#c8b99a" stroke-width="1.5"/>
+      <text x="110" y="203" text-anchor="middle" fill="#b5330a" font-size="9" font-family="'JetBrains Mono',monospace" letter-spacing="1">STEP 1: MAPPING</text>
+      <text x="110" y="220" text-anchor="middle" fill="#1a1208" font-size="11" font-weight="bold">Fiscal Exposure Model</text>
+      <text x="110" y="236" text-anchor="middle" fill="#6b5e4e" font-size="9">EFF adjuster · hedge ratio · volume</text>
+
+      <!-- Instrument Selection -->
+      <rect x="280" y="180" width="200" height="68" rx="3" fill="#ede8df" stroke="#c8b99a" stroke-width="1.5"/>
+      <text x="380" y="203" text-anchor="middle" fill="#b5330a" font-size="9" font-family="'JetBrains Mono',monospace" letter-spacing="1">STEP 2: INSTRUMENT</text>
+      <text x="380" y="220" text-anchor="middle" fill="#1a1208" font-size="11" font-weight="bold">Asian Put Options Only</text>
+      <text x="380" y="236" text-anchor="middle" fill="#6b5e4e" font-size="9">no forwards · no collars · no swaps</text>
+
+      <!-- Funding -->
+      <rect x="550" y="180" width="200" height="68" rx="3" fill="#ede8df" stroke="#c8b99a" stroke-width="1.5"/>
+      <text x="650" y="203" text-anchor="middle" fill="#b5330a" font-size="9" font-family="'JetBrains Mono',monospace" letter-spacing="1">STEP 3: FUNDING</text>
+      <text x="650" y="220" text-anchor="middle" fill="#1a1208" font-size="11" font-weight="bold">Premium Reserve Account</text>
+      <text x="650" y="236" text-anchor="middle" fill="#6b5e4e" font-size="9">dedicated · pre-funded · capped</text>
+
+      <!-- Market / Counterparties -->
+      <rect x="280" y="330" width="200" height="68" rx="3" fill="#1a6b5a" stroke="#7ecfa0" stroke-width="1.5"/>
+      <text x="380" y="353" text-anchor="middle" fill="#7ecfa0" font-size="9" font-family="'JetBrains Mono',monospace" letter-spacing="1">OTC MARKET</text>
+      <text x="380" y="371" text-anchor="middle" fill="#f7f3ec" font-size="11" font-weight="bold">International Banks</text>
+      <text x="380" y="387" text-anchor="middle" fill="#ede8df" font-size="9">competitive pool · layered execution</text>
+
+      <!-- Vertical arrows middle layer → bottom -->
+      <line x1="110" y1="248" x2="110" y2="178" stroke="#b5330a" stroke-width="1.5" marker-end="url(#arr)"/>
+      <line x1="380" y1="248" x2="380" y2="178" stroke="#b5330a" stroke-width="1.5" marker-end="url(#arr)"/>
+      <line x1="650" y1="248" x2="650" y2="178" stroke="#b5330a" stroke-width="1.5" marker-end="url(#arr)"/>
+
+      <!-- Arrows: middle row horizontal -->
+      <line x1="210" y1="214" x2="278" y2="214" stroke="#c8b99a" stroke-width="1.5" marker-end="url(#arr2)"/>
+      <line x1="480" y1="214" x2="548" y2="214" stroke="#c8b99a" stroke-width="1.5" marker-end="url(#arr2)"/>
+
+      <!-- Step 2 → Market -->
+      <line x1="380" y1="328" x2="380" y2="250" stroke="#1a6b5a" stroke-width="1.5" marker-end="url(#arr)"/>
+      <text x="395" y="295" fill="#1a6b5a" font-size="8" font-family="'JetBrains Mono',monospace">execute</text>
+
+      <!-- Basis risk note -->
+      <rect x="10" y="330" width="200" height="68" rx="3" fill="#f7f3ec" stroke="#c8b99a" stroke-width="1" stroke-dasharray="4,3"/>
+      <text x="110" y="353" text-anchor="middle" fill="#c49a2a" font-size="9" font-family="'JetBrains Mono',monospace" letter-spacing="1">KEY ADVANTAGE</text>
+      <text x="110" y="371" text-anchor="middle" fill="#1a1208" font-size="11" font-weight="bold">Zero FX Basis Risk</text>
+      <text x="110" y="387" text-anchor="middle" fill="#6b5e4e" font-size="9">dollarization eliminates currency layer</text>
+
+      <line x1="210" y1="364" x2="278" y2="364" stroke="#c49a2a" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <!-- Step 3 → Market -->
+      <line x1="650" y1="330" x2="490" y2="398" stroke="#c49a2a" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arr2)"/>
+      <text x="590" y="370" fill="#6b5e4e" font-size="8" font-family="'JetBrains Mono',monospace">premium flows</text>
+    </svg>
+  </div>
+  <p class="figure-caption">Proposed architecture integrates the BCE's 2026 framework into a four-step operational sequence. The critical innovation versus Mexico: a dedicated premium reserve account replaces the stabilization fund; IFI intermediation (World Bank / IDB) substitutes for Banxico's market infrastructure; and instrument restriction to bought puts eliminates contingent liability risks incompatible with the DVP requirement.</p>
+</div>
+
+<h3>2. Instrument Restriction: Bought Options Only</h3>
+
+<p>The BCE framework is operationally compatible with bought options and operationally hostile to instruments that generate margin calls or contingent liabilities. Ecuador's policy decision should formalize this compatibility as a legal restriction: the enabling resolution for sovereign commodity hedges should explicitly limit eligible instruments to long option positions (put options for exporters) with premiums payable upfront. Collars, forwards, swaps, and any structure involving the sale of options should require separate authorization at the cabinet level with explicit disclosure of the contingent liability range.</p>
+
+<p>This is not excessive conservatism — it is the lesson every emerging-market sovereign that has had a hedging crisis learned. The political economy of commodity hedges is asymmetric: when the hedge pays out, it is treated as prudent management; when it costs a premium and prices rise, the foregone upside generates accusations of fiscal waste or speculation. The only structure that survives this political dynamic reliably is the asymmetric one, where the maximum cost is the known, pre-funded premium.</p>
+
+<h3>3. A Dedicated Premium Reserve, Not a General Fund</h3>
+
+<p>Ecuador does not have a FEIP analog. Creating one is a medium-term fiscal reform project. What Ecuador can do immediately is ring-fence a premium reserve account within the BCE's operational framework — a sub-account of Petroecuador (or the relevant state enterprise) pre-funded at the start of each fiscal year with the budgeted premium cost. This is consistent with the BCE's DVP requirement and with the EFF's fiscal framework, provided it is treated as current expenditure rather than below-the-line financing. A premium budget cap — expressed as a percentage of budgeted oil revenues, or as an absolute dollar cap tied to the EFF adjuster — provides the fiscal discipline that FEIP provides Mexico mechanically.</p>
+
+<h3>4. IFI Intermediation as Capacity Substitute</h3>
+
+<p>Uruguay's decision to route its hedge through the World Bank was not purely about counterparty risk reduction — it was also about accessing market infrastructure that the MEF did not have. Ecuador's BCE, while a more sophisticated institution than Uruguay's debt unit, does not have established relationships with the 7+ international bank counterparties that Mexico uses. Executing a fragmented, multi-counterparty program from a standing start would expose Ecuador to significant execution risk and potential front-running. The World Bank's commodity risk management facility and the IDB's analogous programs offer a ready-made solution: competitive pricing through a pool of financial institutions, technical assistance for institutional capacity building, and the reputational cover that comes with IFI intermediation.</p>
+
+<div class="pull-quote">
+  <p>IFI intermediation is not a crutch — it is the rational substitution for market infrastructure that Ecuador has not yet built and should not pretend to have.</p>
+</div>
+
+<h2>VIII. The Governance Question No One Is Asking</h2>
+
+<p>The critical governance gap in Ecuador's current framework is not the BCE resolution — it is the absence of an inter-institutional hedging committee with a clear mandate, explicit instrument restrictions, and an obligation to publish the hedge parameters (with appropriate execution lag) in the national budget documentation. Mexico's program survived 25 years because its institutional chain is clearly defined: FEIP authorizes, SHCP strategizes, Banxico executes, ASF audits. Each institution knows its role and its limits. Ecuador's framework currently assigns execution (BCE) but leaves strategy (who defines the hedge ratio, the eligible instruments, the cost cap?) in an institutional vacuum.</p>
+
+<p>Without this committee, the BCE's framework is a legal mechanism searching for a policy process. The resolution enables transactions; it does not constitute a program. Ecuador needs a policy document — ideally a decree or ministerial agreement — that establishes the hedging committee, defines the eligible instrument universe, sets a maximum annual premium budget, and mandates independent mark-to-market valuation. Without these elements, the 2026 resolution is not a program — it is an option on having a program.</p>
+
+<div class="open-qs">
+  <div class="oq-label">Open Questions for Policymakers</div>
+  <ul>
+    <li>Has MEF formally mapped fiscal sensitivity to the Ecuador mix price and established a target hedge ratio for the EFF program period?</li>
+    <li>Which entity holds the mandate for instrument selection — BCE, MEF, or Petroecuador's board — and has this been formalized in a resolution or decree?</li>
+    <li>Has Ecuador approached the World Bank or IDB's commodity risk management facilities to explore IFI intermediation, following Uruguay's 2016 precedent?</li>
+    <li>Does Ecuador's budget law allow for a dedicated premium reserve account consistent with the BCE's DVP requirement, or does this require a legislative amendment?</li>
+    <li>What disclosure regime applies to hedge parameters — and how does it balance public accountability with the execution security that Mexico protects by reserving information for multi-year periods?</li>
+  </ul>
+</div>
+
+<h2>Conclusion: The Blueprint Exists — The Architecture Does Not</h2>
+
+<p>Ecuador entered 2026 with three things that would have seemed improbable five years ago: a functioning EFF program with the IMF, a legal framework enabling BCE to act as commodity hedge agent for state enterprises, and a quantified fiscal sensitivity measure embedded in its program adjuster. These are the foundations of a serious sovereign hedging program. They are not, by themselves, such a program.</p>
+
+<p>The Mexico template is instructive as a proof of concept but dangerous as a blueprint. It was built for a floating-rate economy with a pre-funded stabilization fund and 25 years of institutional memory in derivatives markets. Ecuador is none of these things. What Ecuador does have — dollarization eliminating currency basis risk, an IFI supervision framework that creates credibility cover, and a BCE resolution that is already legally operative — is a different set of foundations that requires a different architectural design.</p>
+
+<p>The four-element architecture proposed here — fiscal exposure mapping, instrument restriction to bought puts, a dedicated premium reserve, and IFI intermediation — is not aspirational. It is the minimum viable program that is consistent with Ecuador's actual institutional capacity, its fiscal constraints, and the political economy of commodity hedges in an economy where every dollar of downside matters because there is no exchange rate buffer to absorb the first blow.</p>
+
+<p>The resolution of March 2026 gave Ecuador a door. The policy work of the next twelve months will determine whether anything gets built behind it.</p>
+
+<!-- FOOTNOTES -->
+<div class="footnotes">
+  <p><strong>Sources:</strong> SHCP Comunicado 113-2016 (México, cobertura 2017); ASF Auditorías Cuenta Pública 2014 (coberturas 2015) and 2015 (coberturas 2016); ASF Auditorías Cuenta Pública 2021–2022 (FEIP mechanics); Banco de México, transparency documentation on hedging; World Bank Press Release (Jun 2016) and Case Study "Managing Exposure to Oil Price Volatility in Uruguay" (Sep 2016); MEF Uruguay presentation (2017 DMF Forum); BCE / Junta JPRFM — Resolución JPRFM-2026-009-M (Mar 2026); IMF Ecuador Country Report 25/341 (Fourth EFF Review, Dec 2025); IMF Working Paper on sovereign oil hedging welfare analysis.</p>
+  <p><em>The author served as Minister of Energy and General Manager of EP Petroecuador. Views expressed are personal and do not represent any institution.</em></p>
+</div>
+
+</main>
+
+<script>
+// ── CHART: Premium per barrel ──
+const ctx = document.getElementById('premiumChart').getContext('2d');
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ['Mexico 2015', 'Mexico 2016', 'Mexico 2017', 'Uruguay 2016–17'],
+    datasets: [{
+      label: 'Premium (USD/bbl)',
+      data: [3.39, 5.14, 4.11, 2.62],
+      backgroundColor: ['#2a4a7f','#2a4a7f','#2a4a7f','#1a6b5a'],
+      borderColor: ['#c49a2a','#c49a2a','#c49a2a','#7ecfa0'],
+      borderWidth: 2,
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: v => ` $${v.raw.toFixed(2)}/bbl`
+        },
+        backgroundColor: '#1a1208',
+        titleColor: '#c49a2a',
+        bodyColor: '#f7f3ec',
+        borderColor: '#c49a2a',
+        borderWidth: 1,
+      }
+    },
+    scales: {
+      x: {
+        ticks: { color: '#6b5e4e', font: { family: "'JetBrains Mono', monospace", size: 11 } },
+        grid: { color: 'rgba(200,185,154,0.3)' }
+      },
+      y: {
+        title: { display: true, text: 'USD per barrel', color: '#6b5e4e', font: { size: 11 } },
+        ticks: { color: '#6b5e4e', callback: v => `$${v}`, font: { family: "'JetBrains Mono', monospace", size: 11 } },
+        grid: { color: 'rgba(200,185,154,0.3)' },
+        min: 0, max: 7
+      }
+    }
+  }
+});
+
+// ── SIMULATOR ──
+function fmt(n) {
+  const abs = Math.abs(n);
+  if (abs >= 1000) return (n/1000).toFixed(1) + 'B';
+  return n.toFixed(0) + 'M';
+}
+
+function updateSim() {
+  const strike   = parseFloat(document.getElementById('strikeSlider').value);
+  const realized = parseFloat(document.getElementById('realizedSlider').value);
+  const volume   = parseFloat(document.getElementById('volumeSlider').value);
+  const premium  = parseFloat(document.getElementById('premiumSlider').value);
+
+  document.getElementById('strikeVal').textContent   = '$' + strike;
+  document.getElementById('realizedVal').textContent = '$' + realized;
+  document.getElementById('volumeVal').textContent   = volume + ' Mb';
+  document.getElementById('premiumVal').textContent  = '$' + premium.toFixed(2);
+
+  const grossPayout  = Math.max(strike - realized, 0) * volume; // USD millions
+  const totalPremium = premium * volume;
+  const net          = grossPayout - totalPremium;
+  const costPct      = (totalPremium / (strike * volume) * 100).toFixed(1);
+  const floorValue   = strike * volume;
+
+  document.getElementById('grossPayout').textContent = '$' + fmt(grossPayout);
+  document.getElementById('totalPremium').textContent = '$' + fmt(totalPremium);
+  document.getElementById('netGain').textContent = (net >= 0 ? '+' : '') + '$' + fmt(net);
+  document.getElementById('costPct').textContent = costPct + '%';
+  document.getElementById('floorValue').textContent = '$' + fmt(floorValue);
+
+  const netCard = document.getElementById('card-net');
+  netCard.classList.remove('positive','negative');
+  if (net > 0) netCard.classList.add('positive');
+  else if (net < 0) netCard.classList.add('negative');
+
+  let scenario;
+  if (realized >= strike) scenario = 'Option expires';
+  else if (net > 0) scenario = 'Net gain ✓';
+  else scenario = 'Premium cost > payout';
+  document.getElementById('scenario').textContent = scenario;
+}
+
+['strikeSlider','realizedSlider','volumeSlider','premiumSlider'].forEach(id => {
+  document.getElementById(id).addEventListener('input', updateSim);
+});
+updateSim();
+</script>
+</body>
+</html>

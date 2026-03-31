@@ -61,4 +61,11 @@
     <priority>0.7</priority>
   </url>
 
+  <url>
+    <loc>https://hugoaguiarlozano.github.io/ecuador-sovereign-hedge.html</loc>
+    <lastmod>2026-04-01</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.7</priority>
+  </url>
+
 </urlset>
