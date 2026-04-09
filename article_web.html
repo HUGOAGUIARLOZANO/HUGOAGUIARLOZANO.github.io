@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Punitive Damages, Disgorgement & Unjust Enrichment — Hugo Aguiar Lozano</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:     #12192b;
+  --ink-2:   #2d3a55;
+  --ink-3:   #5a6a88;
+  --cream:   #faf7f0;
+  --cream-2: #f2ede1;
+  --gold:    #b8841a;
+  --gold-lt: #d4a43a;
+  --gold-bg: rgba(184,132,26,.08);
+  --blue:    #1e3a5f;
+  --blue-lt: #2e5c94;
+  --teal:    #1a5c6e;
+  --red:     #8b2020;
+  --green:   #1a5c3c;
+  --rule:    rgba(18,25,43,.12);
+  --rule-g:  rgba(184,132,26,.25);
+  --ff-head: 'Cormorant Garamond', Georgia, serif;
+  --ff-body: 'DM Sans', sans-serif;
+  --ff-mono: 'DM Mono', monospace;
+  --r:       4px;
+  --max:     800px;
+  --wide:    1060px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--ff-body);
+  font-size: 17px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── HERO ──────────────────────────────────────────────────── */
+.hero {
+  background: var(--ink);
+  color: var(--cream);
+  padding: 80px 32px 72px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 80% 20%, rgba(184,132,26,.18), transparent),
+              radial-gradient(ellipse 50% 80% at 5% 90%, rgba(30,58,95,.5), transparent);
+}
+.hero-inner {
+  max-width: var(--wide);
+  margin: 0 auto;
+  position: relative;
+}
+.hero-label {
+  font-family: var(--ff-mono);
+  font-size: 11px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--gold-lt);
+  margin-bottom: 28px;
+  display: flex; align-items: center; gap: 12px;
+}
+.hero-label::after {
+  content: '';
+  flex: 1; max-width: 60px;
+  height: 1px; background: var(--gold);
+}
+.hero h1 {
+  font-family: var(--ff-head);
+  font-size: clamp(38px, 5.5vw, 66px);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -.01em;
+  max-width: 840px;
+  margin-bottom: 32px;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--gold-lt);
+}
+.hero-sub {
+  font-size: 16px;
+  color: rgba(250,247,240,.65);
+  max-width: 640px;
+  line-height: 1.65;
+  margin-bottom: 48px;
+}
+.hero-meta {
+  display: flex; flex-wrap: wrap; gap: 32px;
+  border-top: 1px solid rgba(250,247,240,.12);
+  padding-top: 28px;
+}
+.hero-meta-item { font-size: 13px; }
+.hero-meta-label {
+  font-family: var(--ff-mono);
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 4px;
+}
+.hero-meta-val { color: rgba(250,247,240,.8); }
+
+/* ── LAYOUT ────────────────────────────────────────────────── */
+.container {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 32px;
+}
+.container-wide {
+  max-width: var(--wide);
+  margin: 0 auto;
+  padding: 0 32px;
+}
+.section { padding: 72px 0; }
+.section + .section { border-top: 1px solid var(--rule); }
+
+/* ── TYPOGRAPHY ────────────────────────────────────────────── */
+h2 {
+  font-family: var(--ff-head);
+  font-size: clamp(26px, 3.5vw, 38px);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -.01em;
+  margin-bottom: 28px;
+  color: var(--ink);
+}
+h3 {
+  font-family: var(--ff-head);
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 14px;
+  color: var(--ink);
+}
+h4 {
+  font-family: var(--ff-body);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+p { margin-bottom: 22px; color: var(--ink-2); }
+p:last-child { margin-bottom: 0; }
+em { font-style: italic; }
+strong { font-weight: 500; color: var(--ink); }
+a { color: var(--blue-lt); text-decoration: none; border-bottom: 1px solid rgba(46,92,148,.25); }
+
+/* ── LEAD ──────────────────────────────────────────────────── */
+.lead {
+  font-family: var(--ff-head);
+  font-size: clamp(18px, 2.5vw, 23px);
+  line-height: 1.6;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 32px;
+}
+
+/* ── PULL QUOTE ────────────────────────────────────────────── */
+.pullquote {
+  border-left: 3px solid var(--gold);
+  padding: 20px 28px;
+  margin: 40px 0;
+  background: var(--gold-bg);
+  border-radius: 0 var(--r) var(--r) 0;
+}
+.pullquote p {
+  font-family: var(--ff-head);
+  font-size: 21px;
+  font-style: italic;
+  line-height: 1.55;
+  color: var(--ink);
+  margin: 0;
+}
+.pullquote cite {
+  display: block;
+  font-family: var(--ff-mono);
+  font-size: 11px;
+  letter-spacing: .1em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-top: 12px;
+  font-style: normal;
+}
+
+/* ── INSIGHT BOX ───────────────────────────────────────────── */
+.insight {
+  background: var(--ink);
+  color: var(--cream);
+  padding: 36px 40px;
+  border-radius: var(--r);
+  margin: 44px 0;
+  position: relative;
+}
+.insight::before {
+  content: '›';
+  position: absolute;
+  top: 32px; left: 40px;
+  font-family: var(--ff-head);
+  font-size: 32px;
+  color: var(--gold);
+  line-height: 1;
+}
+.insight .insight-title {
+  font-family: var(--ff-mono);
+  font-size: 10px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+  padding-left: 28px;
+}
+.insight p {
+  color: rgba(250,247,240,.85);
+  font-size: 16px;
+  padding-left: 28px;
+  margin-bottom: 0;
+}
+
+/* ── THREE BOXES ───────────────────────────────────────────── */
+.three-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2px;
+  margin: 44px 0;
+  border: 2px solid var(--rule-g);
+  border-radius: var(--r);
+  overflow: hidden;
+}
+.three-box {
+  padding: 32px 28px;
+  background: #fff;
+  position: relative;
+}
+.three-box:not(:last-child) { border-right: 2px solid var(--rule-g); }
+.three-box-num {
+  font-family: var(--ff-head);
+  font-size: 56px;
+  font-weight: 300;
+  line-height: 1;
+  color: var(--rule-g);
+  position: absolute;
+  top: 16px; right: 20px;
+}
+.three-box-label {
+  font-family: var(--ff-mono);
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+.three-box h3 {
+  font-size: 19px;
+  margin-bottom: 10px;
+}
+.three-box p {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--ink-3);
+  margin-bottom: 16px;
+}
+.three-box .metric {
+  font-family: var(--ff-mono);
+  font-size: 12px;
+  padding: 7px 12px;
+  border-radius: var(--r);
+  display: inline-block;
+  margin-top: 4px;
+}
+.metric-comp  { background: rgba(26,92,62,.1); color: var(--green); }
+.metric-rest  { background: rgba(30,58,95,.1); color: var(--blue); }
+.metric-punit { background: rgba(139,32,32,.1); color: var(--red); }
+
+/* ── TIMELINE ──────────────────────────────────────────────── */
+.timeline-wrap {
+  margin: 44px 0;
+  position: relative;
+  padding-left: 28px;
+}
+.timeline-wrap::before {
+  content: '';
+  position: absolute;
+  left: 5px; top: 8px; bottom: 8px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--gold), rgba(184,132,26,.15));
+}
+.tl-item {
+  position: relative;
+  padding: 0 0 32px 32px;
+  cursor: default;
+}
+.tl-dot {
+  position: absolute;
+  left: -22px; top: 6px;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  background: var(--cream);
+  transition: all .2s;
+}
+.tl-item:hover .tl-dot {
+  background: var(--gold);
+  box-shadow: 0 0 0 4px var(--gold-bg);
+}
+.tl-year {
+  font-family: var(--ff-mono);
+  font-size: 11px;
+  letter-spacing: .1em;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+.tl-case {
+  font-weight: 500;
+  font-size: 15px;
+  color: var(--ink);
+  margin-bottom: 3px;
+}
+.tl-desc {
+  font-size: 14px;
+  color: var(--ink-3);
+  line-height: 1.55;
+  margin: 0;
+}
+.tl-juri {
+  font-family: var(--ff-mono);
+  font-size: 10px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-bottom: 6px;
+}
+.juri-us   { background: rgba(26,92,62,.1); color: var(--green); }
+.juri-eu   { background: rgba(30,58,95,.1); color: var(--blue); }
+.juri-it   { background: rgba(139,32,32,.1); color: var(--red); }
+.juri-latam{ background: rgba(184,132,26,.15); color: var(--gold); }
+.juri-de   { background: rgba(26,26,26,.08); color: var(--ink-2); }
+.juri-ch   { background: rgba(26,92,62,.06); color: var(--teal); }
+
+/* ── COMPARISON TABLE ──────────────────────────────────────── */
+.comp-table-wrap {
+  overflow-x: auto;
+  margin: 44px -20px;
+  padding: 0 20px;
+}
+.comp-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  min-width: 600px;
+}
+.comp-table thead tr {
+  background: var(--ink);
+  color: var(--cream);
+}
+.comp-table thead th {
+  padding: 14px 16px;
+  text-align: left;
+  font-family: var(--ff-mono);
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--gold-lt);
+  white-space: nowrap;
+}
+.comp-table tbody tr {
+  border-bottom: 1px solid var(--rule);
+  transition: background .15s;
+}
+.comp-table tbody tr:hover { background: var(--gold-bg); }
+.comp-table td {
+  padding: 14px 16px;
+  color: var(--ink-2);
+  vertical-align: top;
+  line-height: 1.5;
+}
+.comp-table td:first-child {
+  font-weight: 500;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.badge {
+  font-family: var(--ff-mono);
+  font-size: 10px;
+  padding: 3px 9px;
+  border-radius: 20px;
+  display: inline-block;
+  letter-spacing: .04em;
+  white-space: nowrap;
+}
+.b-open    { background: rgba(26,92,62,.12); color: var(--green); }
+.b-cond    { background: rgba(184,132,26,.15); color: #7a5a00; }
+.b-closed  { background: rgba(139,32,32,.1); color: var(--red); }
+.b-hybrid  { background: rgba(30,58,95,.1); color: var(--blue); }
+.b-pending { background: rgba(90,106,136,.1); color: var(--ink-3); }
+
+/* ── RULE CARDS ────────────────────────────────────────────── */
+.rules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin: 44px 0;
+}
+.rule-card {
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-top: 3px solid var(--gold);
+  border-radius: var(--r);
+  padding: 28px 24px;
+  transition: box-shadow .2s, transform .2s;
+}
+.rule-card:hover {
+  box-shadow: 0 8px 32px rgba(18,25,43,.08);
+  transform: translateY(-2px);
+}
+.rule-num {
+  font-family: var(--ff-head);
+  font-size: 48px;
+  font-weight: 300;
+  color: var(--cream-2);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.rule-card h3 {
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+.rule-card p {
+  font-size: 14px;
+  color: var(--ink-3);
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+/* ── DIAGRAM: THREE DOMAINS ────────────────────────────────── */
+.diagram-wrap {
+  margin: 44px 0;
+  background: var(--ink);
+  border-radius: var(--r);
+  padding: 40px 32px 36px;
+  color: var(--cream);
+}
+.diagram-title {
+  font-family: var(--ff-mono);
+  font-size: 10px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 32px;
+  text-align: center;
+}
+.diagram-flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.df-box {
+  text-align: center;
+  padding: 24px 20px;
+  border-radius: var(--r);
+  flex: 1;
+  min-width: 160px;
+  max-width: 220px;
+}
+.df-box-a { background: rgba(26,92,62,.25); border: 1px solid rgba(26,92,62,.5); }
+.df-box-b { background: rgba(30,58,95,.3); border: 1px solid rgba(46,92,148,.5); }
+.df-box-c { background: rgba(139,32,32,.2); border: 1px solid rgba(139,32,32,.4); }
+.df-icon {
+  font-size: 28px;
+  margin-bottom: 10px;
+  display: block;
+}
+.df-label {
+  font-family: var(--ff-mono);
+  font-size: 9px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  opacity: .6;
+  margin-bottom: 6px;
+}
+.df-title {
+  font-family: var(--ff-head);
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #fff;
+}
+.df-metric {
+  font-family: var(--ff-mono);
+  font-size: 11px;
+  opacity: .75;
+  line-height: 1.5;
+}
+.df-arrow {
+  font-size: 20px;
+  color: rgba(250,247,240,.2);
+  padding: 0 4px;
+}
+
+/* ── JURISDICTION SPECTRUM BAR ─────────────────────────────── */
+.spectrum-wrap {
+  margin: 44px 0;
+}
+.spectrum-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.spectrum-item:last-child { border-bottom: none; }
+.spec-country {
+  font-weight: 500;
+  font-size: 14px;
+  width: 130px;
+  flex-shrink: 0;
+}
+.spec-bar-wrap {
+  flex: 1;
+  height: 8px;
+  background: var(--cream-2);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+.spec-bar {
+  height: 100%;
+  border-radius: 4px;
+  position: relative;
+}
+.spec-note {
+  font-family: var(--ff-mono);
+  font-size: 11px;
+  color: var(--ink-3);
+  width: 220px;
+  flex-shrink: 0;
+  line-height: 1.4;
+}
+.spec-legend {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.spec-leg-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  color: var(--ink-3);
+}
+.spec-leg-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+}
+
+/* ── CASE STUDY CARD ───────────────────────────────────────── */
+.case-card {
+  border: 1px solid var(--rule);
+  border-radius: var(--r);
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+.case-header {
+  background: var(--ink);
+  color: var(--cream);
+  padding: 18px 24px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.case-name {
+  font-family: var(--ff-head);
+  font-style: italic;
+  font-size: 20px;
+  font-weight: 500;
+}
+.case-citation {
+  font-family: var(--ff-mono);
+  font-size: 11px;
+  color: rgba(250,247,240,.5);
+  margin-top: 4px;
+}
+.case-body { padding: 22px 24px; background: #fff; }
+.case-body p {
+  font-size: 14.5px;
+  line-height: 1.68;
+  color: var(--ink-2);
+  margin-bottom: 14px;
+}
+.case-body p:last-child { margin-bottom: 0; }
+.case-tag {
+  font-family: var(--ff-mono);
+  font-size: 10px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: var(--gold-bg);
+  color: var(--gold);
+  letter-spacing: .06em;
+  display: inline-block;
+}
+
+/* ── FOOTNOTES ─────────────────────────────────────────────── */
+.footnotes {
+  background: var(--cream-2);
+  border-top: 2px solid var(--rule-g);
+  padding: 48px 0;
+  margin-top: 0;
+}
+.fn-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+.fn-item {
+  font-size: 12.5px;
+  color: var(--ink-3);
+  line-height: 1.6;
+  padding: 12px 16px;
+  border-left: 2px solid var(--rule);
+}
+.fn-num {
+  font-family: var(--ff-mono);
+  font-size: 10px;
+  color: var(--gold);
+  margin-bottom: 4px;
+  display: block;
+}
+
+/* ── FOOTER ────────────────────────────────────────────────── */
+.footer {
+  background: var(--ink);
+  color: rgba(250,247,240,.45);
+  text-align: center;
+  padding: 40px 32px;
+  font-size: 13px;
+}
+.footer strong { color: rgba(250,247,240,.7); font-weight: 500; }
+
+/* ── ANIMATIONS ────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-inner > * {
+  opacity: 0;
+  animation: fadeUp .7s ease forwards;
+}
+.hero-inner > *:nth-child(1) { animation-delay: .1s; }
+.hero-inner > *:nth-child(2) { animation-delay: .2s; }
+.hero-inner > *:nth-child(3) { animation-delay: .35s; }
+.hero-inner > *:nth-child(4) { animation-delay: .5s; }
+
+/* ── NAV ───────────────────────────────────────────────────── */
+.nav {
+  background: rgba(18,25,43,.97);
+  backdrop-filter: blur(8px);
+  padding: 0 32px;
+  position: sticky;
+  top: 0; z-index: 100;
+  border-bottom: 1px solid rgba(184,132,26,.2);
+}
+.nav-inner {
+  max-width: var(--wide);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 52px;
+  gap: 24px;
+}
+.nav-brand {
+  font-family: var(--ff-head);
+  font-size: 16px;
+  color: var(--cream);
+  white-space: nowrap;
+  font-weight: 500;
+}
+.nav-links {
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.nav-links::-webkit-scrollbar { display: none; }
+.nav-links a {
+  font-family: var(--ff-mono);
+  font-size: 10px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(250,247,240,.5);
+  border: none;
+  padding: 6px 12px;
+  border-radius: var(--r);
+  transition: all .15s;
+  white-space: nowrap;
+}
+.nav-links a:hover {
+  color: var(--gold-lt);
+  background: rgba(184,132,26,.1);
+}
+
+/* ── RESPONSIVE ────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .three-box:not(:last-child) { border-right: none; border-bottom: 2px solid var(--rule-g); }
+  .spec-note { width: 130px; font-size: 10px; }
+  .diagram-flow { flex-direction: column; }
+  .df-arrow { transform: rotate(90deg); }
+  .spec-country { width: 90px; font-size: 13px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <span class="nav-brand">Hugo F. Aguiar Lozano</span>
+    <div class="nav-links">
+      <a href="#framework">Framework</a>
+      <a href="#timeline">Timeline</a>
+      <a href="#jurisdictions">Jurisdictions</a>
+      <a href="#cases">Key Cases</a>
+      <a href="#rules">Rules</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <p class="hero-label">Comparative Law &nbsp;·&nbsp; Remedies &nbsp;·&nbsp; 2026 Update</p>
+    <h1>Punitive Damages, Disgorgement &amp; <em>Unjust Enrichment:</em> Drawing the Line</h1>
+    <p class="hero-sub">A global practitioner's guide to the distinctions that matter — and why getting them wrong generates systematic distortions in compensation, deterrence, and due process.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Author</span>
+        <span class="hero-meta-val">Hugo Fernando Aguiar Lozano, Attorney-at-Law</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Scope</span>
+        <span class="hero-meta-val">2010 – 2026 comparative update</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Jurisdictions</span>
+        <span class="hero-meta-val">USA · EU · Italy · Germany · Mexico · Brazil · Switzerland</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- SECTION: THESIS -->
+<section class="section" id="thesis">
+  <div class="container">
+    <h4>The Central Argument</h4>
+    <p class="lead">Three remedial questions — <em>What harm did the victim suffer? What profit did the wrongdoer make? How reprehensible was the conduct?</em> — demand three legally distinct answers. Conflating them produces predictable pathologies: overcompensation, incentivised litigation, and, paradoxically, new instances of unjust enrichment.</p>
+
+    <p>This article defends a thesis first advanced in a 2010 comparative study and substantially confirmed by the 2010–2026 legislative and jurisprudential record: punitive damages and unjust enrichment belong to different normative universes. The former seeks to punish and deter through a private sanction; the latter seeks to restore patrimonial equity by eliminating a causeless benefit. Between them lies a third instrument — disgorgement, or gain-based restitution — which operates on a different metric still.</p>
+
+    <p>The period 2010–2026 has not invalidated this distinction. It has, however, made it considerably more consequential. Punitive-type mechanisms are no longer confined to common law systems; they have migrated — cautiously, conditionally, and with varying degrees of formalism — into civil law jurisdictions ranging from Italy to Mexico to Brazil. Meanwhile, in the United States, the Supreme Court has spent a decade attempting to prevent disgorgement from silently becoming a punitive sanction. And across the European Union, legislators are actively designing remedy architectures that keep compensation, restitution, and punishment in separate lanes.</p>
+
+    <div class="pullquote">
+      <p>The question for 2026 is no longer whether civil law systems can accommodate punitive-type mechanisms. The question is how they can do so without conflating punishment, restitution, and compensation into a single, legally incoherent instrument.</p>
+    </div>
+
+    <p>This article maps the territory, analyses the key decisions, and proposes five practical design rules for legislators, judges, and counsel operating across multiple jurisdictions.</p>
+  </div>
+</section>
+
+<!-- SECTION: THREE DOMAINS -->
+<section class="section" id="framework">
+  <div class="container-wide">
+    <div class="container" style="padding: 0;">
+      <h4>Conceptual Framework</h4>
+      <h2>Three Distinct Legal Universes</h2>
+      <p>The most consequential source of analytical error in this area is the habit of treating "punitive damages," "disgorgement," and "compensatory indemnification" as points on a single spectrum — differing in degree rather than in kind. They are not. They differ in metric, in justification, and in the legal standards that govern their application.</p>
+    </div>
+
+    <div class="three-grid">
+      <div class="three-box">
+        <span class="three-box-num">I</span>
+        <div class="three-box-label">Compensatory Damages</div>
+        <h3>Restore the Victim</h3>
+        <p>Measures and addresses the loss suffered by the injured party. The objective is to return the claimant to the position they occupied before the harm. Overcompensation is itself a wrong: it generates unjust enrichment in the victim's favour.</p>
+        <p><strong>Governing principle:</strong> <em>Restitutio in integrum.</em> The harm is the ceiling.</p>
+        <span class="metric metric-comp">Metric: plaintiff's loss</span>
+      </div>
+      <div class="three-box">
+        <span class="three-box-num">II</span>
+        <div class="three-box-label">Disgorgement / Gain-Based Restitution</div>
+        <h3>Strip the Wrongdoer's Gain</h3>
+        <p>Removes the net profit attributable to the wrong from the defendant's estate. The victim's loss is irrelevant to quantum. The remedy is equitable in origin and restorative in character, not penal — unless courts allow it to expand beyond net profits.</p>
+        <p><strong>Governing principle:</strong> <em>Nemo ex delicto lucretur.</em> Net profits are the ceiling.</p>
+        <span class="metric metric-rest">Metric: wrongdoer's net gain</span>
+      </div>
+      <div class="three-box">
+        <span class="three-box-num">III</span>
+        <div class="three-box-label">Punitive Damages</div>
+        <h3>Punish and Deter</h3>
+        <p>Sanctions particularly egregious conduct with an award calibrated to the gravity of the wrong and the need for deterrence — not to the plaintiff's loss or the defendant's profit. A private penalty. Its legitimacy depends on the rule of law: legal basis, foreseeability, proportionality, quantitative caps.</p>
+        <p><strong>Governing principle:</strong> <em>Deterrence &amp; retribution.</em> No ceiling except proportionality.</p>
+        <span class="metric metric-punit">Metric: gravity of conduct</span>
+      </div>
+    </div>
+
+    <div class="container" style="padding: 0;">
+      <div class="insight">
+        <div class="insight-title">The Practitioner's Test</div>
+        <p>Before characterising any award, ask: which metric governs quantum? If the answer is the <em>victim's loss</em> → compensation. If it is the <em>wrongdoer's profit</em> → disgorgement/restitution. If it is the <em>gravity of the conduct and deterrence</em> → punitive damages. Where the answer is ambiguous, you have a hybrid instrument that requires explicit statutory authorisation and proportionality review.</p>
+      </div>
+
+      <p>The conflation risk is highest at the intersection of disgorgement and punitive damages — the zone the Italian <em>Corte di Cassazione</em> in 2017 called "the grey area between restitution and punishment." When disgorgement is unlimited, extended beyond net profits, or not directed to identifiable victims, it ceases to function as a restitutionary remedy and begins to operate as a punitive sanction without the procedural safeguards that the rule of law demands.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: TIMELINE -->
+<section class="section" id="timeline">
+  <div class="container">
+    <h4>Global Comparative Record</h4>
+    <h2>Sixteen Years of Landmark Decisions (2010–2026)</h2>
+    <p>The following timeline traces the most structurally significant decisions and legislative developments shaping the relationship between punitive damages, disgorgement, and unjust enrichment across the world's leading jurisdictions.</p>
+
+    <div class="timeline-wrap">
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">2011</div>
+        <span class="tl-juri juri-us">United States</span>
+        <div class="tl-case">Restatement (Third) of Restitution and Unjust Enrichment — ALI</div>
+        <p class="tl-desc">The American Law Institute's landmark codification of unjust enrichment principles provides the most authoritative US framework for distinguishing gain-based remedies from punitive awards, influencing subsequent Supreme Court reasoning in <em>Liu</em> (2020).</p>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">2014</div>
+        <span class="tl-juri juri-latam">Mexico</span>
+        <div class="tl-case">Amparo Directo 30/2013 — Primera Sala, Suprema Corte de Justicia de la Nación</div>
+        <p class="tl-desc">Mexico's Supreme Court held that moral damage awards may incorporate a dissuasive/punitive dimension in their quantification. A constitutional pivot: civil liability is no longer conceived as purely compensatory. The most important Latin American precedent of the decade.</p>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">2014</div>
+        <span class="tl-juri juri-eu">European Union</span>
+        <div class="tl-case">Directive 2014/104/EU — Antitrust Damages</div>
+        <p class="tl-desc">The EU explicitly excludes punitive and multiple damages from private antitrust enforcement, enshrining "full compensation without overcompensation" as a foundational European principle. The most direct legislative statement of the civil law orthodoxy on the prohibition of punitive private remedies.</p>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">2017</div>
+        <span class="tl-juri juri-us">United States</span>
+        <div class="tl-case">Kokesh v. SEC, 581 U.S. 455 (2017)</div>
+        <p class="tl-desc">The Supreme Court unanimously held that SEC disgorgement constitutes a "penalty" for limitations purposes. The key signal: when a remedy operates without reference to identifiable victims and beyond net profits, it begins to function punitively — with the legal consequences that entails.</p>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">2017</div>
+        <span class="tl-juri juri-it">Italy</span>
+        <div class="tl-case">Cass. Sezioni Unite n. 16601/2017</div>
+        <p class="tl-desc">The most significant civil law ruling on punitive damages in the decade. Italy's highest court held that punitive damages are not inherently incompatible with Italian public order — but set strict conditions: a specific statutory legal basis, foreseeability, quantitative caps, and proportionality. The judgment opened a carefully gated door.</p>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">2019</div>
+        <span class="tl-juri juri-ch">Switzerland</span>
+        <div class="tl-case">Bundesgericht 4A_663/2018</div>
+        <p class="tl-desc">The Swiss Federal Tribunal addressed public policy objections to the recognition of foreign judgments with punitive damages components, maintaining cautious restraint and signalling that disproportionate punitive awards remain incompatible with Swiss public order.</p>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">2020</div>
+        <span class="tl-juri juri-de">Germany</span>
+        <div class="tl-case">BGH VI ZR 252/19 — Dieselgate</div>
+        <p class="tl-desc">Germany's Federal Court of Justice resolved mass harm arising from Volkswagen's emissions fraud within a classical compensatory framework under § 826 BGB (intentional damage contrary to public policy): price restitution minus a use-benefit deduction. A paradigm case for producing deterrence-equivalent outcomes without a punitive private remedy.</p>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">2020</div>
+        <span class="tl-juri juri-us">United States</span>
+        <div class="tl-case">Liu v. SEC, 591 U.S. ___ (2020)</div>
+        <p class="tl-desc">The Supreme Court permitted SEC disgorgement to continue as equitable relief, but only if limited to net profits and directed to harmed investors. A deliberate effort to "re-equitise" the remedy and prevent it from functioning as a disguised penalty — directly addressing the Kokesh tension.</p>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">2020</div>
+        <span class="tl-juri juri-eu">European Union</span>
+        <div class="tl-case">Directive 2020/1828 — Representative Actions</div>
+        <p class="tl-desc">The EU's class action directive recommends safeguards against punitive damages in consumer representative actions. The legislative logic: collective mechanisms should facilitate access to justice and full redress — not incentivise "rent-seeking" litigation through punitive multipliers.</p>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">2021</div>
+        <span class="tl-juri juri-us">United States</span>
+        <div class="tl-case">NDAA FY2021 § 6501 — Statutory Disgorgement</div>
+        <p class="tl-desc">Congress codified SEC disgorgement authority, expressly linking it to "unjust enrichment" and extending limitation periods. The legislator's move immediately re-ignited debate: has Congress authorised disgorgement as a restitutionary remedy, or as a punitive sanction with a restitutionary label?</p>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">2023</div>
+        <span class="tl-juri juri-eu">European Union</span>
+        <div class="tl-case">CJEU C-300/21 — Österreichische Post (GDPR Damages)</div>
+        <p class="tl-desc">The Court of Justice clarified that a mere GDPR infringement does not automatically confer a right to compensation; actual damage must be proven. A critical guardrail: preventing GDPR compensation from functioning as a punitive fine. Reinforces the architecture of separating public sanctions (administrative fines) from private compensation.</p>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">2024</div>
+        <span class="tl-juri juri-eu">European Union</span>
+        <div class="tl-case">Regulation 2024/1689 — AI Act</div>
+        <p class="tl-desc">The EU's landmark AI regulation centres deterrence on ex ante compliance obligations and graduated administrative sanctions — not on private punitive remedies. The design choice reflects a mature European position: deterrence is best achieved through public enforcement, not through private litigation.</p>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">2025</div>
+        <span class="tl-juri juri-it">Italy</span>
+        <div class="tl-case">Cass. sez. I n. 31244/2025 — ECLI:IT:CASS:2025:31244CIV</div>
+        <p class="tl-desc">Deepening the 2017 framework, Italy's Court of Cassation applied its conditioned-recognition doctrine to foreign judgments with treble/punitive components, reinforcing the requirements of legality, foreseeability, and proportionality. Italy's position is now the most developed civil law framework for engaging with punitive-type awards.</p>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-year">2026</div>
+        <span class="tl-juri juri-us">United States</span>
+        <div class="tl-case">Sripetch v. SEC — SCOTUS (cert. granted Jan. 2026)</div>
+        <p class="tl-desc">The Supreme Court has accepted a case asking whether disgorgement requires proof of pecuniary harm to identifiable investors. The Court's answer will determine whether disgorgement is a true restitutionary remedy (requiring a victim) or a penalty that can be imposed without one — the definitional question at the heart of the restitution/punishment boundary.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: JURISDICTIONS TABLE -->
+<section class="section" id="jurisdictions">
+  <div class="container-wide">
+    <div class="container" style="padding: 0;">
+      <h4>Comparative Snapshot</h4>
+      <h2>Where Each Jurisdiction Stands in 2026</h2>
+      <p>The following table maps each jurisdiction's current position on the three remedial domains. "Open" means the remedy is available and regularly applied without exceptional prerequisites. "Conditional" means availability is restricted by statutory basis, proportionality review, quantitative caps, or other judicially imposed conditions. "Closed" means the remedy is unavailable or contrary to public policy.</p>
+    </div>
+
+    <div class="comp-table-wrap">
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>Jurisdiction</th>
+            <th>Compensatory</th>
+            <th>Disgorgement</th>
+            <th>Punitive Damages</th>
+            <th>Recognition of Foreign Punitives</th>
+            <th>Key Development 2010–2026</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>🇺🇸 United States</td>
+            <td><span class="badge b-open">Open</span></td>
+            <td><span class="badge b-cond">Conditional</span></td>
+            <td><span class="badge b-open">Open</span></td>
+            <td><span class="badge b-open">N/A (originating)</span></td>
+            <td><em>Kokesh / Liu</em>: court limits disgorgement to preserve its restorative character</td>
+          </tr>
+          <tr>
+            <td>🇮🇹 Italy</td>
+            <td><span class="badge b-open">Open</span></td>
+            <td><span class="badge b-cond">Conditional</span></td>
+            <td><span class="badge b-cond">Conditional</span></td>
+            <td><span class="badge b-cond">Conditional</span></td>
+            <td>Cass. 16601/2017: domestic punitive damages permissible with statutory basis, caps, proportionality</td>
+          </tr>
+          <tr>
+            <td>🇩🇪 Germany</td>
+            <td><span class="badge b-open">Open</span></td>
+            <td><span class="badge b-cond">Conditional</span></td>
+            <td><span class="badge b-closed">Closed</span></td>
+            <td><span class="badge b-cond">Limited</span></td>
+            <td>Dieselgate resolved via § 826 BGB — compensation with restitution logic, no punitive element</td>
+          </tr>
+          <tr>
+            <td>🇫🇷 France</td>
+            <td><span class="badge b-open">Open</span></td>
+            <td><span class="badge b-cond">Conditional</span></td>
+            <td><span class="badge b-closed">Closed</span></td>
+            <td><span class="badge b-cond">Proportionality test</span></td>
+            <td><em>Astreinte</em> system provides coercive function; Cour de Cassation maintains anti-punitive orthodoxy</td>
+          </tr>
+          <tr>
+            <td>🇨🇭 Switzerland</td>
+            <td><span class="badge b-open">Open</span></td>
+            <td><span class="badge b-cond">Conditional</span></td>
+            <td><span class="badge b-closed">Closed</span></td>
+            <td><span class="badge b-cond">Cautious</span></td>
+            <td>TF 4A_663/2018: excessive punitives may conflict with Swiss public order</td>
+          </tr>
+          <tr>
+            <td>🇲🇽 Mexico</td>
+            <td><span class="badge b-open">Open</span></td>
+            <td><span class="badge b-cond">Conditional</span></td>
+            <td><span class="badge b-cond">Hybrid (moral damages)</span></td>
+            <td><span class="badge b-pending">Developing</span></td>
+            <td>SCJN AD 30/2013: dissuasive function permissible within moral damage quantification</td>
+          </tr>
+          <tr>
+            <td>🇧🇷 Brazil</td>
+            <td><span class="badge b-open">Open</span></td>
+            <td><span class="badge b-cond">Conditional</span></td>
+            <td><span class="badge b-hybrid">Functional hybrid</span></td>
+            <td><span class="badge b-pending">No clear framework</span></td>
+            <td>STJ EAREsp 676.608: <em>repetição em dobro</em> operates as civil sanction, calibrated to bad faith</td>
+          </tr>
+          <tr>
+            <td>🇦🇷 Argentina</td>
+            <td><span class="badge b-open">Open</span></td>
+            <td><span class="badge b-cond">Conditional</span></td>
+            <td><span class="badge b-cond">Art. 1714 CCC (limited)</span></td>
+            <td><span class="badge b-pending">Developing</span></td>
+            <td>CCC 2015 Art. 1714: "dissuasive pecuniary sanction" for collective rights — narrower than originally drafted</td>
+          </tr>
+          <tr>
+            <td>🇪🇨 Ecuador</td>
+            <td><span class="badge b-open">Open</span></td>
+            <td><span class="badge b-cond">Conditional</span></td>
+            <td><span class="badge b-closed">No express basis</span></td>
+            <td><span class="badge b-pending">Uncertain</span></td>
+            <td>Constitution 2008 (Arts. 52–53) offers potential normative anchor; COGEP 2016 does not address</td>
+          </tr>
+          <tr>
+            <td>🇪🇺 EU (Regulatory)</td>
+            <td><span class="badge b-open">Open</span></td>
+            <td><span class="badge b-cond">Sector-dependent</span></td>
+            <td><span class="badge b-closed">Excluded (antitrust, consumer)</span></td>
+            <td><span class="badge b-cond">Proportionality review</span></td>
+            <td>Dir. 2014/104: "full compensation without overcompensation" as system-wide principle</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: THE SPECTRUM -->
+<section class="section">
+  <div class="container">
+    <h4>Openness to Punitive-Type Civil Remedies</h4>
+    <h2>The Spectrum of Jurisdictional Receptivity</h2>
+    <p>The following visualisation maps jurisdictions on a scale from "fully open" to punitive civil remedies, to "structurally closed." The width of the bar represents the scope of the remedy's availability; colour indicates the dominant justification.</p>
+
+    <div class="spectrum-wrap">
+      <div class="spec-legend">
+        <div class="spec-leg-item"><div class="spec-leg-dot" style="background:#1a5c3c"></div> Open / common law</div>
+        <div class="spec-leg-item"><div class="spec-leg-dot" style="background:#b8841a"></div> Conditional / hybrid</div>
+        <div class="spec-leg-item"><div class="spec-leg-dot" style="background:#2e5c94"></div> Emerging / constitutional anchor</div>
+        <div class="spec-leg-item"><div class="spec-leg-dot" style="background:#ccc"></div> Closed / public order objection</div>
+      </div>
+
+      <div class="spectrum-item">
+        <div class="spec-country">🇺🇸 United States</div>
+        <div class="spec-bar-wrap"><div class="spec-bar" style="width:92%; background:#1a5c3c;"></div></div>
+        <div class="spec-note">Broad availability; SCOTUS constrains disgorgement scope</div>
+      </div>
+      <div class="spectrum-item">
+        <div class="spec-country">🇮🇹 Italy</div>
+        <div class="spec-bar-wrap"><div class="spec-bar" style="width:52%; background:#b8841a;"></div></div>
+        <div class="spec-note">Open under strict conditions (typicality, caps, proportionality)</div>
+      </div>
+      <div class="spectrum-item">
+        <div class="spec-country">🇲🇽 Mexico</div>
+        <div class="spec-bar-wrap"><div class="spec-bar" style="width:44%; background:#2e5c94;"></div></div>
+        <div class="spec-note">Punitive function integrated in moral damage quantification</div>
+      </div>
+      <div class="spectrum-item">
+        <div class="spec-country">🇧🇷 Brazil</div>
+        <div class="spec-bar-wrap"><div class="spec-bar" style="width:38%; background:#b8841a;"></div></div>
+        <div class="spec-note">Functional equivalents via statutory multipliers (CDC art. 42)</div>
+      </div>
+      <div class="spectrum-item">
+        <div class="spec-country">🇦🇷 Argentina</div>
+        <div class="spec-bar-wrap"><div class="spec-bar" style="width:32%; background:#2e5c94;"></div></div>
+        <div class="spec-note">Art. 1714 CCC: dissuasive sanction, collective rights only</div>
+      </div>
+      <div class="spectrum-item">
+        <div class="spec-country">🇫🇷 France</div>
+        <div class="spec-bar-wrap"><div class="spec-bar" style="width:16%; background:#ccc;"></div></div>
+        <div class="spec-note">Closed; proportionality review on recognition of foreign awards</div>
+      </div>
+      <div class="spectrum-item">
+        <div class="spec-country">🇩🇪 Germany</div>
+        <div class="spec-bar-wrap"><div class="spec-bar" style="width:14%; background:#ccc;"></div></div>
+        <div class="spec-note">Closed domestically; conditional recognition of foreign punitives</div>
+      </div>
+      <div class="spectrum-item">
+        <div class="spec-country">🇨🇭 Switzerland</div>
+        <div class="spec-bar-wrap"><div class="spec-bar" style="width:12%; background:#ccc;"></div></div>
+        <div class="spec-note">Cautious; excessive punitives may violate Swiss public order</div>
+      </div>
+      <div class="spectrum-item">
+        <div class="spec-country">🇪🇨 Ecuador</div>
+        <div class="spec-bar-wrap"><div class="spec-bar" style="width:10%; background:#2e5c94;"></div></div>
+        <div class="spec-note">No express statutory basis; constitutional openings unexplored</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: KEY CASES -->
+<section class="section" id="cases">
+  <div class="container">
+    <h4>Deep Dives</h4>
+    <h2>Four Cases That Reshape the Field</h2>
+    <p>The following cases are not merely interesting precedents — they are structural landmarks that redefine the relationship between compensation, disgorgement, and punishment in their respective legal orders.</p>
+
+    <div class="case-card">
+      <div class="case-header">
+        <div>
+          <div class="case-name">Liu v. Securities and Exchange Commission</div>
+          <div class="case-citation">591 U.S. ___ (2020) · United States Supreme Court</div>
+        </div>
+        <span class="case-tag">Restitution/Punishment Boundary</span>
+      </div>
+      <div class="case-body">
+        <p>Following <em>Kokesh</em>'s characterisation of SEC disgorgement as a "penalty" for limitations purposes, the Court faced a starker choice: abolish disgorgement entirely, or articulate the conditions under which it may survive as a legitimate equitable remedy. It chose the latter — but at a price.</p>
+        <p>Justice Sotomayor's opinion for an 8-1 majority held that courts may order disgorgement of "net profits" as equitable relief, but conditioned this on two requirements: (1) the award must be limited to the defendant's net profits (deducting legitimate business expenses), and (2) the funds must be returned to harmed investors, not deposited in the U.S. Treasury.</p>
+        <p><strong>Why it matters for comparative law:</strong> <em>Liu</em> is the U.S. Supreme Court's most precise articulation of what distinguishes restitution from punishment. The requirements of "net profits" and "victim-orientation" map almost exactly onto the conditions that EU law uses to define acceptable gain-based remedies. The case thus provides a usable analytical framework for jurisdictions drafting disgorgement provisions.</p>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-header">
+        <div>
+          <div class="case-name">Corte di Cassazione, Sezioni Unite, n. 16601</div>
+          <div class="case-citation">5 July 2017 · Italy</div>
+        </div>
+        <span class="case-tag">Civil Law / Punitive Compatibility</span>
+      </div>
+      <div class="case-body">
+        <p>For decades, the received view in Italian private law — consistent with the majority position across continental Europe — was that punitive damages were categorically incompatible with the compensatory function of civil liability and therefore contrary to public policy (<em>ordine pubblico</em>). The 2017 Grand Chamber judgment fundamentally revised this position.</p>
+        <p>The court held that punitive damages are <strong>not ontologically incompatible</strong> with Italian public order. Crucially, however, the court did not simply open the door: it constructed a careful conditional framework. Recognition of foreign punitive awards requires: (i) a specific legal basis in the source jurisdiction — punitive damages cannot rest on judicial discretion alone; (ii) foreseeability for the defendant at the time of the conduct; (iii) quantitative limits proportionate to the compensatory component; and (iv) overall proportionality of the award.</p>
+        <p><strong>The 2025 follow-up:</strong> <em>Cass.</em> n. 31244/2025 extended this framework to treble damage awards, reinforcing that the critical variables are legality, foreseeability, and proportionality — not the label of the remedy.</p>
+        <p><strong>For practitioners:</strong> The Italian framework now offers the most worked-out civil law test for evaluating whether a punitive or multiplied award from a foreign jurisdiction will be recognised. It is increasingly cited by courts in Spain, Portugal, and Latin American jurisdictions as a model for engagement with punitive damages.</p>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-header">
+        <div>
+          <div class="case-name">Amparo Directo 30/2013</div>
+          <div class="case-citation">26 February 2014 · Primera Sala, Suprema Corte de Justicia de la Nación, Mexico</div>
+        </div>
+        <span class="case-tag">Latin America / Constitutional Tort Law</span>
+      </div>
+      <div class="case-body">
+        <p>Mexico's Supreme Court decided a personal injury case arising from negligent hospitality services. The First Chamber's judgment went considerably beyond the facts to articulate a structural reconception of moral damage in Mexican law.</p>
+        <p>The court held that the quantification of moral damage must account not only for the victim's subjective suffering but also for a dissuasive/preventive dimension — effectively integrating what the common law tradition calls a punitive function into the civil liability framework. The court provided a list of quantification parameters including the defendant's financial capacity, the social impact of the conduct, and the need for deterrence.</p>
+        <p><strong>Doctrinal significance:</strong> This decision represents the most complete Latin American example of "constitutionalisation" of the punitive function in private law — the idea that constitutional rights protection demands that civil liability be capable of serving a deterrent role, not merely a compensatory one. It anticipates, under a constitutional rights register, much of what Argentina's Art. 1714 CCC attempted to achieve through codification.</p>
+        <p><strong>Caution:</strong> The judgment does not create a standalone punitive damages remedy. The punitive dimension is embedded within moral damage — which means it remains subject to the limitations and procedural rules governing that category. This hybrid structure both broadens the remedy and limits its doctrinal clarity.</p>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-header">
+        <div>
+          <div class="case-name">BGH VI ZR 252/19 — Volkswagen Emissions Fraud</div>
+          <div class="case-citation">25 May 2020 · Bundesgerichtshof, Germany</div>
+        </div>
+        <span class="case-tag">Mass Harm / Compensatory Framework</span>
+      </div>
+      <div class="case-body">
+        <p>The Volkswagen "Dieselgate" scandal produced one of the most instructive comparative law experiments of the decade. The same fundamental wrong — systematic, deliberate fraud affecting millions of consumers — was addressed through entirely different remedial architectures on either side of the Atlantic.</p>
+        <p>In the United States, the remedy was a negotiated settlement combining a USD 14.7 billion consumer buyback/compensation programme, civil penalties paid to the U.S. government, and criminal fines — a complex public-private architecture. In Germany, the Federal Court of Justice resolved the private law claims under § 826 BGB (intentional damage contrary to good morals), awarding the price paid minus a use-benefit deduction. No punitive element, no disgorgement of profits — pure compensation, calibrated to the individual purchaser's loss.</p>
+        <p><strong>What the comparison reveals:</strong> The German approach demonstrates that a classical civil law framework can generate significant deterrence-equivalent outcomes through the combination of compensatory civil awards at scale, regulatory sanctions, and criminal prosecution — without a punitive private damages remedy. The architecture distributes the sanctioning function across public and private law rather than concentrating it in a single private award. Whether this is preferable to the U.S. model depends on which values one prioritises: certainty of compensation, severity of deterrence, or the distribution of enforcement costs between public agencies and private litigants.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: DIGITAL ECONOMY -->
+<section class="section">
+  <div class="container">
+    <h4>Emerging Frontier</h4>
+    <h2>Unjust Enrichment in the Digital Economy</h2>
+    <p>The most intellectually fertile frontier in contemporary unjust enrichment scholarship is also, practically, among the most consequential: the unauthorised commercial use of data — and in particular, the use of copyrighted works and personal data to train generative AI systems.</p>
+
+    <p>The doctrinal appeal of unjust enrichment in this context is straightforward. Where a company uses protected works or personal data without authorisation, and derives substantial commercial value from that use, the unjust enrichment framework offers a potentially powerful remedy — one that focuses not on the (often difficult to prove) harm suffered by the data subject, but on the gain made by the defendant.</p>
+
+    <div class="pullquote">
+      <p>Unjust enrichment may prove to be the most effective private law remedy for AI-driven data appropriation — precisely because it measures the defendant's gain, not the plaintiff's loss.</p>
+      <cite>Li &amp; Lee, "Unjust Enrichment as a Remedy for AI's Unauthorised Use of Protected Data," Common Law World Review (2026)</cite>
+    </div>
+
+    <p>The EU's approach, as crystallised in the GDPR litigation and the AI Act, reflects a deliberate architectural choice: keep private compensation distinct from public sanction. The CJEU's <em>Österreichische Post</em> ruling (C-300/21, 2023) exemplifies this: actual damage must be proven for a compensation claim; the mere fact of an infringement does not suffice. This prevents GDPR compensation from functioning as a multiplied administrative fine in the hands of private litigants.</p>
+
+    <p>The unresolved question — now beginning to be addressed in scholarship — is whether gain-based restitution (unjust enrichment) offers a bridge between these two positions: allowing private litigants to recover the value extracted without converting compensation into a punitive instrument. The answer will depend on whether courts treat the "benefit" as the entire commercial value of the AI model (very large, raising punitive concerns) or as a traceable net enrichment attributable to the specific unauthorised use (more modest, more defensible as restitution).</p>
+
+    <div class="insight">
+      <div class="insight-title">Practitioner Note: AI Disputes</div>
+      <p>Counsel advising AI companies on data acquisition risk should evaluate potential unjust enrichment exposure alongside copyright and privacy claims. Unlike damages, unjust enrichment does not require proof of loss — it requires proof that the defendant was enriched, that the enrichment was at the claimant's expense, and that there is no sufficient legal basis for it. In jurisdictions that accept gain-based restitution, this is a potentially material exposure that goes beyond the quantifiable harm-based claims.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: FIVE RULES -->
+<section class="section" id="rules">
+  <div class="container">
+    <h4>Policy &amp; Practice</h4>
+    <h2>Five Design Rules for Legislators, Judges &amp; Counsel</h2>
+    <p>The comparative analysis 2010–2026 generates five operational rules — applicable to legislators drafting remedial frameworks, to courts applying or recognising punitive-type awards, and to counsel advising clients in cross-border disputes.</p>
+
+    <div class="rules-grid">
+      <div class="rule-card">
+        <div class="rule-num">01</div>
+        <h3>Require a Statutory Basis for Any Punitive Component</h3>
+        <p>Punitive awards — whether labelled "punitive damages," "dissuasive sanctions," or "exemplary damages" — must rest on an explicit legal basis. Judicial discretion is insufficient. The Italian framework (legality, foreseeability, quantitative limits) represents the minimum standard consistent with the rule of law.</p>
+      </div>
+      <div class="rule-card">
+        <div class="rule-num">02</div>
+        <h3>Use Distinct Metrics for Each Remedy</h3>
+        <p>In any complex dispute involving compensation, disgorgement, and punitive awards simultaneously, ensure that each remedy is quantified on a distinct metric: loss (compensation), net profits (disgorgement), gravity and deterrence (punitive). When a single figure must serve all three purposes, it will fail at all three.</p>
+      </div>
+      <div class="rule-card">
+        <div class="rule-num">03</div>
+        <h3>Design the Destination of Any "Surplus"</h3>
+        <p>Where an award exceeds the victim's actual loss — whether through a punitive component or a statutory multiplier — the destination of the surplus requires deliberate design. Options include: (a) returning to the victim (risk: unjust enrichment of claimant); (b) payment to a public fund (character: public fine); (c) sector-specific remediation fund (most defensible). The choice has constitutional and policy implications.</p>
+      </div>
+      <div class="rule-card">
+        <div class="rule-num">04</div>
+        <h3>Coordinate with Collective Mechanisms and Public Enforcement</h3>
+        <p>In mass harm scenarios, multiple individual punitive awards create structural over-deterrence and multiple punition risk. The preferred architecture: a coordinated redress programme (class/representative action or regulatory settlement) combined with public administrative sanctions — not accumulated individual punitive awards for the same wrongful conduct.</p>
+      </div>
+      <div class="rule-card">
+        <div class="rule-num">05</div>
+        <h3>In Technology Disputes, Distinguish Disgorgement from Punitive Damages</h3>
+        <p>Where a technology company has extracted value from data or protected works without authorisation, consider whether the objective is to strip the gain (unjust enrichment / disgorgement — a restorative remedy) or to punish the conduct (punitive damages — a sanction requiring proportionality review). Confusing the two will undermine both claims.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: CONCLUSION -->
+<section class="section">
+  <div class="container">
+    <h4>Conclusion</h4>
+    <h2>The Thesis Confirmed — and Refined</h2>
+
+    <p>The central argument of the 2010 study survives the stress test of sixteen years and a substantially changed institutional landscape. Punitive damages and unjust enrichment remain distinct in their normative logic, their metric, and the legal standards that govern their application. The former punishes; the latter restores. Conflating them generates systematic distortions that harm both claimants (under-deterrence or overcompensation) and defendants (due process deficits).</p>
+
+    <p>What has changed is the terrain on which these distinctions must be drawn. The period 2010–2026 has produced three structural developments that any practitioner in this field must internalise. First, punitive-type mechanisms are no longer alien to civil law systems; they have migrated — but they arrive with conditions attached that the common law tradition did not always require. The Italian, Mexican, and Argentine experiences show that civil law can accommodate deterrent-oriented remedies; they also show that it does so only when legality, foreseeability, proportionality, and quantitative limits are in place. Second, disgorgement has emerged as the most contested remedial instrument of the period — oscillating between restitution and punishment in the United States, while the EU has deliberately excluded it from private enforcement in competition and consumer law. Third, the digital economy has created new forms of causeless enrichment — in particular, the extraction of value from unauthorised data use — that classical unjust enrichment doctrine is well-positioned to address, provided that gain-based restitution is kept analytically separate from punitive damages.</p>
+
+    <div class="pullquote">
+      <p>The question for the next decade is not whether civil law can tolerate punitive mechanisms. It is whether, having admitted them, it can maintain the analytical clarity that prevents compensation, disgorgement, and punishment from collapsing into a single, unprincipled instrument.</p>
+    </div>
+
+    <p>This matters not only as an academic question but as a practical one: as disputes increasingly cross borders, the characterisation of a remedy as compensatory, restorative, or punitive determines which jurisdiction's law governs, whether recognition and enforcement will be available, and what procedural safeguards apply. Getting the distinctions right is not merely intellectually satisfying — it is strategically essential.</p>
+  </div>
+</section>
+
+<!-- FOOTNOTES -->
+<section class="footnotes">
+  <div class="container">
+    <h4>Key Sources &amp; References</h4>
+    <div class="fn-grid">
+      <div class="fn-item"><span class="fn-num">US-1</span><em>Kokesh v. Securities and Exchange Commission</em>, 581 U.S. 455 (2017)</div>
+      <div class="fn-item"><span class="fn-num">US-2</span><em>Liu v. Securities and Exchange Commission</em>, 591 U.S. ___ (2020)</div>
+      <div class="fn-item"><span class="fn-num">US-3</span><em>AMG Capital Management v. FTC</em>, 593 U.S. ___ (2021)</div>
+      <div class="fn-item"><span class="fn-num">US-4</span>NDAA FY2021, Pub. L. 116–283, § 6501 (2021) — SEC Disgorgement Codification</div>
+      <div class="fn-item"><span class="fn-num">US-5</span><em>Sripetch v. SEC</em>, cert. granted January 2026 (SCOTUS)</div>
+      <div class="fn-item"><span class="fn-num">IT-1</span>Corte di Cassazione, Sezioni Unite, n. 16601 (5 July 2017)</div>
+      <div class="fn-item"><span class="fn-num">IT-2</span>Cass. sez. I, n. 31244/2025, ECLI:IT:CASS:2025:31244CIV</div>
+      <div class="fn-item"><span class="fn-num">DE-1</span>BGH VI ZR 252/19 (25 May 2020) — Dieselgate, § 826 BGB</div>
+      <div class="fn-item"><span class="fn-num">CH-1</span>Bundesgericht 4A_663/2018 (27 May 2019)</div>
+      <div class="fn-item"><span class="fn-num">MX-1</span>SCJN Primera Sala, Amparo Directo 30/2013 (26 Feb. 2014)</div>
+      <div class="fn-item"><span class="fn-num">BR-1</span>STJ, Corte Especial, EAREsp 676.608/RS (DJe 30 Mar. 2021)</div>
+      <div class="fn-item"><span class="fn-num">EU-1</span>Directive 2014/104/EU — Antitrust Damages (full compensation principle)</div>
+      <div class="fn-item"><span class="fn-num">EU-2</span>Directive (EU) 2020/1828 — Representative Actions for Consumers</div>
+      <div class="fn-item"><span class="fn-num">EU-3</span>CJEU C-300/21 — <em>Österreichische Post</em> (GDPR damages, 4 May 2023)</div>
+      <div class="fn-item"><span class="fn-num">EU-4</span>Regulation (EU) 2024/1689 — Artificial Intelligence Act</div>
+      <div class="fn-item"><span class="fn-num">EU-5</span>Regulation (EC) 864/2007 (Rome II), Recital 32 — public policy on punitive damages</div>
+      <div class="fn-item"><span class="fn-num">DOC-1</span>ALI, Restatement (Third) of Restitution and Unjust Enrichment (2011)</div>
+      <div class="fn-item"><span class="fn-num">DOC-2</span>DOJ/SEC, A Resource Guide to the FCPA (2nd ed., 2020)</div>
+      <div class="fn-item"><span class="fn-num">DOC-3</span>Li &amp; Lee, "Unjust Enrichment as a Remedy for AI's Unauthorised Use of Protected Data," <em>Common Law World Review</em> (2026, OnlineFirst)</div>
+      <div class="fn-item"><span class="fn-num">DOC-4</span>Aguiar Lozano, H.F., "Daños Punitivos y Enriquecimiento Injustificado" (2010, rev. 2026)</div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <strong>Hugo Fernando Aguiar Lozano</strong>, Attorney-at-Law &nbsp;·&nbsp;
+  Comparative Law &amp; International Remedies &nbsp;·&nbsp;
+  Article updated April 2026 &nbsp;·&nbsp;
+  All rights reserved
+</footer>
+
+</body>
+</html>
