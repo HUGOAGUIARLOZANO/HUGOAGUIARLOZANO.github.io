@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ecuador Oil Hedging 2026: Payoff Structures | Hugo Aguiar Lozano</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{--ink:#100f0d;--paper:#f8f5f0;--cream:#ede9e0;--warm:#e4dfd4;--rule:#c2b9a7;--muted:#7c7060;--accent:#8c1c0e;--blue:#173559;--teal:#185040;--gold:#a87c10;--col:680px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:'Source Serif 4',Georgia,serif;font-size:18px;line-height:1.78;-webkit-font-smoothing:antialiased}
+.masthead{background:var(--ink);color:var(--paper);padding:.55rem 2rem;display:flex;justify-content:space-between;align-items:center;font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.14em;text-transform:uppercase}
+.masthead .site{color:#a87c10}
+.article-header{max-width:var(--col);margin:3.8rem auto 0;padding:0 1.5rem}
+.kicker{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem}
+h1{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,4vw,2.9rem);font-weight:700;line-height:1.12;color:var(--ink);margin-bottom:1.1rem}
+h1 em{font-style:italic;color:var(--accent)}
+.deck{font-size:1.08rem;line-height:1.6;color:var(--muted);font-style:italic;border-left:3px solid var(--accent);padding-left:1rem;margin-bottom:1.8rem;font-weight:300}
+.byline{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.07em;color:var(--muted);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:.55rem 0;margin-bottom:2.8rem}
+.article-body{max-width:var(--col);margin:0 auto;padding:0 1.5rem 5rem}
+p{margin-bottom:1.3rem}
+.dropcap::first-letter{font-family:'Cormorant Garamond',serif;font-size:5rem;font-weight:700;float:left;line-height:.8;margin:.06em .12em 0 0;color:var(--accent)}
+h2{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--ink);margin:3.2rem 0 .9rem;border-bottom:2px solid var(--ink);padding-bottom:.3rem}
+h3{font-family:'Cormorant Garamond',serif;font-size:1.18rem;font-weight:600;font-style:italic;color:var(--ink);margin:2rem 0 .6rem}
+.eq{background:var(--cream);border:1px solid var(--warm);padding:.85rem 1.3rem;margin:1.4rem 0;font-family:'JetBrains Mono',monospace;font-size:.78rem;line-height:2;color:var(--blue);overflow-x:auto;position:relative}
+.eq-n{position:absolute;right:.8rem;top:.4rem;font-size:.65rem;color:var(--muted)}
+.pull{border-top:3px solid var(--accent);border-bottom:1px solid var(--rule);margin:2.4rem -1rem;padding:1.2rem 1.6rem;background:var(--cream)}
+.pull p{font-family:'Cormorant Garamond',serif;font-size:1.28rem;font-style:italic;line-height:1.45;color:var(--ink);margin:0}
+.pull p::before{content:'\201C';color:var(--accent);font-size:1.6rem;line-height:0;vertical-align:-.28em;margin-right:.07em}
+.pull p::after{content:'\201D';color:var(--accent);font-size:1.6rem;line-height:0;vertical-align:-.28em;margin-left:.07em}
+.insight{background:var(--ink);color:var(--paper);padding:1.3rem 1.6rem;margin:2.2rem 0;border-left:5px solid var(--gold)}
+.insight .lbl{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.45rem}
+.insight p{color:var(--paper);margin-bottom:0;font-size:.9rem;line-height:1.65}
+.fig{margin:2.4rem 0;border:1px solid var(--warm)}
+.fig-hd{background:var(--ink);color:var(--paper);padding:.42rem .85rem;font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;display:flex;justify-content:space-between}
+.fig-hd .fn{color:#a87c10}
+.fig-inner{padding:1.1rem;background:#fff}
+.fig-cap{padding:.55rem .85rem;background:var(--cream);font-size:.76rem;font-style:italic;color:var(--muted);border-top:1px solid var(--warm);line-height:1.5}
+.payoff-section{background:var(--ink);padding:1.7rem;margin:2.5rem 0;color:var(--paper)}
+.ps-title{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:#a87c10;margin-bottom:.25rem}
+.ps-sub{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.1em;color:rgba(248,245,240,.4);margin-bottom:1.3rem}
+.strategy-tabs{display:flex;gap:0;margin-bottom:0;flex-wrap:wrap}
+.stab{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.09em;text-transform:uppercase;padding:.45rem .8rem;border:1px solid rgba(194,185,167,.2);border-bottom:none;background:rgba(255,255,255,.04);color:rgba(248,245,240,.5);cursor:pointer;transition:all .15s}
+.stab:hover{background:rgba(255,255,255,.09);color:var(--paper)}
+.stab.active{background:rgba(168,124,16,.18);color:#a87c10;border-color:#a87c10}
+.payoff-canvas-wrap{position:relative;height:280px;background:rgba(255,255,255,.02);border:1px solid rgba(194,185,167,.12)}
+.payoff-params{display:grid;grid-template-columns:1fr 1fr;gap:.8rem 1.4rem;margin-top:1.1rem}
+@media(max-width:500px){.payoff-params{grid-template-columns:1fr}}
+.pp-ctrl label{display:block;font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:#a87c10;margin-bottom:.22rem}
+.pp-ctrl .pv{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:#fff}
+.pp-ctrl input[type=range]{width:100%;accent-color:#a87c10;cursor:pointer}
+.payoff-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:.55rem;margin-top:.9rem}
+@media(max-width:540px){.payoff-stats{grid-template-columns:1fr 1fr}}
+.pstat{background:rgba(255,255,255,.05);border:1px solid rgba(168,124,16,.18);padding:.6rem .75rem}
+.pstat .ps-lbl{font-family:'JetBrains Mono',monospace;font-size:.52rem;letter-spacing:.11em;text-transform:uppercase;color:rgba(168,124,16,.7);margin-bottom:.18rem}
+.pstat .ps-val{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:#fff}
+.pstat.good .ps-val{color:#7ed4a0}
+.pstat.bad .ps-val{color:#f07a6a}
+.pstat.warn .ps-val{color:#f0c060}
+.sf-wrap{margin-top:.9rem;background:rgba(23,53,89,.35);border:1px solid rgba(23,53,89,.5);padding:.65rem .9rem;font-family:'JetBrains Mono',monospace;font-size:.72rem;color:rgba(248,245,240,.65);line-height:1.8}
+.sf-label{font-size:.56rem;letter-spacing:.15em;text-transform:uppercase;color:#a87c10;margin-bottom:.25rem}
+.comp-table{width:100%;border-collapse:collapse;font-size:.8rem}
+.comp-table th{background:var(--blue);color:#fff;font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.07em;text-transform:uppercase;padding:.55rem .7rem;text-align:left}
+.comp-table td{padding:.55rem .7rem;border-bottom:1px solid var(--warm);vertical-align:top}
+.comp-table tr:nth-child(even) td{background:var(--cream)}
+.comp-table .hi{color:var(--teal);font-weight:600}
+.comp-table .lo{color:var(--accent);font-weight:600}
+.comp-table .na{color:var(--rule);font-style:italic}
+.footnotes{margin-top:3rem;padding-top:1rem;border-top:2px solid var(--ink);font-size:.77rem;color:var(--muted);line-height:1.6}
+.footnotes ol{padding-left:1.1rem}
+.footnotes li{margin-bottom:.32rem}
+sup{font-size:.6rem;vertical-align:super;color:var(--blue)}
+strong{font-weight:600}
+</style>
+</head>
+<body>
+<div class="masthead">
+  <span class="site">Hugo Aguiar Lozano</span>
+  <span>Energy Governance &middot; Sovereign Finance &middot; April 2026</span>
+</div>
+<header class="article-header">
+  <div class="kicker">Technical Paper &middot; Sovereign Risk Management</div>
+  <h1>Four Structures, One Problem: <em>The Payoff Mathematics</em> of Ecuador's Sovereign Oil Hedge</h1>
+  <p class="deck">Why the choice between an Asian put, a collar, and a three-way collar is not a matter of preference &mdash; it is a matter of what each structure does to Ecuador's fiscal revenue distribution under dollarization constraints.</p>
+  <div class="byline">By Hugo Aguiar Lozano &nbsp;&middot;&nbsp; LL.M. Harvard Law School (Dean's Scholar) &nbsp;&middot;&nbsp; Former Minister of Energy, Ecuador &nbsp;&middot;&nbsp; Former GM, EP Petroecuador &nbsp;&middot;&nbsp; April 2026</div>
+</header>
+<main class="article-body">
+
+<p class="dropcap">Every sovereign oil hedging decision is, at its core, a decision about which part of the price distribution to sacrifice and which to protect. An unhedged position is full exposure: gains unlimited, losses unlimited, fiscal revenue tracking oil prices with no intervention. A put option buys downside protection at the cost of a known premium, leaving upside intact. A collar sells some upside to finance that protection. A three-way collar goes further, selling a second tranche of downside protection to reduce premium costs. Each structure implies a specific payoff function, a specific fiscal revenue profile, and a specific set of political economy risks that no spreadsheet comparison of three scenarios fully captures.</p>
+
+<p>This paper makes the payoff mathematics of each structure explicit and interactive, grounding them in Ecuador's 2026 fiscal context: approximately 120 million barrels annually hedged, a fiscal sensitivity of roughly $23.85 million per $1/barrel per the IMF EFF program adjuster,<sup>1</sup> and a BCE regulatory framework (Resolution JPRFM-2026-009-M) that is operationally compatible with some structures and institutionally hostile to others.<sup>2</sup> The analysis revisits the benchmark cost-efficiency estimate of Satyanarayan and Somensatto (1997) &mdash; who found that 1% of risk reduction cost 0.65% of expected return under 1988&ndash;1996 conditions<sup>3</sup> &mdash; and updates it to current implied volatility (&#963; &asymp; 35%), where that ratio has deteriorated to approximately 1.0&ndash;1.2 for standard Asian puts.</p>
+
+<h2>I. The Mathematical Foundation</h2>
+
+<h3>1.1 The Mean-Variance Framework</h3>
+
+<p>The foundational hedging model for Ecuador was developed by Satyanarayan and Somensatto in World Bank Policy Research Working Paper No. 1792. They model the hedging decision as a portfolio selection problem where the government minimizes revenue variance subject to a return constraint. For a risk-minimizing short hedger, the optimal hedge ratio is:</p>
+
+<div class="eq"><span class="eq-n">(1)</span>
+h* = Cov(&Delta;S, &Delta;F) / Var(&Delta;F)
+</div>
+
+<p>The portfolio return and variance are:</p>
+
+<div class="eq"><span class="eq-n">(2&ndash;3)</span>
+ER&#8346; = E(&Delta;S) &minus; h &middot; E(&Delta;F)
+Var&#8346; = Var(S) + h&sup2; &middot; Var(F) &minus; 2h &middot; Cov(S,F)
+</div>
+
+<p>Their key empirical findings for Ecuador over 1988&ndash;1996: optimal hedge ratio h* &asymp; 0.89, basis risk (1 &minus; R&sup2;) = 0.19, and a cost elasticity at the minimum-variance portfolio of <strong>0.65</strong> &mdash; meaning a 1% reduction in revenue variance cost 0.65% of expected return.</p>
+
+<h3>1.2 The Four Payoff Functions</h3>
+
+<p>For an Asian put option &mdash; the appropriate instrument for Ecuador's annual fiscal cycle &mdash; the payoff at settlement is:</p>
+
+<div class="eq"><span class="eq-n">(4)</span>
+Payoff(put) = max(K &minus; S&#772;, 0) &times; V&#8320; &minus; P &times; V&#8320;
+
+where S&#772; = (1/T) &Sigma; S&#7522;  [arithmetic average over T monthly fixings]
+      K = strike price (USD/bbl)
+      V&#8320; = hedged volume (barrels)
+      P = option premium (USD/bbl)
+</div>
+
+<p>For the collar, Ecuador buys a put at K&#8321; and sells a call at K&#8322; &gt; K&#8321;:</p>
+
+<div class="eq"><span class="eq-n">(5)</span>
+Payoff(collar) = [max(K&#8321; &minus; S&#772;, 0) &minus; max(S&#772; &minus; K&#8322;, 0)] &times; V&#8320; &minus; P&#8319;&#7497;&#7511; &times; V&#8320;
+</div>
+
+<p>For the three-way collar, a short put at K&#8323; &lt; K&#8321; is added:</p>
+
+<div class="eq"><span class="eq-n">(6)</span>
+Payoff(3-way) = Payoff(collar) + max(K&#8323; &minus; S&#772;, 0) &times; V&#8320;
+
+CRITICAL: When S&#772; &lt; K&#8323;, the last term is POSITIVE &mdash;
+Ecuador OWES payments to counterparties.
+Protection is not only lost but REVERSED.
+</div>
+
+<h3>1.3 The Volatility Premium Problem</h3>
+
+<p>Option premiums scale approximately with implied volatility. When &#963; rises from the 1997 long-run mean of ~21% to current ~35%, premiums increase by a factor of 35/21 &asymp; 1.67. For Asian options, the effective volatility is reduced by the averaging mechanism: &#963;&#7497;&#7497;&#7497; &asymp; &#963;/&radic;3, lowering premiums ~30&ndash;40% relative to European puts. The updated cost elasticity is:</p>
+
+<div class="eq"><span class="eq-n">(7)</span>
+Cost Elasticity &asymp; (Premium/Notional) / (Risk Reduction %)
+
+At &#963; = 21% (1997 benchmark):  Elasticity &asymp; 0.65
+At &#963; = 35% (2026 conditions): Elasticity &asymp; 1.0&ndash;1.2
+</div>
+
+<div class="pull">
+  <p>The three-way collar converts Ecuador from a protection buyer into a protection seller precisely below the lower strike &mdash; at the worst possible moment for a dollarized economy with no exchange rate buffer.</p>
+</div>
+
+<h2>II. Interactive Payoff Diagrams</h2>
+
+<p>The following tool renders each strategy's payoff as a continuous function of the average Ecuador mix price from $25 to $105/barrel. All parameters are adjustable. Revenue figures are gross petroleum export revenue in USD billions for the full 240 Mb export base.</p>
+
+<div class="payoff-section">
+  <div class="ps-title">Interactive Payoff Diagrams &mdash; Ecuador Sovereign Hedge 2026</div>
+  <div class="ps-sub">Adjust parameters below &middot; hover chart for exact values &middot; USD billions</div>
+  <div class="strategy-tabs">
+    <button class="stab active" onclick="setStrat('unhedged')">Unhedged</button>
+    <button class="stab" onclick="setStrat('put')">Asian Put</button>
+    <button class="stab" onclick="setStrat('collar')">Collar</button>
+    <button class="stab" onclick="setStrat('threeway')">Three-Way</button>
+    <button class="stab" onclick="setStrat('all')">All Four</button>
+  </div>
+  <div class="payoff-canvas-wrap"><canvas id="payoffChart"></canvas></div>
+  <div class="payoff-params">
+    <div class="pp-ctrl">
+      <label>Hedged Volume (Mb) <span class="pv" id="vHedged">120</span></label>
+      <input type="range" id="sVH" min="20" max="200" value="120" step="10">
+    </div>
+    <div class="pp-ctrl">
+      <label>Put Strike K&#8321; (USD/bbl) <span class="pv" id="vK1">$65</span></label>
+      <input type="range" id="sK1" min="45" max="80" value="65" step="1">
+    </div>
+    <div class="pp-ctrl">
+      <label>Call Strike K&#8322; (USD/bbl) <span class="pv" id="vK2">$85</span></label>
+      <input type="range" id="sK2" min="70" max="105" value="85" step="1">
+    </div>
+    <div class="pp-ctrl">
+      <label>Lower Strike K&#8323; (USD/bbl) <span class="pv" id="vK3">$50</span></label>
+      <input type="range" id="sK3" min="30" max="62" value="50" step="1">
+    </div>
+    <div class="pp-ctrl">
+      <label>Put Premium (USD/bbl) <span class="pv" id="vPrem">$5.00</span></label>
+      <input type="range" id="sPrem" min="1" max="12" value="5" step="0.25">
+    </div>
+    <div class="pp-ctrl">
+      <label>Total Export Volume (Mb) <span class="pv" id="vTot">240</span></label>
+      <input type="range" id="sTot" min="100" max="300" value="240" step="10">
+    </div>
+  </div>
+  <div class="payoff-stats">
+    <div class="pstat"><div class="ps-lbl">Revenue @ $70 WTI</div><div class="ps-val" id="stRev">&mdash;</div></div>
+    <div class="pstat"><div class="ps-lbl">Hedge Payout</div><div class="ps-val" id="stPay">&mdash;</div></div>
+    <div class="pstat"><div class="ps-lbl">Premium / Net Cost</div><div class="ps-val" id="stPrem">&mdash;</div></div>
+    <div class="pstat" id="stNetCard"><div class="ps-lbl">Net Hedge Value</div><div class="ps-val" id="stNet">&mdash;</div></div>
+  </div>
+  <div class="sf-wrap">
+    <div class="sf-label">Active formula</div>
+    <div id="sfText">Revenue = S&#772;_mix &times; V_total [no protection]</div>
+  </div>
+</div>
+
+<h2>III. What the Diagrams Reveal</h2>
+
+<h3>3.1 The Unhedged Line</h3>
+
+<p>The unhedged payoff is a straight line: slope equals total export volume in millions of barrels, intercept zero. At $65/barrel Ecuador mix, 240 million barrels generates $15.6 billion. At $45/barrel, that is $10.8 billion &mdash; a $4.8 billion shortfall relative to the baseline. The IMF EFF adjuster quantifies the program-relevant portion: at $23.85 million per dollar/barrel, a $20/barrel decline from the program baseline generates approximately $477 million in fiscal exposure relative to program targets. The unhedged line's symmetry is its defining feature &mdash; every hedging instrument breaks that symmetry, and the decision is always about how and at what cost.</p>
+
+<h3>3.2 The Asian Put: The Kink at K&#8321;</h3>
+
+<p>The put's payoff has a single kink at the strike price K&#8321;. Below the strike, the payoff line flattens: the hedge payout compensates for revenues below the floor, and the effective slope becomes zero (fully protected) for the hedged portion. Above the strike, the line is parallel to the unhedged line but shifted down by the premium cost. This is the geometry of asymmetric protection &mdash; losses bounded, gains preserved, cost fixed and known. At $8/barrel on 120 million hedged barrels, the premium is $960 million. This is the number policymakers and legislators will scrutinize when prices rise and the option expires worthless.</p>
+
+<h3>3.3 The Collar: Two Kinks, Bounded Range</h3>
+
+<p>The collar adds a second kink at K&#8322;. Between K&#8321; and K&#8322; &mdash; the participation zone &mdash; Ecuador's net revenue tracks spot prices exactly. Below K&#8321;, revenues are floored. Above K&#8322;, revenues are capped: Ecuador has sold the right to participate above K&#8322; to the call buyer. When prices spike to $95/barrel and K&#8322; = $85, Ecuador forgoes $10 &times; 120 million = $1.2 billion in revenues. This opportunity cost does not appear in standard budget accounts but is economically real and politically visible the moment it materializes.</p>
+
+<h3>3.4 The Three-Way Collar: The Dangerous Third Kink</h3>
+
+<p>The three-way collar introduces a third kink at K&#8323;. Between K&#8323; and K&#8321;, the long put pays out normally. But below K&#8323;, the short put position means Ecuador is paying the counterparty rather than collecting &mdash; the payoff line's slope turns negative relative to the standard collar. At current &#963; = 35% and a starting price of $70/barrel, the probability of the annual average WTI price falling below $50/barrel is approximately 8&ndash;12% under log-normal dynamics. This is not a remote tail event &mdash; it is a scenario that materialized in 2015&ndash;16 and 2020. For a dollarized economy with no exchange rate buffer, experiencing the worst fiscal outcome under the scenario that demands the most fiscal support is not an acceptable risk profile.</p>
+
+<div class="insight">
+  <div class="lbl">Structural Finding</div>
+  <p>Below K&#8323;, the three-way collar converts Ecuador from a protection buyer into a protection seller. The BCE's DVP framework (which requires full pre-funding before BCE instructs any transaction) is structurally incompatible with this profile: margin calls triggered by price movements below K&#8323; would require the state enterprise to post additional collateral at exactly the moment of maximum fiscal stress. This is an institutional argument against three-way collars that is independent of any probability calculation.</p>
+</div>
+
+<h2>IV. Comparative Structure Analysis</h2>
+
+<div class="fig">
+  <div class="fig-hd"><span>Table 1 &mdash; Revenue Outcomes by Strategy and Price Level</span><span class="fn">TABLE 1</span></div>
+  <div class="fig-inner" style="padding:0;overflow-x:auto">
+    <table class="comp-table">
+      <thead>
+        <tr><th>Ecuador Mix Price</th><th>Unhedged</th><th>Asian Put</th><th>Collar</th><th>Three-Way</th><th>Regime Note</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>$35/bbl</td><td class="lo">$8.4B</td><td class="hi">$10.6B</td><td class="hi">$10.8B</td><td class="lo">$7.8B*</td><td>3-way: protection reversed</td></tr>
+        <tr><td>$45/bbl</td><td class="lo">$10.8B</td><td class="hi">$12.4B</td><td class="hi">$13.0B</td><td class="lo">$11.4B*</td><td>3-way: K&#8323; breached</td></tr>
+        <tr><td>$55/bbl</td><td>$13.2B</td><td class="hi">$14.2B</td><td class="hi">$14.6B</td><td class="hi">$15.0B</td><td>All strategies protective</td></tr>
+        <tr><td>$65/bbl (K&#8321;)</td><td>$15.6B</td><td>$14.6B</td><td>$15.4B</td><td>$15.6B</td><td>At-strike: premium drag only</td></tr>
+        <tr><td>$70/bbl (program base)</td><td>$16.8B</td><td>$15.8B</td><td>$16.6B</td><td>$16.8B</td><td>Hedging is pure cost</td></tr>
+        <tr><td>$85/bbl (K&#8322;)</td><td>$20.4B</td><td>$19.4B</td><td>$19.6B</td><td>$20.0B</td><td>Collar: cap begins to bind</td></tr>
+        <tr><td>$95/bbl (bull)</td><td class="hi">$22.8B</td><td>$21.8B</td><td class="lo">$21.6B</td><td>$22.0B</td><td>Collar: $1.2B upside foregone</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="fig-cap">Assumptions: 240 Mb total exports; 120 Mb hedged; K&#8321;=$65, K&#8322;=$85, K&#8323;=$50; put premium $5/bbl; collar net premium $1.50/bbl; 3-way net premium ~$0. *Three-way below K&#8323;=$50: Ecuador pays net margin to counterparties &mdash; revenue worse than unhedged. Source: Author calculations per equations (4)&ndash;(6).</div>
+</div>
+
+<div class="fig">
+  <div class="fig-hd"><span>Table 2 &mdash; BCE Resolution JPRFM-2026-009-M Compatibility</span><span class="fn">TABLE 2</span></div>
+  <div class="fig-inner" style="padding:0;overflow-x:auto">
+    <table class="comp-table">
+      <thead>
+        <tr><th>Instrument Feature</th><th>Asian Put</th><th>Collar</th><th>Three-Way Collar</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Known upfront cost at inception</td><td class="hi">Yes &#10003;</td><td>Partial</td><td class="lo">No (deceptive ~$0)</td></tr>
+        <tr><td>No contingent liabilities beyond premium</td><td class="hi">Yes &#10003;</td><td class="lo">No (short call)</td><td class="lo">No (short call + short put)</td></tr>
+        <tr><td>No margin calls during life of trade</td><td class="hi">Yes &#10003;</td><td class="lo">Possible</td><td class="lo">Likely in bear scenario</td></tr>
+        <tr><td>DVP pre-funding: full amount known at inception</td><td class="hi">Yes &#10003;</td><td>Partial</td><td class="lo">No</td></tr>
+        <tr><td>BCE can act as agent without issuing guarantee</td><td class="hi">Yes &#10003;</td><td>Borderline</td><td class="lo">No</td></tr>
+        <tr><td>Political economy risk (prices rise)</td><td class="hi">Low (premium only)</td><td>Medium (upside capped)</td><td>Medium</td></tr>
+        <tr><td>Political economy risk (prices fall below K&#8323;)</td><td class="na">N/A</td><td class="na">N/A</td><td class="lo">Severe (losses visible)</td></tr>
+        <tr><td><strong>Overall compatibility</strong></td><td class="hi"><strong>Full &#10003;</strong></td><td>Partial</td><td class="lo"><strong>Incompatible</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="fig-cap">Source: BCE Resolution JPRFM-2026-009-M (March 2026); author analysis. The DVP requirement means BCE will not execute unless the full required amount is already credited &mdash; a constraint that is operationally unworkable for instruments with variable, price-contingent margin requirements.</div>
+</div>
+
+<h2>V. The Optimal Structure</h2>
+
+<p><strong>Strike calibration.</strong> The put strike should be anchored to the IMF EFF program adjuster price rather than a round number. For 2026, this implies K&#8321; in the range of $60&ndash;62/barrel Ecuador mix, or approximately $65&ndash;67/barrel in WTI terms after the spread adjustment. This creates a direct institutional link between the hedge design and the fiscal metric that IMF reviewers, legislators, and markets share.</p>
+
+<p><strong>Coverage ratio from premium budget.</strong> The coverage ratio should be determined by a maximum affordable annual premium budget (2&ndash;4% of projected oil revenues &asymp; $150&ndash;380 million), not by a target variance reduction. At $5&ndash;8/barrel, this implies coverage of 50&ndash;70% of export volumes. Full coverage at current premiums would cost $1.2&ndash;1.9 billion annually &mdash; unsustainable.</p>
+
+<p><strong>Asian structure exclusively.</strong> Settlement based on arithmetic average of monthly prices over the fiscal year, aligned with how the EFF adjuster is calculated. European put options (terminal spot price) create settlement mismatches with actual fiscal impact.</p>
+
+<p><strong>No sold option legs.</strong> The BCE framework is legally incompatible with instruments generating variable margin calls. This institutional constraint, correctly understood, is a policy advantage: it rules out the structures that have generated political crises in other sovereign hedging programs.</p>
+
+<p><strong>IFI intermediation.</strong> Ecuador should approach the World Bank's commodity risk management facility &mdash; which executed Uruguay's 2016 Asian call option program<sup>4</sup> &mdash; rather than attempting direct market execution. Competitive pricing, technical assistance, and reputational cover are all available through this channel without requiring Ecuador to build market infrastructure it does not have.</p>
+
+<div class="insight">
+  <div class="lbl">Summary Design Recommendation</div>
+  <p>Optimal structure: Asian put, K&#8321; &asymp; $62/bbl (Ecuador mix), covering 50&ndash;60% of annual export volumes, maximum annual premium budget $200&ndash;400 million, executed through the World Bank commodity risk management facility, pre-funded through a dedicated premium reserve account consistent with BCE's DVP requirement. This is not the cheapest structure &mdash; but it is the only one simultaneously compatible with Ecuador's institutional constraints, fiscal governance requirements, and the political economy of transparency under IMF program review.</p>
+</div>
+
+<div class="footnotes">
+  <p><strong>Notes</strong></p>
+  <ol>
+    <li>IMF (2025). Ecuador Country Report 25/341 &mdash; Fourth Review Under the Extended Fund Facility. Washington, D.C.: IMF, December 2025.</li>
+    <li>BCE / JPRFM (2026). Resoluci&oacute;n JPRFM-2026-009-M. Quito: Registro Oficial, Tercer Suplemento No. 244, 16 March 2026.</li>
+    <li>Satyanarayan, S. and Somensatto, E. (1997). "Trade-offs from Hedging Oil Price Risk in Ecuador." World Bank Policy Research Working Paper No. 1792. Washington, D.C.: The World Bank.</li>
+    <li>World Bank (2016). "Managing Exposure to Oil Price Volatility in Uruguay." Case Study, Financial Products and Services Unit. Washington, D.C.: The World Bank. Uruguay covered 6 Mb at $55/bbl strike; premium $15.7M ($2.62/bbl).</li>
+  </ol>
+</div>
+
+</main>
+
+<script>
+const COLORS = {
+  unhedged:{b:'rgba(124,112,96,0.7)',bg:'rgba(124,112,96,0.08)'},
+  put:      {b:'rgba(23,53,89,0.9)', bg:'rgba(23,53,89,0.1)'},
+  collar:   {b:'rgba(24,80,64,0.9)', bg:'rgba(24,80,64,0.1)'},
+  threeway: {b:'rgba(140,28,14,0.9)',bg:'rgba(140,28,14,0.1)'},
+};
+const NAMES = {unhedged:'Unhedged',put:'Asian Put',collar:'Collar',threeway:'Three-Way Collar'};
+let chart=null, strat='unhedged';
+
+function gp(){
+  return{
+    vh:  +document.getElementById('sVH').value,
+    k1:  +document.getElementById('sK1').value,
+    k2:  +document.getElementById('sK2').value,
+    k3:  +document.getElementById('sK3').value,
+    pr:  +document.getElementById('sPrem').value,
+    tot: +document.getElementById('sTot').value,
+  };
+}
+
+function rev(mix,s,p){
+  const base=mix*p.tot;
+  const hBase=mix*p.vh, uBase=mix*(p.tot-p.vh);
+  if(s==='unhedged') return base;
+  if(s==='put'){
+    const pay=Math.max(p.k1-mix,0)*p.vh;
+    return uBase+hBase+pay-p.pr*p.vh;
+  }
+  if(s==='collar'){
+    const np=Math.max(p.pr*0.3,0.4);
+    const pay=(Math.max(p.k1-mix,0)-Math.max(mix-p.k2,0))*p.vh;
+    return uBase+hBase+pay-np*p.vh;
+  }
+  if(s==='threeway'){
+    const np=Math.max(p.pr*0.04,0);
+    const cp=(Math.max(p.k1-mix,0)-Math.max(mix-p.k2,0))*p.vh;
+    const sp=Math.max(p.k3-mix,0)*p.vh;
+    return uBase+hBase+cp-sp-np*p.vh;
+  }
+  return base;
+}
+
+function buildData(s,p){
+  const prices=[];
+  for(let m=25;m<=105;m+=2) prices.push(m);
+  const list=s==='all'?['unhedged','put','collar','threeway']:[s];
+  const ds=list.map(x=>({
+    label:NAMES[x],
+    data:prices.map(m=>+(rev(m,x,p)/1000).toFixed(3)),
+    borderColor:COLORS[x].b,
+    backgroundColor:COLORS[x].bg,
+    borderWidth:s==='all'?1.8:2.4,
+    tension:0,pointRadius:0,
+    fill:s!=='all'&&x!=='unhedged',
+  }));
+  if(s!=='all'&&s!=='unhedged'){
+    ds.unshift({
+      label:'Unhedged (ref)',
+      data:prices.map(m=>+(m*p.tot/1000).toFixed(3)),
+      borderColor:'rgba(124,112,96,0.3)',borderDash:[5,4],
+      borderWidth:1.4,pointRadius:0,fill:false,tension:0,
+    });
+  }
+  return{labels:prices.map(m=>'$'+m),datasets:ds};
+}
+
+function getFormula(s,p){
+  if(s==='unhedged') return 'Revenue = S\u0304\u2098\u1D62\u02E3 \u00D7 V\u209C\u2092\u209C\u2090\u2097  [no protection]';
+  if(s==='put') return 'Revenue = S\u0304\u2098\u1D62\u02E3 \u00D7 V\u209C + max('+p.k1+' \u2212 S\u0304, 0) \u00D7 '+p.vh+'M \u2212 $'+p.pr.toFixed(2)+' \u00D7 '+p.vh+'M';
+  if(s==='collar') return 'Revenue = S\u0304 \u00D7 V + [max('+p.k1+'\u2212S\u0304,0) \u2212 max(S\u0304\u2212'+p.k2+',0)] \u00D7 '+p.vh+'M \u2212 P\u207F\u1D49\u1D57 \u00D7 '+p.vh+'M';
+  if(s==='threeway') return '\u26A0 3-Way: Collar + max('+p.k3+'\u2212S\u0304,0)\u00D7'+p.vh+'M  [SUBTRACTS below K\u2083='+p.k3+']';
+  return 'All four strategies overlaid';
+}
+
+function updateStats(s,p){
+  const wti=70, mix=65;
+  let rv=rev(mix,s,p)/1000;
+  let pay=0,cost=0;
+  if(s==='put'){pay=Math.max(p.k1-mix,0)*p.vh/1000;cost=p.pr*p.vh/1000;}
+  else if(s==='collar'){pay=Math.max(p.k1-mix,0)*p.vh/1000;cost=Math.max(p.pr*0.3,0.4)*p.vh/1000;}
+  else if(s==='threeway'){pay=Math.max(p.k1-mix,0)*p.vh/1000;cost=Math.max(p.k3-mix,0)*p.vh/1000;}
+  const net=pay-cost;
+  const f=n=>'$'+Math.abs(n).toFixed(1)+'B';
+  const fs=n=>(n>=0?'+':'\u2212')+'$'+Math.abs(n).toFixed(1)+'B';
+  document.getElementById('stRev').textContent=f(rv);
+  document.getElementById('stPay').textContent=f(pay);
+  document.getElementById('stPrem').textContent=f(cost);
+  document.getElementById('stNet').textContent=fs(net);
+  const nc=document.getElementById('stNetCard');
+  nc.className='pstat '+(net>0.01?'good':net<-0.01?'bad':'warn');
+  document.getElementById('sfText').textContent=getFormula(s,p);
+}
+
+function updLabels(){
+  const p=gp();
+  document.getElementById('vHedged').textContent=p.vh;
+  document.getElementById('vK1').textContent='$'+p.k1;
+  document.getElementById('vK2').textContent='$'+p.k2;
+  document.getElementById('vK3').textContent='$'+p.k3;
+  document.getElementById('vPrem').textContent='$'+p.pr.toFixed(2);
+  document.getElementById('vTot').textContent=p.tot;
+}
+
+function render(){
+  const p=gp(); updLabels();
+  const data=buildData(strat,p);
+  const ctx=document.getElementById('payoffChart').getContext('2d');
+  if(chart){chart.data=data;chart.update('none');updateStats(strat,p);return;}
+  chart=new Chart(ctx,{
+    type:'line',data,
+    options:{
+      responsive:true,maintainAspectRatio:false,animation:{duration:180},
+      interaction:{mode:'index',intersect:false},
+      plugins:{
+        legend:{position:'top',labels:{color:'rgba(248,245,240,0.65)',font:{family:"'JetBrains Mono',monospace",size:10},boxWidth:10,padding:10}},
+        tooltip:{backgroundColor:'#100f0d',titleColor:'#a87c10',bodyColor:'rgba(248,245,240,0.8)',borderColor:'rgba(168,124,16,0.25)',borderWidth:1,
+          callbacks:{title:i=>'Ecuador Mix: '+i[0].label,label:i=>` ${i.dataset.label}: $${i.raw}B`}}
+      },
+      scales:{
+        x:{ticks:{color:'rgba(248,245,240,0.35)',font:{family:"'JetBrains Mono',monospace",size:9},maxTicksLimit:10},grid:{color:'rgba(194,185,167,0.07)'}},
+        y:{title:{display:true,text:'Revenue (USD Billions)',color:'rgba(248,245,240,0.35)',font:{size:9}},
+           ticks:{color:'rgba(248,245,240,0.35)',font:{family:"'JetBrains Mono',monospace",size:9},callback:v=>'$'+v+'B'},
+           grid:{color:'rgba(194,185,167,0.07)'}}
+      }
+    }
+  });
+  updateStats(strat,p);
+}
+
+function setStrat(s){
+  strat=s;
+  document.querySelectorAll('.stab').forEach((b,i)=>{
+    b.classList.toggle('active',['unhedged','put','collar','threeway','all'][i]===s);
+  });
+  render();
+}
+
+['sVH','sK1','sK2','sK3','sPrem','sTot'].forEach(id=>document.getElementById(id).addEventListener('input',render));
+render();
+</script>
+</body>
+</html>
